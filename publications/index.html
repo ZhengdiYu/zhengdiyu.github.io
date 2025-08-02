@@ -373,28 +373,26 @@
 						<br />
 						<em><b>FICC 2024</b></em>
 						<br />
-						<em>"the 1st large-scale 3D sign language holistic motion dataset and benchmark"</em>
+						<em>"an adversarial framework that decomposes holistic motion priors into independent joint-wise priors"</em>
 						<br />
 						<ul class="inline middot">
 							<li><em class="icon-file"></em> <a href="https://arxiv.org/abs/2305.18743">paper</a></li>
 							<li>
 								<em class="icon-circle-info"></em>
-								<a class="toggle_text_link" onclick="javascript:toggle(yu2024signavatars);">abstract</a>
-								<pre id="yu2024signavatars" class="invisible_text">We present SignAvatars, the first large-scale, multi-prompt 3D sign language (SL) motion dataset designed to bridge the communication gap for Deaf and hard-of-hearing individuals. While there has been an exponentially growing number of research regarding digital communication, the majority of existing communication technologies primarily cater to spoken or written languages, instead of SL, the essential communication method for Deaf and hard-of-hearing communities. Existing SL datasets, dictionaries, and sign language production (SLP) methods are typically limited to 2D as annotating 3D models and avatars for SL is usually an entirely manual and labor-intensive process conducted by SL experts, often resulting in unnatural avatars. In response to these challenges, we compile and curate the SignAvatars dataset, which comprises 70,000 videos from 153 signers, totaling 8.34 million frames, covering both isolated signs and continuous, co-articulated signs, with multiple prompts including HamNoSys, spoken language, and words. To yield 3D holistic annotations, including meshes and biomechanically-valid poses of body, hands, and face, as well as 2D and 3D keypoints, we introduce an automated annotation pipeline operating on our large corpus of SL videos. SignAvatars facilitates various tasks such as 3D sign language recognition (SLR) and the novel 3D SL production (SLP) from diverse inputs like text scripts, individual words, and HamNoSys notation. Hence, to evaluate the potential of SignAvatars, we further propose a unified benchmark of 3D SL holistic motion production. We believe that this work is a significant step forward towards bringing the digital world to the Deaf and hard-of-hearing communities as well as people interacting with them.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
+								<a class="toggle_text_link" onclick="javascript:toggle(chen2024decomposed);">abstract</a>
+								<pre id="chen2024decomposed" class="invisible_text">Estimating human pose from video is a task that receives considerable attention due to its applicability in numerous 3D fields. The complexity of prior knowledge of human body movements poses a challenge to neural network models in the task of regressing keypoints. In this paper, we address this problem by incorporating motion prior in an adversarial way. Different from previous methods, we propose to decompose holistic motion prior to joint motion prior, making it easier for neural networks to learn from prior knowledge thereby boosting the performance on the task. We also utilize a novel regularization loss to balance accuracy and smoothness introduced by motion prior. Our method achieves 9% lower PA-MPJPE and 29% lower acceleration error than previous methods tested on 3DPW. The estimator proves its robustness by achieving impressive performance on in-the-wild dataset.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>
-							<li><em class="icon-github"></em> <a href="https://github.com/ZhengdiYu/SignAvatars">source code</a></li>
-							<li><em class="icon-briefcase"></em> <a href="https://docs.google.com/forms/d/e/1FAIpQLSc6xQJJMf_R4xJ1sIwDL6FBIYw4HbVVv_HUgCqeiguWX5XGPg/viewform">dataset</a></li>
-							
 							<li>
 								<em class="icon-bookmark"></em>
-								<a class="toggle_text_link" onclick="javascript:toggle(yu2024signavatars2);">bibtex</a>
-								<pre id="yu2024signavatars2" class="invisible_text">
-@inproceedings{yu2024signavatars,
-  title={SignAvatars: A large-scale 3D sign language holistic motion dataset and benchmark},
-  author={Yu, Zhengdi and Huang, Shaoli and Cheng, Yongkang and Birdal, Tolga},
-  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
-  pages={1--19},
-  year={2024}
+								<a class="toggle_text_link" onclick="javascript:toggle(chen2024decomposed2);">bibtex</a>
+								<pre id="chen2024decomposed2" class="invisible_text">
+@inproceedings{chen2024decomposed,
+  title={Decomposed Human Motion Prior for Video Pose Estimation via Adversarial Training},
+  author={Chen, Wenshuo and Zhou, Xiang and Yu, Zhengdi and Gu, Weixi and Zhang, Kai},
+  booktitle={Future of Information and Communication Conference},
+  pages={516--525},
+  year={2024},
+  organization={Springer}
 }</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>
 							<!-- <li><em class="icon-chevron-right"></em> <a href="https://doi.org/10.1109/TPAMI.2022.3174603">DOI</a></li> -->
