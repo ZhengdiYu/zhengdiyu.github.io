@@ -18,38 +18,41 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
 
 .navbar-inner,
 .navbar .btn-navbar {
-  background-color: #F5F5F5; /* fallback color, place your own */
+  background-color: #002147; /* Imperial blue fallback */
 
-  /* Gradients for modern browsers, replace as you see fit */
-  background-image: -moz-linear-gradient(top, #88000000, #cc000000);								/* FF3.6+ */
-  background-image: -ms-linear-gradient(top, #88000000, #cc000000);									/* IE10+ */
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#88000000), to(#cc000000));			/* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(top, #88000000, #cc000000);								/* Chrome10+,Safari5.1+ */
-  background-image: -o-linear-gradient(top, #88000000, #cc000000);									/* Opera 11.10+ */
-  background-image: linear-gradient(top, #88000000, #cc000000);										/* W3C */
+  /* Gradients for modern browsers using Imperial blue */
+  background-image: -moz-linear-gradient(to bottom, #002147, #003366);								/* FF3.6+ */
+  background-image: -ms-linear-gradient(to bottom, #002147, #003366);									/* IE10+ */
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#002147), to(#003366));			/* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(to bottom, #002147, #003366);								/* Chrome10+,Safari5.1+ */
+  background-image: -o-linear-gradient(to bottom, #002147, #003366);									/* Opera 11.10+ */
+  background-image: linear-gradient(to bottom, #002147, #003366);										/* W3C */
   background-repeat: repeat-x;
 
   /* IE8-9 gradient filter */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#88000000', endColorstr='#cc000000'), GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#002147', endColorstr='#003366', GradientType=0);
 }
 
 .navbar .nav .current-page-ancestor > a,
 .navbar .nav .current-page-ancestor > a:hover,
 .navbar .nav .active > a,
 .navbar .nav .active > a:hover {
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: rgba(255, 255, 255, 0.2); /* Light overlay for active state */
     font-weight: bold;
+    color: #ffffff; /* White text for contrast */
 }
 
 .nav-collapse .nav > li > a:hover,
 .nav-collapse .dropdown-menu a:hover {
-	background-color: rgb(30, 30, 30);
+	background-color: rgba(255, 255, 255, 0.15); /* Light overlay for hover state */
   	font-weight: bold;
+    color: #ffffff; /* White text for contrast */
 }
 
 .navbar .brand,
 .navbar .nav > li > a {
     font-weight: bold;
+    color: #ffffff; /* White text for contrast against Imperial blue */
 }
 
 .navbar .btn-navbar:hover,
