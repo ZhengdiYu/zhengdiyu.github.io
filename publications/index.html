@@ -170,7 +170,7 @@
 								<a class="toggle_text_link" onclick="javascript:toggle(yu2025dynhamr);">abstract</a>
 								<pre id="yu2025dynhamr" class="invisible_text">We propose Dyn-HaMR, to the best of our knowledge, the first approach to reconstruct 4D global hand motion from monocular videos recorded by dynamic cameras in the wild. Reconstructing accurate 3D hand meshes from monocular videos is a crucial task for understanding human behaviour, with significant applications in augmented and virtual reality (AR/VR). However, existing methods for monocular hand reconstruction typically rely on a weak perspective camera model, which simulates hand motion within a limited camera frustum. As a result, these approaches struggle to recover the full 3D global trajectory and often produce noisy or incorrect depth estimations, particularly when the video is captured by dynamic or moving cameras, which is common in egocentric scenarios. Our Dyn-HaMR consists of a multi-stage, multi-objective optimization pipeline, that factors in (i) simultaneous localization and mapping (SLAM) to robustly estimate relative camera motion, (ii) an interacting-hand prior for generative infilling and to refine the interaction dynamics, ensuring plausible recovery under (self-)occlusions, and (iii) hierarchical initialization through a combination of state-of-the-art hand tracking methods. Through extensive evaluations on both in-the-wild and indoor datasets, we show that our approach significantly outperforms state-of-the-art methods in terms of 4D global mesh recovery. This establishes a new benchmark for hand motion reconstruction from monocular video with moving cameras.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>	
-							<li><em class="icon-turtle"></em> <a href="https://github.com/ZhengdiYu/Dyn-HaMR">source code</a></li>		
+							<li><em class="icon-github"></em> <a href="https://github.com/ZhengdiYu/Dyn-HaMR">source code</a></li>		
 							<li>
 								<em class="icon-bookmark"></em>
 								<a class="toggle_text_link" onclick="javascript:toggle(yu2025dynhamr2);">bibtex</a>
@@ -224,7 +224,7 @@
 								<a class="toggle_text_link" onclick="javascript:toggle(yu2024signavatars);">abstract</a>
 								<pre id="yu2024signavatars" class="invisible_text">We present SignAvatars, the first large-scale, multi-prompt 3D sign language (SL) motion dataset designed to bridge the communication gap for Deaf and hard-of-hearing individuals. While there has been an exponentially growing number of research regarding digital communication, the majority of existing communication technologies primarily cater to spoken or written languages, instead of SL, the essential communication method for Deaf and hard-of-hearing communities. Existing SL datasets, dictionaries, and sign language production (SLP) methods are typically limited to 2D as annotating 3D models and avatars for SL is usually an entirely manual and labor-intensive process conducted by SL experts, often resulting in unnatural avatars. In response to these challenges, we compile and curate the SignAvatars dataset, which comprises 70,000 videos from 153 signers, totaling 8.34 million frames, covering both isolated signs and continuous, co-articulated signs, with multiple prompts including HamNoSys, spoken language, and words. To yield 3D holistic annotations, including meshes and biomechanically-valid poses of body, hands, and face, as well as 2D and 3D keypoints, we introduce an automated annotation pipeline operating on our large corpus of SL videos. SignAvatars facilitates various tasks such as 3D sign language recognition (SLR) and the novel 3D SL production (SLP) from diverse inputs like text scripts, individual words, and HamNoSys notation. Hence, to evaluate the potential of SignAvatars, we further propose a unified benchmark of 3D SL holistic motion production. We believe that this work is a significant step forward towards bringing the digital world to the Deaf and hard-of-hearing communities as well as people interacting with them.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>
-							<li><em class="icon-turtle"></em> <a href="https://github.com/ZhengdiYu/SignAvatars">source code</a></li>
+							<li><em class="icon-github"></em> <a href="https://github.com/ZhengdiYu/SignAvatars">source code</a></li>
 							<li><em class="icon-briefcase"></em> <a href="https://docs.google.com/forms/d/e/1FAIpQLSc6xQJJMf_R4xJ1sIwDL6FBIYw4HbVVv_HUgCqeiguWX5XGPg/viewform">dataset</a></li>
 							
 							<li>
@@ -255,7 +255,7 @@
 				<div class="row" style="margin-bottom: 1em;">
 					<div class="span2 offset1">
 						<a href="/publications/publications/acr/">
-							<img class="dropshadow pull-right" alt="" src="/publications/publications/acr/thumbnail.png" width="150" height="90" />
+							<img class="dropshadow pull-right" alt="" src="/publications/publications/acr/acr.gif" width="150" height="90" />
 						</a>
 					</div>
 					<div class="span8">
@@ -267,7 +267,7 @@
 						<a href="https://shaoli-huang.github.io/">Shaoli Huang</a>,
 						<a href="http://fangchen.org/">Chen Fang</a>,
 						<a href="https://breckon.org/toby/research/">Toby P. Breckon</a>,
-						<a href="https://juewang725.github.io/">Jue Wang</a>,
+						<a href="https://juewang725.github.io/">Jue Wang</a>
 						<br />
 						<em><b>CVPR 2023</b></em>
 						<br />
@@ -282,7 +282,7 @@
 								<a class="toggle_text_link" onclick="javascript:toggle(yu2023acr);">abstract</a>
 								<pre id="yu2023acr" class="invisible_text">Fiducial markers have been playing an important role in augmented reality (AR), robot navigation, and general applications where the relative pose between a camera and an object is required. Here we introduce TopoTag, a robust and scalable topological fiducial marker system, which supports reliable and accurate pose estimation from a single image. TopoTag uses topological and geometrical information in marker detection to achieve higher robustness. Topological information is extensively used for 2D marker detection, and further corresponding geometrical information for ID decoding. Robust 3D pose estimation is achieved by taking advantage of all TopoTag vertices. Without sacrificing bits for higher recall and precision like previous systems, TopoTag can use full bits for ID encoding. TopoTag supports tens of thousands unique IDs and easily extends to millions of unique tags resulting in massive scalability. We collected a large test dataset including in total 169,713 images for evaluation, involving in-plane and out-of-plane rotation, image blur, different distances and various backgrounds, etc. Experiments on the dataset and real indoor and outdoor scene tests with a rolling shutter camera both show that TopoTag significantly outperforms previous fiducial marker systems in terms of various metrics, including detection accuracy, vertex jitter, pose jitter and accuracy, etc. In addition, TopoTag supports occlusion as long as the main tag topological structure is maintained and allows for flexible shape design where users can customize internal and external marker shapes. Code for our marker design/generation, marker detection, and dataset are available at https://herohuyongtao.github.io/publications/publications/acr/.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>
-							<li><em class="icon-turtle"></em> <a href="https://github.com/ZhengdiYu/Arbitrary-Hands-3D-Reconstruction">source code</a></li>
+							<li><em class="icon-github"></em> <a href="https://github.com/ZhengdiYu/Arbitrary-Hands-3D-Reconstruction">source code</a></li>
 							<!-- <li><em class="icon-briefcase"></em> <a href="/publications/publications/acr#dataset">dataset</a></li> -->
 							<li>
 								<em class="icon-bookmark"></em>
