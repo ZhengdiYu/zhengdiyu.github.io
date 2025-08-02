@@ -36,6 +36,38 @@
 		pre.invisible_text {
 			display: none;
 		}
+
+		/* Imperial Blue Banner Override - High specificity to override Bootstrap */
+		body .navbar-inner,
+		body .navbar .btn-navbar {
+			background-color: #002147 !important; /* Solid Imperial blue */
+			background-image: none !important; /* Remove all gradients */
+			background-repeat: repeat-x !important;
+		}
+
+		/* White text for navbar */
+		body .navbar .brand,
+		body .navbar .nav > li > a {
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
+
+		/* Active and hover states */
+		body .navbar .nav .current-page-ancestor > a,
+		body .navbar .nav .current-page-ancestor > a:hover,
+		body .navbar .nav .active > a,
+		body .navbar .nav .active > a:hover {
+			background-color: rgba(255, 255, 255, 0.2) !important; /* Light overlay for active state */
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
+
+		body .nav-collapse .nav > li > a:hover,
+		body .nav-collapse .dropdown-menu a:hover {
+			background-color: rgba(255, 255, 255, 0.15) !important; /* Light overlay for hover state */
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
 	</style>
 	<script language="javascript" type="text/javascript">
 		function toggle(element) {
@@ -116,7 +148,7 @@
 						<br />						
 						<a href="https://scholar.google.com/citations?user=PxzaG5AAAAAJ&hl=en">Abdallah Bengueddoudj</a>,
 						<a href="https://scholar.google.com/citations?user=GB1_-gEAAAAJ&hl=en">Foudil Belhadj</a>,
-						<b>Yongtao Hu</b>,
+						<b>Zhengdi Yu</b>,
 						<a href="https://scholar.google.com/citations?hl=en&user=nH_t10kAAAAJ">Brahim Zitouni</a>, 
 						<a href="https://scholar.google.com/citations?user=qlnrckYAAAAJ&hl=en">Yacine Idir</a>, 
 						<a href="https://scholar.google.com/citations?hl=en&user=xkxftZYAAAAJ">Ibtissem Adoui</a>, and
@@ -174,7 +206,7 @@
 						</a>
 						<br />						
 						<a href="https://scholar.google.com.hk/citations?user=YINGcfcAAAAJ&hl=en">Zhuming Zhang</a>,
-						<b>Yongtao Hu</b>,
+						<b>Zhengdi Yu</b>,
 						<a href="https://scholar.google.com/citations?user=V_OBnFoAAAAJ&hl=en">Guoxing Yu</a>, and
 						<a href="http://jwdai.net/">Jingwen Dai</a>
 						<br />
@@ -233,7 +265,7 @@
 						</a>
 						<br />
 						<a href="https://scholar.google.com/citations?user=V_OBnFoAAAAJ&hl=en">Guoxing Yu</a>,
-						<b>Yongtao Hu</b>, and
+						<b>Zhengdi Yu</b>, and
 						<a href="http://jwdai.net/">Jingwen Dai</a>
 						<br />
 						<em>IEEE Transactions on Visualization and Computer Graphics (<b>TVCG 2021</b>)</em>
@@ -291,7 +323,7 @@
 						</a>
 						<br />
 						<a href="https://zerolu.github.io/">Zhixiong Lu</a>,
-						<b>Yongtao Hu</b>, and
+						<b>Zhengdi Yu</b>, and
 						<a href="http://jwdai.net/">Jingwen Dai</a>
 						<br />
 						<em>2019 IEEE International Symposium on Mixed and Augmented Reality (<b>ISMAR 2019, demo</b>)</em>
@@ -347,7 +379,7 @@
 						<br />
 						<a href="http://www.vis.uni-stuttgart.de/institut/mitarbeiter/kuno-kurzhals.html">Kuno Kurzhals</a>,
 						<a href="">Emine Cetinkaya</a>,
-						<b>Yongtao Hu</b>,
+						<b>Zhengdi Yu</b>,
 						<a href="http://i.cs.hku.hk/~wenping/">Wenping Wang</a>, and
 						<a href="http://www.vis.uni-stuttgart.de/~weiskopf/">Daniel Weiskopf</a>
 						<br />
@@ -401,7 +433,7 @@
 						</a>
 						<br />
 						<a href="http://www.jimmyren.com/">Jimmy SJ. Ren</a>,
-						<b>Yongtao Hu</b>,
+						<b>Zhengdi Yu</b>,
 						<a href="http://gdriv.es/yuwing">Yu-Wing Tai</a>,
 						<a href="http://i.cs.hku.hk/~cwang/">Chuan Wang</a>,
 						<a href="http://lxu.me/">Li Xu</a>,
@@ -458,7 +490,7 @@
 							<strong>Deep Multimodal Speaker Naming</strong>
 						</a>
 						<br />
-						<b>Yongtao Hu</b>,
+						<b>Zhengdi Yu</b>,
 						<a href="http://www.jimmyren.com/">Jimmy SJ. Ren</a>,
 						<a href="http://jwdai.net/">Jingwen Dai</a>,
 						<a href="http://iris.usc.edu/Vision-Users/OldUsers/cyuan/">Chang Yuan</a>,
@@ -511,7 +543,7 @@
 						</a>
 						<br />
 						<a href="https://www.linkedin.com/in/guangmei-jing-04917a49">Guangmei Jing</a>,
-						<b>Yongtao Hu</b>,
+						<b>Zhengdi Yu</b>,
 						<a href="http://cs.nju.edu.cn/ywguo/">Yanwen Guo</a>,
 						<a href="http://i.cs.hku.hk/~yzyu/">Yizhou Yu</a>, and
 						<a href="http://i.cs.hku.hk/~wenping/">Wenping Wang</a>
@@ -567,7 +599,7 @@
 							<strong>Speaker-Following Video Subtitles</strong>
 						</a>
 						<br />
-						<b>Yongtao Hu</b>, <!--<sup>#</sup>-->
+						<b>Zhengdi Yu</b>, <!--<sup>#</sup>-->
 						<a href="http://jankautz.com/">Jan Kautz</a>,
 						<a href="http://i.cs.hku.hk/~yzyu/">Yizhou Yu</a>, and
 						<a href="http://i.cs.hku.hk/~wenping/">Wenping Wang</a>
@@ -903,7 +935,7 @@ A system for modeling 3D infrared building of real scenes.</pre> <!-- put </pre>
 		<table width="100%">
 			<tr>
 				<td>
-					<p class="copy"><small>&copy; 2014-2025 Yongtao Hu</small></p>
+					<p class="copy"><small>&copy; 2014-2025 Zhengdi Yu</small></p>
 				</td>
 				<td style="text-align:center">
 					<p class="copy"><small>Last updated: 6/2025</small></p>
