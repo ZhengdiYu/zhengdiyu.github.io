@@ -143,45 +143,38 @@
 					</div>
 					<div class="span8">
 						<a href="/research/publications/oilu-tag/">
-							<strong>Efficient Line-Based Visual Marker System Design with Occlusion Resilience</strong>
+							<strong>Dyn-HaMR: Recovering 4D Interacting Hand Motion from a Dynamic Camera</strong>
 						</a>
 						<br />						
-						<a href="https://scholar.google.com/citations?user=PxzaG5AAAAAJ&hl=en">Abdallah Bengueddoudj</a>,
-						<a href="https://scholar.google.com/citations?user=GB1_-gEAAAAJ&hl=en">Foudil Belhadj</a>,
 						<b>Zhengdi Yu</b>,
-						<a href="https://scholar.google.com/citations?hl=en&user=nH_t10kAAAAJ">Brahim Zitouni</a>, 
-						<a href="https://scholar.google.com/citations?user=qlnrckYAAAAJ&hl=en">Yacine Idir</a>, 
-						<a href="https://scholar.google.com/citations?hl=en&user=xkxftZYAAAAJ">Ibtissem Adoui</a>, and
-						<a href="https://scholar.google.com/citations?user=HthK96IAAAAJ&hl=en">Messaoud Mostefai</a>
+						<a href="https://scholar.google.com/citations?user=QKOH5iYAAAAJ&hl=en&oi=ao">Stefanos Zafeiriou</a>, 
+						<a href="https://tolgabirdal.github.io/">Tolga Birdal</a>, 
 						<br />
-						<em>Informatica (<b>Informatica 2025</b>)</em>
+						<em><b>CVPR 2025 Highlight</b></em>
 						<br />
-						<em>"novel pyramidal line-based fiducial marker system that humans can read and offers enhanced performance"</em>
+						<em>"the first approach to reconstruct 4D global hand motion from monocular videos recorded by dynamic cameras in the wild"</em>
 						<br />
 						<ul class="inline middot">
-							<li><em class="icon-home"></em> <a href="/research/publications/oilu-tag/">project page</a></li>
-							<li><em class="icon-file"></em> <a href="/research/publications/oilu-tag/paper.pdf">paper</a></li>
+							<li><em class="icon-home"></em> <a href="https://dyn-hamr.github.io/">project page</a></li>
+							<li><em class="icon-file"></em> <a href="https://arxiv.org/abs/2412.12861">paper</a></li>
 							<li>
 								<em class="icon-circle-info"></em>
 								<a class="toggle_text_link" onclick="javascript:toggle(Bengueddoudj2025oilutag);">abstract</a>
-								<pre id="Bengueddoudj2025oilutag" class="invisible_text">Today, the most widely used visual markers, such as ArUco and AprilTag, rely on square pixel arrays. While these markers can deliver satisfactory detection and identification outcomes, they remain vulnerable to corner occlusion despite incorporating corrective codes. Conversely, line-based markers offer increased resilience against occlusions but are typically constrained in terms of codification capacities. The markers developed in this research leverage linear information to propose a pyramidal line-based structure that exhibits robustness to corner occlusion while providing enhanced coding capacities. Moreover, the projective invariance of the constituent lines enables the validation of a homography-less identification method that considerably reduces computation resources and processing time. We assembled an extensive test dataset of 169,713 images for evaluation, including rotation, distances, and different levels of occlusion. Experiments on this dataset show that the proposed marker significantly outperforms previous fiducial marker systems across multiple metrics, including execution time and detection performance under occlusion. It effectively identifies markers with up to 50% occlusion and achieves identification at a resolution of 1920x1080 in 17.20 ms. The developed marker generation and identification, as well as an extensive marker Database, are publicly available for tests at https://github.com/OILUproject/OILUtag</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
+								<pre id="Bengueddoudj2025oilutag" class="invisible_text">We propose Dyn-HaMR, to the best of our knowledge, the first approach to reconstruct 4D global hand motion from monocular videos recorded by dynamic cameras in the wild. Reconstructing accurate 3D hand meshes from monocular videos is a crucial task for understanding human behaviour, with significant applications in augmented and virtual reality (AR/VR). However, existing methods for monocular hand reconstruction typically rely on a weak perspective camera model, which simulates hand motion within a limited camera frustum. As a result, these approaches struggle to recover the full 3D global trajectory and often produce noisy or incorrect depth estimations, particularly when the video is captured by dynamic or moving cameras, which is common in egocentric scenarios. Our Dyn-HaMR consists of a multi-stage, multi-objective optimization pipeline, that factors in (i) simultaneous localization and mapping (SLAM) to robustly estimate relative camera motion, (ii) an interacting-hand prior for generative infilling and to refine the interaction dynamics, ensuring plausible recovery under (self-)occlusions, and (iii) hierarchical initialization through a combination of state-of-the-art hand tracking methods. Through extensive evaluations on both in-the-wild and indoor datasets, we show that our approach significantly outperforms state-of-the-art methods in terms of 4D global mesh recovery. This establishes a new benchmark for hand motion reconstruction from monocular video with moving cameras.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>			
 							<li>
 								<em class="icon-bookmark"></em>
 								<a class="toggle_text_link" onclick="javascript:toggle(Bengueddoudj2025oilutag2);">bibtex</a>
 								<pre id="Bengueddoudj2025oilutag2" class="invisible_text">
-@article{Bengueddoudj2025oilutag,
-  title={{Efficient Line-Based Visual Marker System Design with Occlusion Resilience}},
-  author={Bengueddoudj, Abdallah and Belhadj, Foudil and Hu, Yongtao and Zitouni, Brahim and Idir, Yacine and Adoui, Ibtissem and Mostefai, Messaoud},
-  journal={Informatica},
-  volume={49},
-  number={1},
-  pages={61-80},
-  year={2025},
-  publisher={}
+@inproceedings{yu2025dynhamr,
+  title={Dyn-HaMR: Recovering 4D Interacting Hand Motion from a Dynamic Camera},
+  author={Yu, Zhengdi and Zafeiriou, Stefanos and Birdal, Tolga},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  month     = {June},
+  year      = {2025},
 }</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
 							</li>
-							<li><em class="icon-chevron-right"></em> <a href="https://doi.org/10.31449/inf.v49i1.7259">DOI</a></li>
+							<!-- <li><em class="icon-chevron-right"></em> <a href="https://doi.org/10.31449/inf.v49i1.7259">DOI</a></li> -->
 						</ul>
 					</div>
 				</div>								
