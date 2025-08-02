@@ -1,0 +1,145 @@
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+	<title>DeepTag: A General Framework for Fiducial Marker Design and Detection | Yongtao Hu</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="/js/vendor/modernizr-2.5.3.min.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<script src="/js/vendor/spamspan.min.js"></script>
+	<script src="/js/vendor/prettify.js"></script>
+
+	<link rel="stylesheet" href="/plugins/social-media-widget/social_widget.css?ver=3.9.1">
+	<link rel="stylesheet" href="/glyphicons/css/glyphicons.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="/css/app.css">
+	<script type='text/javascript' src='/js/plugins.js'></script>
+	<script type='text/javascript' src='/js/main.js'></script>
+	<link rel="canonical" href="/publications/speaker-following-subtitles/">
+	<link rel="shortcut icon" href="/images/logo.ico">
+</head>
+
+<body class="page page-id-62 page-parent page-child parent-pageid-25 page-template-default top-navbar">
+  <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+
+    <header id="banner" class="navbar navbar-fixed-top" role="banner">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">
+					Yongtao Hu
+				</a>
+				<nav id="nav-main" class="nav-collapse" role="navigation">
+					<ul class="nav">
+						<li class="menu-home"><a href="/">Home</a></li>
+						<li class="menu-research active active"><a href="/research/">Research</a></li>
+						<li class="menu-news"><a href="/news/">News</a></li>
+						<li class="menu-links"><a href="/links/">Links</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+    <div id="wrap" class="container" role="document">
+		<div id="content" class="row">
+			<div id="main" class="span12" role="main">
+				<div class="page-header">
+					<h1>DeepTag: A General Framework for Fiducial Marker Design and Detection</h1>
+				</div>
+
+				<p style="text-align: center;">
+						<a href="https://scholar.google.com.hk/citations?user=YINGcfcAAAAJ&hl=en">Zhuming Zhang</a>&nbsp;&nbsp;&nbsp;
+						<a href="/">Yongtao Hu</a>&nbsp;&nbsp;&nbsp;
+				    <a href="https://scholar.google.com/citations?user=V_OBnFoAAAAJ&hl=en">Guoxing Yu</a>&nbsp;&nbsp;&nbsp;
+				    <a href="http://jwdai.net/">Jingwen Dai</a>
+				</p>			
+				<p style="text-align: center;">
+					Guangdong Virtual Reality Technology Co., Ltd. (aka. Ximmerse), Guangzhou
+				</p>
+				<p style="text-align: center;">
+					<em>IEEE Transactions on Pattern Analysis and Machine Intelligence (IEEE TPAMI 2023)</em>
+				</p>
+				<div style="text-align: center;">
+					<img class="size-full wp-image-96 " style="margin: 1em 0; height: auto;" title="Teaser image" src="teaser.png" alt="" />
+					<br />
+					Left: a general marker design supported by DeepTag. Right: top & bottom rows show detection results of existing methods and DeepTag respectively. <br />DeepTag successfully detects all markers while original methods either miss some or totally fail.
+				</div>
+				<hr />
+				<h2>Abstract</h2>
+				<p align="justify">
+					A fiducial marker system usually consists of markers, a detection algorithm, and a coding system. The appearance of markers and the detection robustness are generally limited by the existing detection algorithms, which are hand-crafted with traditional low-level image processing techniques. Furthermore, a sophisticatedly designed coding system is required to overcome the shortcomings of both markers and detection algorithms. To improve the flexibility and robustness in various applications, we propose a general deep learning based framework, DeepTag, for fiducial marker design and detection. DeepTag not only supports detection of a wide variety of existing marker families, but also makes it possible to design new marker families with customized local patterns. Moreover, we propose an effective procedure to synthesize training data on the ﬂy without manual annotations. Thus, DeepTag can easily adapt to existing and newly-designed marker families. To validate DeepTag and existing methods, beside existing datasets, we further collect a new large and challenging dataset where markers are placed in different view distances and angles. Experiments show that DeepTag well supports different marker families and greatly outperforms the existing methods in terms of both detection robustness and pose accuracy. Both code and dataset are available.
+				</p>				
+				<h2>Paper</h2>
+				<ul class="unstyled">
+					<li><em class="icon-file"></em> <a href="https://arxiv.org/pdf/2105.13731.pdf">Preprint (arXiv)</a> (PDF, 6.6 MB)</li>
+				</ul>
+				<h2 id="code">Code</h2>
+				<ul class="unstyled">
+					<li><em class="icon-turtle"></em> <a href="https://github.com/herohuyongtao/deeptag-pytorch">DeepTag - PyTorch</a> (w/ pre-trained models, hosted on GitHub)</li>
+				</ul>
+				<h2 id="dataset">Dataset</h2>
+				<ul class="unstyled">
+					<li><em class="icon-camera"></em> <a href="camera_params.txt">Parameters of used camera</a> (TXT)</li>
+					<li><em class="icon-briefcase"></em> DeepTag dataset (104.0G): <a href="readme_dataset.txt">readme</a> | <a href="https://terabox.com/s/1dfNeIg6s0LARbsK8lR5N3w">data (via TeraBox)</a> | <a href="https://pan.baidu.com/s/19jYLaI7ELHtXwUtcwhIMJQ">data (via Baidu Drive)</a> (password: 2fym)</li>
+					<li><em class="icon-briefcase"></em> DeepTag dataset - noise part (38.5G): <a href="readme_dataset_noise.txt">readme</a> | <a href="https://terabox.com/s/1TETxV-UnlEpURnVemCvLkA">data (via TeraBox)</a> | <a href="https://pan.baidu.com/s/1r5RDZSUvVnagCCfFk8Snzg">data (via Baidu Drive)</a> (password: 4i8l)</li>
+					<li><em class="icon-briefcase"></em> DeepTag dataset - motion blur part (3.9G): <a href="readme_dataset_motion_blur.txt">readme</a> | <a href="https://terabox.com/s/1bLoUhguxszgChiAkVVD5Zw">data (via TeraBox)</a> | <a href="https://pan.baidu.com/s/1tZ240XS3tXuyrJLWvP4KZA">data (via Baidu Drive)</a> (password: eade)</li>
+				</ul>
+				<h2>Bibtex</h2>
+				<pre>
+@article{zhang2023deeptag,
+  title={{DeepTag: A General Framework for Fiducial Marker Design and Detection}},
+  author={Zhang, Zhuming and Hu, Yongtao and Yu, Guoxing and Dai, Jingwen},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={45},
+  number={3},
+  pages={2931-2944},
+  year={2023},
+  publisher={IEEE}
+}</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
+			</div><!-- /#main -->
+		</div><!-- /#content -->
+    </div><!-- /#wrap -->
+
+	<footer id="content-info" class="container" role="contentinfo">
+		<table width="100%">
+			<tr>
+				<td>
+					<p class="copy"><small>&copy; 2014-2025 Yongtao Hu</small></p>
+				</td>
+				<td style="text-align:center">
+					<p class="copy"><small>Last updated: 2/2023</small></p>
+				</td>
+				<td style="text-align:right">
+					<a href="https://SiteStates.com" title="Site access statistics">
+						<img src="https://SiteStates.com/show/image/33082.jpg" border="0" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</footer>
+
+	<!-- From http://stackoverflow.com/a/11668413/72470 -->
+	<script>
+	  !function ($) {
+		$(function(){
+		  window.prettyPrint && prettyPrint()
+		})
+	  }(window.jQuery)
+	</script>
+</body>
+</html>

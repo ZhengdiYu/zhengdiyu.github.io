@@ -1,0 +1,145 @@
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+	<title>Efficient Line-Based Visual Marker System Design with Occlusion Resilience | Yongtao Hu</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="/js/vendor/modernizr-2.5.3.min.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<script src="/js/vendor/spamspan.min.js"></script>
+	<script src="/js/vendor/prettify.js"></script>
+
+	<link rel="stylesheet" href="/plugins/social-media-widget/social_widget.css?ver=3.9.1">
+	<link rel="stylesheet" href="/glyphicons/css/glyphicons.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="/css/app.css">
+	<script type='text/javascript' src='/js/plugins.js'></script>
+	<script type='text/javascript' src='/js/main.js'></script>
+	<link rel="canonical" href="/publications/speaker-following-subtitles/">
+	<link rel="shortcut icon" href="/images/logo.ico">
+</head>
+
+<body class="page page-id-62 page-parent page-child parent-pageid-25 page-template-default top-navbar">
+  <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+
+    <header id="banner" class="navbar navbar-fixed-top" role="banner">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">
+					Yongtao Hu
+				</a>
+				<nav id="nav-main" class="nav-collapse" role="navigation">
+					<ul class="nav">
+						<li class="menu-home"><a href="/">Home</a></li>
+						<li class="menu-research active active"><a href="/research/">Research</a></li>
+						<li class="menu-news"><a href="/news/">News</a></li>
+						<li class="menu-links"><a href="/links/">Links</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+    <div id="wrap" class="container" role="document">
+		<div id="content" class="row">
+			<div id="main" class="span12" role="main">
+				<div class="page-header">
+					<h1>Efficient Line-Based Visual Marker System Design with Occlusion Resilience</h1>
+				</div>
+
+				<p style="text-align: center;">
+					<a href="https://scholar.google.com/citations?user=PxzaG5AAAAAJ&hl=en">Abdallah Bengueddoudj</a><sup>1</sup>
+					<a href="https://scholar.google.com/citations?user=GB1_-gEAAAAJ&hl=en">Foudil Belhadj</a><sup>1</sup>
+					<a href="/">Yongtao Hu</a><sup>2</sup>
+					<a href="https://scholar.google.com/citations?hl=en&user=nH_t10kAAAAJ">Brahim Zitouni</a><sup>3</sup>
+					<a href="https://scholar.google.com/citations?user=qlnrckYAAAAJ&hl=en">Yacine Idir</a><sup>1</sup>
+					<a href="https://scholar.google.com/citations?hl=en&user=xkxftZYAAAAJ">Ibtissem Adoui</a><sup>1</sup>
+					<a href="https://scholar.google.com/citations?user=HthK96IAAAAJ&hl=en">Messaoud Mostefai</a><sup>1</sup>
+				</p>
+				<p style="text-align: center;">
+					<sup>1</sup>
+					Mohamed El-Bachir El-Ibrahimi University of Bordj Bou Arreridj, Algeria
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<sup>2</sup>
+					Guangdong Virtual Reality Technology Co., Ltd., Guangzhou, China
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<sup>3</sup>
+					Private Optical Institute of Bordj Bou Arreridj, Algeria
+				</p>
+				<p style="text-align: center;">
+					<em>Informatica (Informatica 2025)</em>
+				</p>
+				<div style="text-align: center;">
+					<img class="size-full wp-image-96 " style="margin: 1em 0; height: auto;" title="Teaser image" src="thumbnail.png" alt="" width="500" />
+					<img class="size-full wp-image-96 " style="margin: 1em 0; height: auto;" title="Teaser image" src="teaser.png" alt="" width="600" />
+					<br />
+					OILU Tag and Decoding Process.
+				</div>
+				<hr />
+				<h2>Abstract</h2>
+				<p align="justify">
+					Today, the most widely used visual markers, such as ArUco and AprilTag, rely on square pixel arrays. While these markers can deliver satisfactory detection and identification outcomes, they remain vulnerable to corner occlusion despite incorporating corrective codes. Conversely, line-based markers offer increased resilience against occlusions but are typically constrained in terms of codification capacities. The markers developed in this research leverage linear information to propose a pyramidal line-based structure that exhibits robustness to corner occlusion while providing enhanced coding capacities. Moreover, the projective invariance of the constituent lines enables the validation of a homography-less identification method that considerably reduces computation resources and processing time. We assembled an extensive test dataset of 169,713 images for evaluation, including rotation, distances, and different levels of occlusion. Experiments on this dataset show that the proposed marker significantly outperforms previous fiducial marker systems across multiple metrics, including execution time and detection performance under occlusion. It effectively identifies markers with up to 50% occlusion and achieves identification at a resolution of 1920x1080 in 17.20 ms. The developed marker generation and identification, as well as an extensive marker Database, are publicly available for tests at https://github.com/OILUproject/OILUtag
+				</p>
+				<h2>Downloads</h2>
+				<ul class="unstyled">
+					<li><em class="icon-file"></em> <a href="paper.pdf">Paper</a> (PDF, 1.2 MB)</li>
+				</ul>
+				<h2>Bibtex</h2>
+				<pre>
+@article{Bengueddoudj2025oilutag,
+  title={{Efficient Line-Based Visual Marker System Design with Occlusion Resilience}},
+  author={Bengueddoudj, Abdallah and Belhadj, Foudil and Hu, Yongtao and Zitouni, Brahim and Idir, Yacine and Adoui, Ibtissem and Mostefai, Messaoud},
+  journal={Informatica},
+  volume={49},
+  number={1},
+  pages={61-80},
+  year={2025},
+  publisher={}
+}</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
+			</div><!-- /#main -->
+		</div><!-- /#content -->
+    </div><!-- /#wrap -->
+
+	<footer id="content-info" class="container" role="contentinfo">
+		<table width="100%">
+			<tr>
+				<td>
+					<p class="copy"><small>&copy; 2014-2025 Yongtao Hu</small></p>
+				</td>
+				<td style="text-align:center">
+					<p class="copy"><small>Last updated on Jun. 25, 2025</small></p>
+				</td>
+				<td style="text-align:right">
+					<a href="https://SiteStates.com" title="Site access statistics">
+						<img src="https://SiteStates.com/show/image/31190.jpg" border="0" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</footer>
+
+	<!-- From http://stackoverflow.com/a/11668413/72470 -->
+	<script>
+	  !function ($) {
+		$(function(){
+		  window.prettyPrint && prettyPrint()
+		})
+	  }(window.jQuery)
+	</script>
+</body>
+</html>

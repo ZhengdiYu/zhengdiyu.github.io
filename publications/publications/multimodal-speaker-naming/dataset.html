@@ -1,0 +1,146 @@
+
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+
+	<title>Multimodal Face+Audio Dataset | Yongtao Hu</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="/js/vendor/modernizr-2.5.3.min.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<script src="/js/vendor/spamspan.min.js"></script>
+	<script src="/js/vendor/prettify.js"></script>
+
+	<link rel="stylesheet" href="/plugins/social-media-widget/social_widget.css?ver=3.9.1">
+	<link rel="stylesheet" href="/glyphicons/css/glyphicons.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="/css/app.css">
+	<script type='text/javascript' src='/js/plugins.js'></script>
+	<script type='text/javascript' src='/js/main.js'></script>
+	<link rel="canonical" href="/projects/speaker-following-subtitles/">
+	<link rel="shortcut icon" href="/images/logo.ico">
+</head>
+
+<body class="page page-id-62 page-parent page-child parent-pageid-25 page-template-default top-navbar">
+  <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+
+    <header id="banner" class="navbar navbar-fixed-top" role="banner">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">
+					Yongtao Hu
+				</a>
+				<nav id="nav-main" class="nav-collapse" role="navigation">
+					<ul class="nav">
+						<li class="menu-home"><a href="/">Home</a></li>
+						<li class="menu-research active active"><a href="/research/">Research</a></li>
+						<li class="menu-news"><a href="/news/">News</a></li>
+						<li class="menu-links"><a href="/links/">Links</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+    <div id="wrap" class="container" role="document">
+		<div id="content" class="row">
+			<div id="main" class="span12" role="main">
+				<div class="page-header">
+					<h1>Multimodal Face+Audio Dataset</h1>
+				</div>
+
+				<p style="text-align: center;">
+					This dataset is used in our paper <i><b>"Multimodal Speaker Naming using Convolutional Neural Networks"</b></i>.
+					<br />
+					<b>Project page:</b> <a href="/research/publications/multimodal-speaker-naming/">/research/publications/multimodal-speaker-naming/</a>.
+				</p>
+
+				<div style="text-align: center;">
+					<img class="size-full wp-image-96 " style="margin: 1em 0; height: auto;" title="Compared with existing datasets" src="database_compare.png" alt="Compared with existing datasets" width="1000" />
+					<br />
+				</div>
+
+				<hr />
+				<h2>Dataset summary</h2>
+				<p>
+					This is a <b>multimodal dataset containing both face images and corresponding speaking audio clips</b>, which is extracted from <i><b>over 4 hours videos of 11 episodes of 2 popular TV series</b></i>, naming <b>"Friends"</b> and <b>"The Big Bang Theory"</b>. The 11 episodes that we selected are S01E03 (Season 01, Episode 03), S04E04, S05E05, S07E07, S10E15 from "Friends" and S01E01, S01E02, S01E03, S01E04, S01E05, S01E06 from "The Big Bang Theory". We believe this dataset has the potential to foster more sophisticated and robust data-driven methods to problems involved with multimodal information, e.g. speaker naming, as well as other applications.
+					<br />
+					<br />
+					In total, the dataset contains <b>303,529 face images</b> for the <b>11 leading actors/actresses</b> (6 for "Friends", i.e. Rachel, Monica, Phoebe, Joey, Chandler and Ross, and 5 for "The Big Bang Theory", i.e. Sheldon, Leonard, Howard, Raj and Penny). There are over 27K face images for each subject in average. All speaking audio clips are merged into one per character per episode. All images are in JPG format and audio in WAV.
+					<br />
+					<div style="text-align: center;">
+						<img class="size-full wp-image-96 " style="margin: 1em 0; height: auto;" title="Face samples in the dataset" src="database_samples.jpg" alt="Face samples in the dataset" width="500" />
+						<br />
+						Face samples of our dataset.
+					</div>
+					<br />
+					All data has been organized by each episode, see each folder with the corresponding episode name, within which are the two folders for face images, see folder <b>"face-images"</b>, and speaking audio, see folder <b>"speaking-audio"</b>, for each character.
+				</p>
+
+				<hr />
+				<h2>Download</h2>
+				<p>
+					The total size of the dataset is 1.41 GB. Please send an email to Yongtao Hu (<a href="mailto:herohuyongtao@gmail.com">herohuyongtao@gmail.com</a>) with subject title <b><i>Request for Multimodal Face+Audio Dataset</i></b> to request for a copy.
+				</p>
+
+				<hr />
+				<h2>Terms of use</h2>
+				<p>
+					The dataset is provided for research purposes only. Any commercial use is prohibited. When using the dataset in your research work, please cite the following paper:
+					<br />
+					<br />
+					<b>"Multimodal Speaker Naming using Convolutional Neural Networks."</b> <br />
+					Yongtao Hu, Jimmy SJ. Ren, Jingwen Dai, Li Xu, and Wenping Wang. <br />
+					<i>2016 (submitted).</i>
+				</p>
+
+				<hr />
+				<h2>Contact</h2>
+				<p>
+					If you have any question or suggestion about this dataset, please email to Yongtao Hu (<a href="mailto:herohuyongtao@gmail.com">herohuyongtao@gmail.com</a>).
+				</p>
+			</div><!-- /#main -->
+		</div><!-- /#content -->
+    </div><!-- /#wrap -->
+
+		<footer id="content-info" class="container" role="contentinfo">
+			<table width="100%">
+				<tr>
+					<td>
+						<p class="copy"><small>&copy; 2014-2019 Yongtao Hu</small></p>
+					</td>
+					<td style="text-align:center">
+						<p class="copy"><small>Last updated on 2016.03.29</small></p>
+					</td>
+					<td style="text-align:right">
+						<a href="https://SiteStates.com" title="Site access statistics">
+							<img src="https://SiteStates.com/show/image/31193.jpg" border="0" />
+						</a>
+					</td>
+				</tr>
+			</table>
+		</footer>
+
+	<!-- From http://stackoverflow.com/a/11668413/72470 -->
+	<script>
+	  !function ($) {
+		$(function(){
+		  window.prettyPrint && prettyPrint()
+		})
+	  }(window.jQuery)
+	</script>
+</body>
+</html>

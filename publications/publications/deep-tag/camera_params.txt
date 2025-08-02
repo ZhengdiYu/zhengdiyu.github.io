@@ -1,0 +1,25 @@
+/// parameters of the camera used in the dataset collection
+
+principal point (cx, cy)
+========================
+649.204
+459.739
+
+focal lengths in pixel units (fx, fy)
+=====================================
+921.315
+921.375
+
+radial distortion coefficients (k1~k6)
+======================================
+0.978811
+3.71217
+0.638837
+1.36651
+3.99066
+1.93969
+
+tangential distortion coefficients (p1, p2)
+===========================================
+0.000159566
+0.000281263
