@@ -53,6 +53,44 @@
 				margin: 0 1.5em 1em 0; 
 				border: 1px solid #222;
 		}
+
+		/* Imperial Blue Banner Override - High specificity to override Bootstrap */
+		body .navbar-inner,
+		body .navbar .btn-navbar {
+			background-color: #002147 !important; /* Imperial blue fallback */
+			background-image: -moz-linear-gradient(to bottom, #002147, #003366) !important;
+			background-image: -ms-linear-gradient(to bottom, #002147, #003366) !important;
+			background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#002147), to(#003366)) !important;
+			background-image: -webkit-linear-gradient(to bottom, #002147, #003366) !important;
+			background-image: -o-linear-gradient(to bottom, #002147, #003366) !important;
+			background-image: linear-gradient(to bottom, #002147, #003366) !important;
+			background-repeat: repeat-x !important;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#002147', endColorstr='#003366', GradientType=0) !important;
+		}
+
+		/* White text for navbar */
+		body .navbar .brand,
+		body .navbar .nav > li > a {
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
+
+		/* Active and hover states */
+		body .navbar .nav .current-page-ancestor > a,
+		body .navbar .nav .current-page-ancestor > a:hover,
+		body .navbar .nav .active > a,
+		body .navbar .nav .active > a:hover {
+			background-color: rgba(255, 255, 255, 0.2) !important; /* Light overlay for active state */
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
+
+		body .nav-collapse .nav > li > a:hover,
+		body .nav-collapse .dropdown-menu a:hover {
+			background-color: rgba(255, 255, 255, 0.15) !important; /* Light overlay for hover state */
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
 	</style>
 
 	<script language="javascript" type="text/javascript">
