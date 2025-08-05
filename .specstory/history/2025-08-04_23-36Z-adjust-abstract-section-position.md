@@ -626,7 +626,30 @@ Perfect! Now I have successfully:
 
 ## Summary of Changes
 
-1. **Removed the duplicate abstract section**: I e
+1. **Removed the duplicate abstract section**: I eliminated the second abstract section that was appearing after the teaser video section, which was causing the duplicate content issue.
+
+2. **Kept the correct abstract section**: The abstract section that's properly positioned near the author list (with only 30px margin-top) now contains:
+   - The abstract text
+   - The AI-generated podcast audio player
+   - The audio caption "AI-generated Podcast (Paper Introduction)"
+
+3. **Maintained proper spacing**: The abstract section now appears much closer to the author list and buttons, reducing the white space as requested.
+
+4. **Preserved all functionality**: The audio player and its caption remain properly integrated within the abstract container.
+
+The page now has only one abstract section that's positioned close to the author list with minimal white space, and the audio functionality is preserved as you requested. The duplicate abstract section has been completely removed.
+
+---
+
+_**User**_
+
+Instead of two interactive examples, can you please just modify the section to be two .mp4 videos
+
+---
+
+_**Assistant**_
+
+
 
 ---
 
