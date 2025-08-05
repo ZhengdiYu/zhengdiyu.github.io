@@ -654,33 +654,179 @@ I'll modify the "Motion Denoising from Noisy Observations" section to display tw
 
 ---
 
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 26, lines removed: 20
+
+```diff
+@@ -420,24 +420,30 @@
+                </p>
+                <br>
+-               <div id="wrapper" style="
+-         display: flex;
+-         flex-wrap: nowrap;
+-         justify-content: center;
+-         align-items: center;
+-         gap: 2em;
+-       ">
+-                   <div class="iframe-container">
+-                   <iframe class="vframe"
+-                       src="https://cut3r.github.io/build/?playbackPath=/recordings/006545_mpii_test.viser&initialCameraPosition=0.0,-1.0,1.0&initialCameraLookAt=0.0,1.0,0.0&baseSpeed=0.8"
+-                       loading="lazy"></iframe>
+-                       <button onclick="openInNewTab(this)" data-link="https://cut3r.github.io/build/?playbackPath=/recordings/006545_mpii_test.viser&initialCameraPosition=0.0,-1.0,1.0&initialCameraLookAt=0.0,1.0,0.0&synchronizedVideoOverlay=/recordings/006545_mpii_test.mp4&baseSpeed=0.8">Open in New Tab for Better Visualization</button>
+-                   </div>
+-                   <div class="iframe-container">
+-                   <iframe class="vframe"
+-                       src="https://cut3r.github.io/build/?playbackPath=/recordings/06eb2803.viser&initialCameraPosition=0.0,-1.0,1.0&initialCameraLookAt=0.0,1.0,0.0&baseSpeed=0.8"
+-                       loading="lazy"></iframe>
+-                       <button onclick="openInNewTab(this)" data-link="https://cut3r.github.io/build/?playbackPath=/recordings/06eb2803.viser&initialCameraPosition=0.0,-1.0,1.0&initialCameraLookAt=0.0,1.0,0.0&synchronizedVideoOverlay=/recordings/06eb2803.mp4&baseSpeed=0.8">Open in New Tab for Better Visualization</button>
+-                   </div>
+-               </div>
++                              <div id="wrapper" style="
++          display: flex;
++          flex-wrap: nowrap;
++          justify-content: center;
++          align-items: center;
++          gap: 2em;
++        ">
++                    <div class="video-container">
++                        <video controls style="width: 100%; border-radius: 10px; aspect-ratio: 16 / 9;">
++                            <source src="static/videos/1_compress.mp4" type="video/mp4">
++                            Your browser does not support the video tag.
++                        </video>
++                        <p style="font-family: 'Arial', sans-serif; font-size: 1rem; color: #444; font-weight: bold; margin-top: 10px; text-align: center;">
++                            Noisy Input
++                        </p>
++                    </div>
++                    <div class="video-container">
++                        <video controls style="width: 100%; border-radius: 10px; aspect-ratio: 16 / 9;">
++                            <source src="static/videos/2_compress.mp4" type="video/mp4">
++                            Your browser does not support the video tag.
++                        </video>
++                        <p style="font-family: 'Arial', sans-serif; font-size: 1rem; color: #444; font-weight: bold; margin-top: 10px; text-align: center;">
++                            Denoised Output
++                        </p>
++                    </div>
++                </div>
+                <br>
+                <!-- <div>
+```
+
+</details>
+
+---
+
+Now I need to remove the interactive controls section since we're no longer using interactive iframes:
 
 
 ---
 
+The string to replace was not found in the file.
+
+---
+
+Let me check the current structure of the file to see what needs to be removed:
 
 
 ---
 
+Read file: NRMF/index.html
+
+---
+
+Let me find the interactive controls section:
 
 
 ---
 
+<details>
+            <summary>Grep search for "hide-on-touchscreens" • **2** files</summary>
+        
+| File | Line | Match |
+|------|------|-------|
+| `file:///d%3A/Work/Code/zhengdiyu.github.io/NRMF/index.html` | L452 | `<div class="hide-on-touchscreens" style="` |
+| `file:///d%3A/Work/Code/zhengdiyu.github.io/NRMF/index.html` | L452 | `<div class="hide-on-touchscreens" style="` |
+
+</details>
+
+---
+
+Read file: NRMF/index.html
+
+---
+
+Now I can remove the interactive controls section:
 
 
 ---
 
+<details><summary>Edit file: NRMF/index.html</summary>
 
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 19
+
+```diff
+@@ -450,23 +450,5 @@
+        (Results are downsampled for efficient online rendering)
+      </div> -->
+-               <div class="hide-on-touchscreens" style="
+-       display: flex;
+-       justify-content: center;
+-       gap: 1.5em;
+-       padding-top: 0.5em;
+-     ">
+-                   <div>
+-                       <i class="ti ti-view-360-arrow"></i> <strong>Left-click</strong> and
+-                       drag to rotate
+-                   </div>
+-                   <div>
+-                       <i class="ti ti-arrows-move"></i> <strong>Right-click</strong> and
+-                       drag or
+-                       <strong>WASD</strong>
+-                       to move
+-                   </div>
+-                   <!-- <div><i class="ti ti-zoom"></i> <strong>Scroll</strong> to zoom</div>
+-                   <div><strong>Click <i class="fas fa-pause"></i></strong> to pause</div> -->
+-               </div>
++ 
+                <!-- <button onclick="window.location.href='./interactive.html';" target="_blank"
+    style="font-size: 20px; font-family: 'Arial', sans-serif; background-color: #92A8D1; color: white; margin: 20px auto; display: block; padding: 15px 15px; border: none; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); text-align: center; transition: all 0.3s ease; cursor: pointer;">
+```
+
+</details>
 
 ---
 
+Perfect! I've successfully modified the "Motion Denoising from Noisy Observations" section to display two MP4 videos instead of the interactive iframe examples. Here's what I changed:
 
+## Summary of Changes
+
+1. **Replaced interactive iframes with MP4 videos**: 
+   - Left video: `static/videos/1_compress.mp4` labeled as "Noisy Input"
+   - Right video: `static/videos/2_compress.mp4` labeled as "Denoised Output"
+
+2. **Added descriptive labels**: Each video now has a clear caption indicating what it shows (Noisy Input vs Denoised Output)
+
+3. **Removed interactive controls**: Eliminated the touchscreen controls section that was specific to the interactive iframe visualizations
+
+4. **Maintained responsive design**: The videos are displayed side-by-side with proper spacing and responsive styling
+
+The section now shows a clear before-and-after comparison with two MP4 videos demonstrating the motion denoising capabilities of your method, making it much more accessible and easier to understand for visitors to your research page.
 
 ---
 
+_**User**_
 
+I want a split line here for applications section, just the same as for miscs section
 
 ---
+
+_**Assistant**_
 
 
 
