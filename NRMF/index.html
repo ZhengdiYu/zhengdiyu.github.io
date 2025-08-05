@@ -409,7 +409,7 @@
 
     <p style="text-align: justify;">
       <strong><span style="color:#93B3E5;">NRMF</span></strong> learns to represent the space of realistic human motion by modeling the 
-      <em>zero-level sets</em> of three neural distance fields over <strong>poses</strong> (\(\theta\)), <strong>velocities</strong> (\(\dot{\theta}\)), and <strong>accelerations</strong> (\(\ddot{\theta}\)). 
+      <em>zero-level sets</em> of three neural distance fields over {(\(\theta\)), (\(\dot{\theta}\)), (\(\ddot{\theta}\))}. 
       Each component is trained to predict the distance to the manifold of plausible motion states using motion capture data. 
       The <strong>pose field</strong> learns which joint configurations are human-like, the <strong>transition field</strong> captures temporal consistency across frames, 
       and the <strong>acceleration field</strong> enforces second-order realism by modeling smooth and plausible dynamics. 
@@ -431,7 +431,7 @@
           <div class="column is-full  panel-style">
                              <h3 class="title is-3"><strong><span style="color:#93B3E5;">Motion Denoising from Noisy Observations</span></strong></h3>
                <p>
-                   Our method can recover the clean and plausible motion with noisy observations as input.
+                   Our method can recover the clean and plausible motion with noisy 3D observations as input.
                </p>
                <div id="wrapper" style="
          display: flex;
@@ -461,7 +461,34 @@
                    </div>
                </div>
               <p> See more dynamic reconstruction results on DAVIS dataset in our <a href="./gallery.html">gallery</a>.</p>
-          </div>
+              <div id="wrapper" style="
+         display: flex;
+         flex-wrap: nowrap;
+         justify-content: center;
+         align-items: center;
+         gap: 2em;
+         margin-top: 20px;
+       ">
+                   <div class="video-container">
+                       <video controls style="width: 100%; border-radius: 10px; aspect-ratio: 16 / 9;">
+                           <source src="static/videos/1_compress.mp4" type="video/mp4">
+                           Your browser does not support the video tag.
+                       </video>
+                       <p style="font-family: 'Arial', sans-serif; font-size: 1rem; color: #444; font-weight: bold; margin-top: 10px; text-align: center;">
+                           Noisy Input
+                       </p>
+                   </div>
+                   <div class="video-container">
+                       <video controls style="width: 100%; border-radius: 10px; aspect-ratio: 16 / 9;">
+                           <source src="static/videos/2_compress.mp4" type="video/mp4">
+                           Your browser does not support the video tag.
+                       </video>
+                       <p style="font-family: 'Arial', sans-serif; font-size: 1rem; color: #444; font-weight: bold; margin-top: 10px; text-align: center;">
+                           Denoised Output
+                       </p>
+                   </div>
+              </div>
+            </div>
       </div>
   </div>
 </section>
