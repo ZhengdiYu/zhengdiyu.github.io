@@ -408,32 +408,23 @@
     </div>
 
     <p style="text-align: justify;">
-      <strong><span style="color:#93B3E5;">NRMF</span></strong> is a general-purpose, expressive and robust unconditional motion prior. 
-It models the space of plausible <strong>poses</strong> (\(\theta\)), 
-<strong>transitions</strong> (\(\dot{\theta}\)), and 
-<strong>accelerations</strong> (\(\ddot{\theta}\)) on the zero-level set of a 
-<strong>geometric neural distance field</strong>. 
-This implicitly captures the data distribution. 
-Poses are depicted alongside their transitions and accelerations, which are visualized as blue dots 
-onto the per-joint distributions of learned transitions and as blue rings around the magnitude distribution 
-of all accelerations.
-</p>
-
+      <strong><span style="color:#93B3E5;">NRMF</span></strong> learns to represent the space of realistic human motion by modeling the 
+      <em>zero-level sets</em> of three neural distance fields over <strong>poses</strong> (\(\theta\)), <strong>velocities</strong> (\(\dot{\theta}\)), and <strong>accelerations</strong> (\(\ddot{\theta}\)). 
+      Each component is trained to predict the distance to the manifold of plausible motion states using motion capture data. 
+      The <strong>pose field</strong> learns which joint configurations are human-like, the <strong>transition field</strong> captures temporal consistency across frames, 
+      and the <strong>acceleration field</strong> enforces second-order realism by modeling smooth and plausible dynamics. 
+      These fields enable projection-based inference and allow NRMF to robustly reconstruct temporally consistent and physically plausible motion.
+    </p>
+    
     <!-- Image in Method Overview -->
     <div style="text-align: center; margin-top: 20px;">
       <img src="static/images/method.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
   </div>
-
 </div>
+
 
 <h2 class="title is-3 has-text-centered">Applications</h2>
 <hr>
-
-
-
-
-
-
 <section id="video_4d" class="section dynamic-section">
   <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
