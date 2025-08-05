@@ -392,21 +392,38 @@
   This implicitly captures the data distribution. 
   Poses are depicted alongside their transitions and accelerations, which are visualized as blue dots 
   onto the per-joint distributions of learned transitions and as blue rings around the magnitude distribution 
-  of all accelerations. We develop projection (\(\Pi\)) and integration algorithms to deploy 
-  <strong>NRMF</strong> into several applications as shown on the right.
+  of all accelerations.
     </p>
     <div style="text-align: center; margin-top: 20px;">
         <img src="static/images/overview.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
     </div>
-    
+
     <p style="text-align: justify;">
-        Dyn-HaMR is a three-stage optimization pipeline to recover the 4D global hand motion from in-the-wild videos even with dynamic cameras. Our method can disentangle hand and camera motion as well as modelling complex hand interactions.
+        We develop projection (\(\Pi\)) and integration algorithms to deploy <strong>NRMF</strong> into several applications as shown on the right.
     </p>
 
     <!-- Image in Method Overview -->
     <div style="text-align: center; margin-top: 20px;">
-        <img src="static/images/method.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
+        <img src="static/images/app.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
     </div>
+
+    <p style="text-align: justify;">
+      <strong><span style="color:#93B3E5;">NRMF</span></strong> is a general-purpose, expressive and robust unconditional motion prior. 
+It models the space of plausible <strong>poses</strong> (\(\theta\)), 
+<strong>transitions</strong> (\(\dot{\theta}\)), and 
+<strong>accelerations</strong> (\(\ddot{\theta}\)) on the zero-level set of a 
+<strong>geometric neural distance field</strong>. 
+This implicitly captures the data distribution. 
+Poses are depicted alongside their transitions and accelerations, which are visualized as blue dots 
+onto the per-joint distributions of learned transitions and as blue rings around the magnitude distribution 
+of all accelerations.
+</p>
+
+    <!-- Image in Method Overview -->
+    <div style="text-align: center; margin-top: 20px;">
+      <img src="static/images/method.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
+  </div>
+
 </div>
 
 <h2 class="title is-3 has-text-centered">Applications</h2>
