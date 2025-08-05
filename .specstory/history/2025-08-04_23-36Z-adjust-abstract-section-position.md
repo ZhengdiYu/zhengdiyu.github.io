@@ -649,6 +649,51 @@ Instead of two interactive examples, can you please just modify the section to b
 
 _**Assistant**_
 
+I'll modify the "Motion Denoising from Noisy Observations" section to display two MP4 videos instead of the interactive iframe examples.
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
 
 
 ---
