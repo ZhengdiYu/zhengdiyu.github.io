@@ -817,3 +817,173 @@ If you want to completely remove the black borders from the video files themselv
 
 ---
 
+_**User**_
+
+now it becomes a white BG again, maybe because of aspect-ratio, why?
+
+---
+
+_**Assistant**_
+
+You're absolutely right! The issue is with the `aspect-ratio: 16 / 9` CSS property. This is forcing the video container to maintain a 16:9 aspect ratio, but your videos likely have a different aspect ratio (probably more square-like based on the 3D content). When the video doesn't fill the entire 16:9 container, the browser fills the remaining space with the default background color (white).
+
+Let me fix this by removing the forced aspect ratio:
+
+
+---
+
+The model provided an ambiguous search string to replace.
+
+---
+
+Let me remove the aspect-ratio from all videos systematically:
+
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -443,5 +443,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video controls autoplay muted style="width: 100%;">
+                             <source src="static/videos/noisy_fixed.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -461,5 +461,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video controls autoplay muted style="width: 100%;">
+                             <source src="static/videos/part_fixed.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -479,5 +479,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video controls autoplay muted style="width: 100%;">
+                             <source src="static/videos/partnoisy.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -508,5 +508,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video controls autoplay muted style="width: 100%;">
+                             <source src="static/videos/wild.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -550,5 +550,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video controls autoplay muted style="width: 100%;">
+                             <source src="static/videos/between.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -559,5 +559,5 @@
+                     </div>
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video controls autoplay muted style="width: 100%;">
+                             <source src="static/videos/generation.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+## **Perfect! Problem Solved**
+
+You were absolutely correct! The issue was the `aspect-ratio: 16 / 9` CSS property. Here's what was happening:
+
+### **Root Cause**
+- **Forced Aspect Ratio**: The `aspect-ratio: 16 / 9` was forcing all video containers to maintain a 16:9 (widescreen) aspect ratio
+- **Mismatch**: Your 3D motion videos likely have a more square-like aspect ratio (closer to 1:1 or 4:3)
+- **White Padding**: When the video content didn't fill the entire 16:9 container, the browser filled the remaining space with the default white background
+
+### **Solution Applied**
+I've removed the `aspect-ratio: 16 / 9` from all video elements. Now:
+- **Natural Sizing**: Videos will display at their natural aspect ratio
+- **No Forced Dimensions**: No more white padding from mismatched aspect ratios
+- **Clean Display**: Videos will fill their containers naturally without artificial constraints
+
+### **Result**
+The videos should now display cleanly without any white background padding, showing only the actual video content at its natural dimensions. The 3D motion content will be properly sized without any forced widescreen formatting.
+
+---
+
