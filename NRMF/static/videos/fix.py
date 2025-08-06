@@ -25,6 +25,7 @@ for video in video_files:
         "-c:v", "libx264",
         "-pix_fmt", "yuv420p",
         "-movflags", "+faststart",
+        "-vf", "scale=iw:ih",
         "-an",  # remove audio, or replace with "-c:a aac -b:a 128k" to keep/add audio
         output_path
     ]
