@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NRMF — Geometric Neural Distance Fields for Learning Human Motion Priors</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Social -->
+  <meta name="description" content="Geometric Neural Distance Fields for Learning Human Motion Priors">
+  <meta property="og:title" content="NRMF"/>
+  <meta property="og:description" content="Geometric Neural Distance Fields for Learning Human Motion Priors"/>
+  <meta property="og:image" content="static/images/overview.png" />
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon + fonts -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- Bulma & Icons (you already use these) -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <style>
+    /* ---------- Base: keep your Arial override ---------- */
+    body, h1, h2, h3, h4, h5, h6, p, span, a { font-family: Arial, sans-serif !important; }
+
+    /* ---------- HERO BACKDROP ---------- */
+    .hero-nrmf .hero-body{
+      position: relative;
+      padding: 4rem 1.5rem;
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(0,0,0,.15), transparent 60%),
+        linear-gradient(rgba(0,0,0,.56), rgba(0,0,0,.56)),
+        url('static/images/overview.png') center/cover no-repeat;
+      text-align: center;
+    }
+    /* HERO TEXT (white) */
+    .hero-nrmf .title,
+    .hero-nrmf .subtitle,
+    .hero-nrmf .has-text-grey-lighter{
+      color:#fff !important;
+      text-shadow: 0 2px 6px rgba(0,0,0,.55);
+    }
+    .hero-nrmf .title{ font-weight:800; line-height:1.12; }
+
+    /* ---------- GLASS BUTTONS (毛玻璃) ---------- */
+    .glass-btn{
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.35);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.18),
+        0 8px 24px rgba(0,0,0,0.25);
+      backdrop-filter: blur(10px) saturate(120%);
+      -webkit-backdrop-filter: blur(10px) saturate(120%);
+      letter-spacing: .01em;
+      transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .glass-btn:hover,
+    .glass-btn:focus{
+      background: rgba(255,255,255,0.22);
+      border-color: rgba(255,255,255,0.5);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        0 10px 28px rgba(0,0,0,0.28);
+      color:#fff;
+      transform: translateY(-1px);
+    }
+    .glass-btn .icon{ margin-right:.35rem; }
+    .hero-nrmf .buttons{ gap: .6rem; }
+
+    /* ---------- Abstract lead paragraph ---------- */
+    #abstract .lead{
+      max-width: 900px; margin: 0 auto;
+      font-size: 1.15rem; line-height: 1.7;
+      text-align: center;
+    }
+
+    /* ---------- Audio block (unchanged look) ---------- */
+    .audio-section{
+      max-width:600px; margin:30px auto;
+      background:#f9f9f9; padding:20px; border-radius:10px;
+      box-shadow:0 4px 6px rgba(0,0,0,.1); text-align:center;
+    }
+    .audio-caption{ display:flex; align-items:center; justify-content:center; color:#666; gap:10px; margin-top:10px; }
+
+    /* ---------- BibTeX block + Copy (matches theirs) ---------- */
+    .bibtex-block{
+      background:#0f172a; color:#e2e8f0;
+      padding:1rem 1.25rem; border-radius:12px;
+      overflow:auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:.95rem;
+    }
+    .bibtex-wrap{ position:relative; }
+    .copy-btn{
+      position:absolute; top:8px; right:12px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.85);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: all 0.15s ease;
+    }
+    .copy-btn:hover, .copy-btn:focus{
+      background: rgba(255,255,255,0.15);
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========= HERO ========= -->
+<section id="top" class="hero is-fullheight-with-navbar hero-nrmf">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1">
+        Geometric Neural Distance Fields for<br/>Learning Human Motion Priors
+      </h1>
+
+      <p class="subtitle is-4" style="margin-top:1rem;">
+        Zhengdi Yu<sup>1</sup>, Simone Foti<sup>1</sup>, Linguang Zhang<sup>2</sup>, Amy Zhao<sup>2</sup>,<br/>
+        Cem Keskin<sup>2</sup>, Stefanos Zafeiriou<sup>1</sup>, Tolga Birdal<sup>1</sup>
+      </p>
+      <p class="has-text-grey-lighter">
+        <sup>1</sup>Imperial College London &nbsp;·&nbsp; <sup>2</sup>Meta Reality Labs
+      </p>
+
+      <div class="buttons is-centered" style="margin-top:2rem;">
+        <a class="button is-medium glass-btn" href="https://arxiv.org/pdf/2412.12861.pdf" target="_blank" rel="noopener">
+          <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+        </a>
+        <a class="button is-medium glass-btn" href="https://arxiv.org/abs/2412.12861" target="_blank" rel="noopener">
+          <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+        </a>
+        <a class="button is-medium glass-btn" href="#BibTeX">
+          <span class="icon"><i class="fas fa-clipboard-check"></i></span><span>Citation</span>
+        </a>
+        <a class="button is-medium glass-btn" href="#video_4d">
+          <span class="icon"><i class="fas fa-video"></i></span><span>Video</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= ABSTRACT ========= -->
+<section id="abstract" class="section" style="background:#fff;">
+  <div class="container is-max-desktop">
+    <p class="lead">
+      We introduce <strong style="color:#5A8DEE;">Neural Riemannian Motion Fields (NRMF)</strong>,
+      a 3D generative human motion prior that enables robust, temporally consistent, and physically
+      plausible motion recovery. Unlike existing VAE or diffusion-based methods, our higher-order prior
+      explicitly models pose, transition (velocity), and acceleration dynamics on the zero-level set of
+      <em>neural distance fields</em>, respecting the geometry of the motion space.
+    </p>
+  </div>
+
+  <div class="audio-section">
+    <audio controls>
+      <source src="static/audio/ai_generated_intro.wav" type="audio/wav">
+      Your browser does not support the audio element.
+    </audio>
+    <p class="audio-caption">
+      <i class="fas fa-microphone-alt"></i> AI-generated Podcast (Paper Introduction)
+    </p>
+  </div>
+</section>
+
+<!-- ========= REST OF YOUR PAGE (unchanged content) ========= -->
+
+<!-- Video Section -->
+<div class="video-section" style="max-width: 800px; margin: 40px auto; text-align: center;">
+  <video controls style="width: 100%; border-radius: 10px; aspect-ratio: 16 / 9;">
+    <source src="static/videos/presentation.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<!-- Method Overview Section -->
+<div class="method-container" style="max-width: 800px; margin: 40px auto; background: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);">
+  <h2 style="text-align: center; font-size: 2rem; font-weight: bold;">Method Overview</h2>
+  <p style="text-align: justify;">
+    <strong><span style="color:#93B3E5;">NRMF</span></strong> is a general-purpose, expressive and robust unconditional motion prior.
+    It models the space of plausible <strong>poses</strong> (\(\theta\)), <strong>transitions</strong> (\(\dot{\theta}\)),
+    and <strong>accelerations</strong> (\(\ddot{\theta}\)) on the zero-level set of a <strong>geometric neural distance field</strong>.
+    This implicitly captures the data distribution. Poses are depicted alongside their transitions and accelerations, which are visualized
+    as blue dots onto the per-joint distributions of learned transitions and as blue rings around the magnitude distribution of all accelerations.
+  </p>
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="static/images/overview.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
+  </div>
+
+  <p style="text-align: justify;">
+    We develop projection (\(\Pi\)) and integration algorithms to deploy <strong>NRMF</strong> into several applications as shown:
+    (i) Motion Denoising from Noisy Observations, (ii) Motion Estimation on In-the-wild Videos, (iii) Motion In-betweening (iv) Motion Generation.
+  </p>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="static/images/app.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
+  </div>
+
+  <p style="text-align: justify;">
+    <strong><span style="color:#93B3E5;">NRMF</span></strong> learns to represent the space of realistic human motion by modeling the
+    <em>zero-level sets</em> of three neural distance fields over {\(\theta\), \(\dot{\theta}\), \(\ddot{\theta}\)}. Each component is trained to
+    predict the distance to the manifold of plausible motion states using motion capture data. The <strong>pose field</strong> learns which joint
+    configurations are human-like, the <strong>transition field</strong> captures temporal consistency across frames, and the <strong>acceleration field</strong>
+    enforces second-order realism by modeling smooth and plausible dynamics. These fields enable projection-based inference and allow NRMF to robustly
+    reconstruct temporally consistent and physically plausible motion.
+  </p>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <img src="static/images/method.png" alt="Method Overview Diagram" style="width: 100%; max-width: 700px; border-radius: 10px;">
+  </div>
+</div>
+
+<h2 class="title is-3 has-text-centered">Applications</h2>
+<hr>
+<section id="video_4d" class="section dynamic-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full panel-style">
+        <h3 class="title is-3"><strong><span style="color:#93B3E5;">Motion Denoising & Infilling from Noisy Observations</span></strong></h3>
+        <p>
+          Our method can recover the clean and plausible motion with noisy 3D observations as <strong><span style="color:#93B3E5;">input</span></strong>,
+          as well as infilling the <strong><span style="color:rgb(109, 3, 109);">missing motion</span></strong> of body parts and in-betweening the motion.
+          The Gaussian noise is added to the 3D observations to simulate the noisy observations.
+        </p>
+        <div id="wrapper" style="display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; gap:2em; margin-top:20px;">
+          <div class="video-container">
+            <video controls autoplay muted style="width:100%;">
+              <source src="static/videos/noisy_fixed.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:1rem; font-weight:bold;">
+              <span style="color:#93B3E5; text-align:center; flex:1;">Noisy Input</span>
+              <span style="color:#000; text-align:center; flex:1;">Output</span>
+            </div>
+          </div>
+          <div class="video-container">
+            <video controls autoplay muted style="width:100%;">
+              <source src="static/videos/part_fixed.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:1rem; font-weight:bold;">
+              <span style="color:rgb(109, 3, 109); text-align:center; flex:1;">Partial Input</span>
+              <span style="color:#000; text-align:center; flex:1;">Output</span>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:1rem; color:#444; font-weight:bold; margin-top:20px; text-align:center;">
+          Even under the challenging conditions of <strong><span style="color:rgb(109, 3, 109);">partial</span></strong> +
+          <strong><span style="color:#93B3E5;">noisy</span></strong> observations, NRMF can still recover the clean and plausible motion.
+        </p>
+        <div id="wrapper" style="display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; gap:2em; margin-top:20px;">
+          <div class="video-container">
+            <video controls autoplay muted style="width:100%; aspect-ratio:16 / 9;">
+              <source src="static/videos/partnoisy.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Wild -->
+<section id="video_4d" class="section dynamic-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full panel-style">
+        <h3 class="title is-3"><strong><span style="color:#93B3E5;">Motion Estimation on In-the-wild Videos</span></strong></h3>
+        <p>Our method can recover the clean and plausible motion with in-the-wild RGB-D observations as input.</p>
+        <div id="wrapper" style="display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; gap:2em; margin-top:20px;">
+          <div class="video-container">
+            <video controls autoplay muted style="width:100%; aspect-ratio:16 / 9;">
+              <source src="static/videos/wild.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p style="font-size:1rem; color:#444; font-weight:bold; margin-top:10px; text-align:center;">
+              Results on PROX, EgoBody, 3DPW and in-the-wild videos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video_4d" class="section dynamic-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full panel-style">
+        <h3 class="title is-3"><strong><span style="color:#93B3E5;">Motion In-betweening and Generation</span></strong></h3>
+        <p>
+          Our method can in-between <strong><span style="color:#93B3E5;">plausible motion</span></strong> from only
+          <strong><span style="color:rgb(109, 3, 109);">partially given keyframes</span></strong> as input, as well as generate the natural motion from initial poses,
+          while keeping temporally consistent and physically plausible.
+        </p>
+        <div id="wrapper" style="display:flex; flex-wrap:nowrap; justify-content:center; align-items:center; gap:2em; margin-top:20px;">
+          <div class="video-container">
+            <video controls autoplay muted style="width:100%; aspect-ratio:16 / 9;">
+              <source src="static/videos/between.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p style="font-size:1rem; color:#444; font-weight:bold; margin-top:10px; text-align:center;">
+              In-betweening on <strong><span style="color:rgb(109, 3, 109);">partial</span></strong> keyframes.
+            </p>
+          </div>
+          <div class="video-container">
+            <video controls autoplay muted style="width:100%; aspect-ratio:16 / 9;">
+              <source src="static/videos/generation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <p style="font-size:1rem; color:#444; font-weight:bold; margin-top:10px; text-align:center;">
+              Generation from (common standing pose)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Poster -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3" style="font-size:32px; text-align:center;">Poster</h2>
+          <div class="column">
+            <div class="content">
+              <div class="poster-static-content">
+                <img src="static/images/nrmf.png" alt="Presentation Poster">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small" style="background-color: transparent;">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Miscellaneous</h2>
+      <hr>
+      <div class="box" style="background-color:#f4f4f4;">
+        <div class="columns is-vcentered is-multiline">
+          <div class="column is-one-third has-text-centered">
+            <figure class="image is-inline-block" style="max-width:200px; margin:0 auto;">
+              <a href="https://arxiv.org/pdf/2412.12861.pdf" target="_blank">
+                <img class="layered-paper-big" src="static/images/paper.png" alt="Paper cover image" style="width:100%; border-radius:5px;"/>
+              </a>
+            </figure>
+          </div>
+
+          <div class="column is-two-thirds">
+            <p style="font-size:1rem; line-height:1.4;">
+              <b>Geometric Neural Distance Fields for Learning Human Motion Priors</b><br>
+              <span>Zhengdi Yu, Simone Foti, Linguang Zhang, Amy Zhao, Cem Keskin, Stefanos Zafeiriou, Tolga Birdal</span><br>
+              <span>arXiv 2025</span>
+            </p>
+            <a href="https://arxiv.org/pdf/2412.12861" class="button is-link" target="_blank">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>View PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BibTeX with EXACT-style Copy button ===== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title has-text-centered">BibTeX</h2>
+    <div class="bibtex-wrap">
+      <button id="copyBibtex" class="copy-btn">Copy</button>
+<pre id="bibtexEntry" class="bibtex-block">@article{yu2025nrmf,
+  title = {Geometric Neural Distance Fields for Learning Human Motion Priors},
+  author = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
+  journal = {arXiv preprint arXiv:2412.12861},
+  year = {2025}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- Acknowledgements -->
+<section class="section" id="acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    <p>We thank the authors of the following works for providing their valuable code and data: <a href="https://github.com/hynann/NRDF" target="_blank">NRDF</a>, <a href="https://github.com/davrempe/humor" target="_blank">HuMoR</a>, <a href="https://github.com/c-he/NeMF/" target="_blank">NeMF</a>.</p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Contact</h2>
+    <p>
+      Please contact 
+      <a href="mailto:z.yu23@imperial.ac.uk">z.yu23@imperial.ac.uk</a> 
+      or 
+      <a href="mailto:ZhengdiYu@hotmail.com">ZhengdiYu@hotmail.com</a>
+      for any inquiries related to this work.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>This page was inspired by the <a href="https://nerfies.github.io/" target="_blank">Nerfies website</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Copy-to-clipboard (works without permissions) -->
+<script>
+  (function(){
+    const btn = document.getElementById('copyBibtex');
+    const pre = document.getElementById('bibtexEntry');
+    if (btn && pre) {
+      btn.addEventListener('click', async () => {
+        const text = pre.innerText.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch(e) {
+          const ta = document.createElement('textarea');
+          ta.value = text; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        }
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = old, 1400);
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
