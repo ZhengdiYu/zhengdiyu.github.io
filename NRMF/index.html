@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NRMF — Geometric Neural Distance Fields for Learning Human Motion Priors</title>
   <meta name="description" content="A 3D generative human motion prior that models pose, velocity, and acceleration on the zero-level set of geometric neural distance fields." />
-  <!-- OpenGraph / Twitter -->
+
+  <!-- Social preview -->
   <meta property="og:title" content="NRMF — Geometric Neural Distance Fields for Learning Human Motion Priors">
   <meta property="og:description" content="A 3D generative human motion prior modeling pose, velocity, and acceleration via neural distance fields.">
-  <meta property="og:image" content="assets/og/og-cover.png">
+  <meta property="og:image" content="og-cover.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Bulma + fonts -->
+
+  <!-- Bulma + font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -61,7 +63,7 @@
         </p>
 
         <div class="buttons is-centered hero-cta">
-          <a class="button is-primary is-medium" href="assets/paper/NRMF.pdf" target="_blank" rel="noopener">📄 PDF</a>
+          <a class="button is-primary is-medium" href="NRMF.pdf" target="_blank" rel="noopener">📄 PDF</a>
           <a class="button is-info is-light is-medium" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank" rel="noopener">arXiv</a>
           <a class="button is-link is-light is-medium" href="https://github.com/ZhengdiYu/NRMF" target="_blank" rel="noopener">Code</a>
           <a class="button is-dark is-light is-medium" href="#applications">▶ Demos</a>
@@ -84,8 +86,8 @@
   <section id="paper" class="section section-alt">
     <div class="container is-max-desktop has-text-centered">
       <div class="buttons is-centered">
-        <a class="button is-primary" href="assets/paper/NRMF.pdf" target="_blank">PDF</a>
-        <a class="button is-light" href="assets/paper/supplementary.pdf" target="_blank">Supplementary</a>
+        <a class="button is-primary" href="NRMF.pdf" target="_blank">PDF</a>
+        <a class="button is-light" href="NRMF_supplementary.pdf" target="_blank">Supplementary</a>
         <a class="button is-light" href="#bibtex">BibTeX</a>
         <a class="button is-light" href="#poster">Poster</a>
       </div>
@@ -106,118 +108,89 @@
             motion prior that enables robust, temporally consistent, and physically plausible 3D motion recovery. Unlike
             existing VAE or diffusion-based methods, our higher-order motion prior explicitly models human motion in the
             zero-level set of a collection of neural distance fields (NDFs) corresponding to pose, transition (velocity),
-            and acceleration dynamics. Our framework is rigorous in the sense that our NDFs are constructed on the product
-            space of joint rotations, their angular velocities, and angular accelerations, respecting the geometry of the
-            underlying articulations. We further introduce (i) a novel adaptive-step hybrid algorithm for projecting onto
-            the set of plausible motions, and (ii) a novel geometric integrator to <em>roll out</em> realistic motion
-            trajectories during test-time optimization and generation. Our experiments show significant and consistent
-            gains across multiple input modalities and tasks.
+            and acceleration dynamics. Our framework constructs these NDFs on the product space of joint rotations, their
+            angular velocities, and angular accelerations, respecting the underlying geometry. We further introduce (i) a
+            novel adaptive-step projection algorithm and (ii) a geometric integrator to roll out realistic trajectories
+            during test-time optimization and generation, achieving consistent gains across tasks and inputs.
           </div>
-
-          <!-- Optional podcast (keep if you already have it) -->
-          <!--
+          <!-- Optional audio:
           <audio controls style="width:100%; margin-top:.5rem;">
-            <source src="assets/audio/podcast.mp3" type="audio/mpeg">
-          </audio>
-          -->
+            <source src="podcast.mp3" type="audio/mpeg">
+          </audio> -->
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Method Overview (image + blurb) -->
+  <!-- Overview -->
   <section id="overview" class="section section-alt">
     <div class="container is-max-desktop">
       <h2 class="title is-4 has-text-centered">Method Overview</h2>
       <p class="content is-justified">
-        <strong class="brand">NRMF</strong> is a general-purpose, expressive and robust unconditional motion prior. It models the
-        space of plausible poses (\u03B8), transitions (\u02D9\u03B8), and accelerations (\u02DD\u03B8) on the zero-level set of a geometric neural
-        distance field. Poses are depicted alongside transitions and accelerations, which are visualized as blue dots and
-        rings showing the learned distributions. We develop projection (\u03A0) and integration algorithms for denoising, in-the-wild
-        estimation, in-betweening and generation.
+        <strong class="brand">NRMF</strong> models plausible poses (\u03B8), transitions (\u02D9\u03B8), and accelerations (\u02DD\u03B8) via geometric neural
+        distance fields, enabling projection and integration for denoising, in-the-wild estimation, in-betweening, and generation.
       </p>
       <figure class="figure-wide">
-        <img src="assets/img/overview_01.jpg" alt="Method overview">
+        <img src="overview.jpg" alt="Method overview">
         <figcaption>High-level schematic of NRMF and downstream uses.</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- Applications (ALL YOUR VIDEOS GO HERE, grouped + captioned) -->
+  <!-- Applications: KEEP ALL YOUR VIDEOS, paste each one in a card below -->
   <section id="applications" class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-4 has-text-centered">Applications & Demos</h2>
 
-      <!-- Group 1: Motion Denoising & Infilling -->
-      <h3 class="subtitle is-5 app-header">Motion Denoising & Infilling from Noisy / Partial Observations</h3>
-      <p class="content is-justified app-intro">
-        We recover clean and plausible motion from noisy or partial 3D observations and can infill missing body parts
-        or in-between the motion.
-      </p>
+      <!-- Group 1 -->
+      <h3 class="subtitle is-5 app-header">Motion Denoising & Infilling from Noisy/Partial Observations</h3>
       <div class="video-grid">
         <figure class="video-card">
           <div class="video-wrapper">
-            <!-- PASTE YOUR "Noisy Input → Output" VIDEO HERE (either <video> or <iframe>) -->
-            <!-- Example:
-            <video src="assets/videos/denoise_noisy_input_output.mp4" controls playsinline></video>
-            -->
+            <!-- PASTE your existing "Noisy Input → Output" <video> or <iframe> here -->
           </div>
           <figcaption>Noisy input → NRMF output</figcaption>
         </figure>
-
         <figure class="video-card">
           <div class="video-wrapper">
-            <!-- PASTE YOUR "Partial Input → Output" VIDEO HERE -->
+            <!-- PASTE your existing "Partial Input → Output" video here -->
           </div>
           <figcaption>Partial input → NRMF output</figcaption>
         </figure>
       </div>
 
-      <!-- Group 2: In-the-wild Estimation -->
+      <!-- Group 2 -->
       <h3 class="subtitle is-5 app-header">Motion Estimation on In-the-wild Videos</h3>
-      <p class="content is-justified app-intro">
-        Robust reconstruction from RGB-D / RGB videos in diverse scenes (e.g., PROX, EgoBody, 3DPW, and in-the-wild).
-      </p>
       <div class="video-grid">
         <figure class="video-card">
           <div class="video-wrapper">
-            <!-- PASTE YOUR "PROX/EgoBody/3DPW montage" VIDEO HERE -->
+            <!-- PASTE your existing montage video here -->
           </div>
           <figcaption>PROX / EgoBody / 3DPW / in-the-wild</figcaption>
         </figure>
-        <!-- Add more figures if you have several clips in this group -->
       </div>
 
-      <!-- Group 3: In-betweening & Generation -->
+      <!-- Group 3 -->
       <h3 class="subtitle is-5 app-header">Motion In-betweening & Generation</h3>
-      <p class="content is-justified app-intro">
-        In-between plausible motion from sparse keyframes and generate natural motion from initial poses, while remaining
-        temporally consistent and physically plausible.
-      </p>
       <div class="video-grid">
         <figure class="video-card">
           <div class="video-wrapper">
-            <!-- PASTE YOUR "In-betweening on partial keyframes" VIDEO HERE -->
+            <!-- PASTE your in-betweening video here -->
           </div>
           <figcaption>In-betweening from partial keyframes</figcaption>
         </figure>
-
         <figure class="video-card">
           <div class="video-wrapper">
-            <!-- PASTE YOUR "Generation from standing pose" VIDEO HERE -->
+            <!-- PASTE your generation video here -->
           </div>
           <figcaption>Generation from an initial standing pose</figcaption>
         </figure>
       </div>
 
-      <!-- Overview YouTube (if you already have a single overview video) -->
+      <!-- Overview (if you have a single YouTube/Vimeo) -->
       <h3 class="subtitle is-5 app-header">Overview Video</h3>
       <div class="video-wrapper">
-        <!-- If you link to YouTube/Vimeo, embed it here. Replace VIDEO_ID. -->
-        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="NRMF Overview" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe> -->
-        <!-- Or paste your existing overview <video> tag -->
+        <!-- PASTE your existing overview <video> or YouTube iframe here -->
       </div>
     </div>
   </section>
@@ -227,7 +200,7 @@
     <div class="container is-max-desktop">
       <h2 class="title is-4 has-text-centered">Poster</h2>
       <figure class="figure-wide">
-        <img src="assets/img/poster.jpg" alt="NRMF poster">
+        <img src="poster.jpg" alt="NRMF poster">
         <figcaption>Poster preview.</figcaption>
       </figure>
     </div>
@@ -237,14 +210,14 @@
   <section id="bibtex" class="section">
     <div class="container is-max-desktop">
       <h2 class="title is-4 has-text-centered">BibTeX</h2>
-      <pre class="bibtex-block">
+<pre class="bibtex-block">
 @article{yu2025nrmf,
   title   = {Geometric Neural Distance Fields for Learning Human Motion Priors},
   author  = {Yu, Zhengdi and Foti, Simone and Zhang, Lianguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
   journal = {arXiv preprint arXiv:XXXX.XXXXX},
   year    = {2025}
 }
-      </pre>
+</pre>
     </div>
   </section>
 
@@ -254,6 +227,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
