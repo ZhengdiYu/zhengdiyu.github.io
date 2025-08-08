@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NRMF — Geometric Neural Distance Fields for Learning Human Motion Priors</title>
+  <meta name="description" content="A 3D generative human motion prior that models pose, velocity, and acceleration on the zero-level set of geometric neural distance fields." />
+
+  <!-- Social preview -->
+  <meta property="og:title" content="NRMF — Geometric Neural Distance Fields for Learning Human Motion Priors">
+  <meta property="og:description" content="A 3D generative human motion prior modeling pose, velocity, and acceleration via neural distance fields.">
+  <meta property="og:image" content="static/images/overview.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Use your existing Bulma + assets -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <!-- New minimal skin -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Scripts you already load -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar is-light is-fixed-top shadow-navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item has-text-weight-semibold" href="#top">NRMF</a>
+      <a role="button" class="navbar-burger" data-target="topNav" aria-label="menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </a>
+    </div>
+    <div id="topNav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#paper">Paper</a>
+        <a class="navbar-item" href="#abstract">Abstract</a>
+        <a class="navbar-item" href="#overview">Overview</a>
+        <a class="navbar-item" href="#applications">Applications</a>
+        <a class="navbar-item" href="#poster">Poster</a>
+        <a class="navbar-item" href="#bibtex">BibTeX</a>
+        <a class="navbar-item" href="https://arxiv.org/abs/2412.12861" target="_blank" rel="noopener">arXiv</a>
+        <a class="navbar-item" id="darkToggle" title="Toggle dark mode">🌙</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="top" class="hero hero-nrmf is-medium">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered">
+        <h1 class="title is-1 title-tight">
+          Geometric Neural Distance Fields for<br/>
+          <span class="brand">Learning Human Motion Priors</span>
+        </h1>
+
+        <p class="authors is-size-5">
+          Zhengdi Yu<sup>1</sup>, Simone Foti<sup>1</sup>, Linguang Zhang<sup>2</sup>, Amy Zhao<sup>2</sup>,<br/>
+          Cem Keskin<sup>2</sup>, Stefanos Zafeiriou<sup>1</sup>, Tolga Birdal<sup>1</sup>
+        </p>
+        <p class="affiliations is-size-6">
+          <sup>1</sup>Imperial College London &nbsp;·&nbsp; <sup>2</sup>Meta Reality Labs
+        </p>
+
+        <div class="buttons is-centered hero-cta">
+          <a class="button is-primary is-medium" href="https://arxiv.org/pdf/2412.12861.pdf" target="_blank" rel="noopener">📄 PDF</a>
+          <a class="button is-info is-light is-medium" href="https://arxiv.org/abs/2412.12861" target="_blank" rel="noopener">arXiv</a>
+          <a class="button is-dark is-light is-medium" href="#applications">▶ Demos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <div class="container is-max-desktop kpi-row">
+        <div class="columns is-variable is-4">
+          <div class="column"><div class="kpi-card"><div class="kpi-title">Prior over</div><div class="kpi-value">Pose · Velocity · Acceleration</div></div></div>
+          <div class="column"><div class="kpi-card"><div class="kpi-title">Trained on</div><div class="kpi-value">AMASS</div></div></div>
+          <div class="column"><div class="kpi-card"><div class="kpi-title">Tasks</div><div class="kpi-value">Denoising · In-betweening · 2D/3D</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <section id="paper" class="section section-alt">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="buttons is-centered">
+        <a class="button is-primary" href="https://arxiv.org/pdf/2412.12861.pdf" target="_blank">PDF</a>
+        <a class="button is-light" href="#bibtex">BibTeX</a>
+        <a class="button is-light" href="#poster">Poster</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section id="abstract" class="section">
+    <div class="container is-max-desktop">
+      <div class="card abstract-card">
+        <header class="card-header">
+          <p class="card-header-title">Abstract</p>
+          <a class="card-header-icon" id="absToggle" aria-label="toggle abstract"><span class="icon">▾</span></a>
+        </header>
+        <div class="card-content" id="absContent">
+          <div class="content is-justified">
+            We introduce <strong class="brand">Neural Riemannian Motion Fields (NRMF)</strong>, a novel 3D generative human
+            motion prior that enables robust, temporally consistent, and physically plausible 3D motion recovery. Unlike
+            existing VAE or diffusion-based methods, our higher-order motion prior explicitly models the human motion in the
+            zero level set of a collection of neural distance fields (NDFs) corresponding to pose, transition (velocity), and
+            acceleration dynamics. Our framework is rigorous in the sense that our NDFs are constructed on the product space
+            of joint rotations, their angular velocities, and angular accelerations, respecting the geometry of the underlying
+            articulations. We further introduce: (i) a novel adaptive-step hybrid algorithm for projecting onto the set of
+            plausible motions, and (ii) a novel geometric integrator to "roll out" realistic motion trajectories during
+            test-time-optimization and generation. Our experiments show significant and consistent gains: trained on the AMASS
+            dataset, NRMF remarkably generalizes across multiple input modalities and to diverse tasks ranging from denoising
+            to motion in-betweening and fitting to partial 2D / 3D observations.
+          </div>
+
+          <!-- Podcast -->
+          <audio controls style="width:100%; margin-top:.5rem;">
+            <source src="static/audio/ai_generated_intro.wav" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+          <p class="audio-caption"><i class="fas fa-microphone-alt"></i> AI-generated Podcast (Paper Introduction)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview (figures) -->
+  <section id="overview" class="section section-alt">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4 has-text-centered">Method Overview</h2>
+      <p class="content is-justified">
+        <strong class="brand">NRMF</strong> models plausible poses (\u03B8), transitions (\u02D9\u03B8), and accelerations (\u02DD\u03B8) via geometric neural
+        distance fields, enabling projection and integration for denoising, in-the-wild estimation, in-betweening, and generation.
+      </p>
+
+      <figure class="figure-wide">
+        <img src="static/images/overview.png" alt="Overview figure">
+        <figcaption>High-level schematic of NRMF (Figure 2).</figcaption>
+      </figure>
+
+      <figure class="figure-wide">
+        <img src="static/images/app.png" alt="Applications collage">
+        <figcaption>Applications: denoising, in-the-wild fitting, in-betweening, generation.</figcaption>
+      </figure>
+
+      <figure class="figure-wide">
+        <img src="static/images/method.png" alt="Method details">
+        <figcaption>Fields over \u03B8, \u02D9\u03B8, \u02DD\u03B8 with projection/integration.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Applications (your videos) -->
+  <section id="applications" class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4 has-text-centered">Applications & Demos</h2>
+
+      <!-- Presentation / teaser -->
+      <div class="video-grid" style="margin-bottom:1rem;">
+        <figure class="video-card" style="grid-column: 1 / -1;">
+          <div class="video-wrapper">
+            <video controls playsinline style="width:100%;">
+              <source src="static/videos/presentation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <!-- <figcaption>Video Presentation</figcaption> -->
+        </figure>
+      </div>
+
+      <!-- Group 1: Denoising & Infilling -->
+      <h3 class="subtitle is-5 app-header">Motion Denoising &amp; Infilling from Noisy/Partial Observations</h3>
+      <p class="content is-justified app-intro">
+        Recovering clean, plausible motion from noisy or partial observations; infilling missing body parts and in-betweening motion.
+      </p>
+      <div class="video-grid">
+        <figure class="video-card">
+          <div class="video-wrapper">
+            <video controls autoplay muted playsinline style="width:100%;">
+              <source src="static/videos/noisy_fixed.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption><span class="brand">Noisy</span> input → NRMF output</figcaption>
+        </figure>
+
+        <figure class="video-card">
+          <div class="video-wrapper">
+            <video controls autoplay muted playsinline style="width:100%;">
+              <source src="static/videos/part_fixed.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption><span style="color:rgb(109,3,109);">Partial</span> input → NRMF output</figcaption>
+        </figure>
+      </div>
+
+      <div class="video-grid" style="margin-top:1rem;">
+        <figure class="video-card" style="grid-column: 1 / -1;">
+          <div class="video-wrapper">
+            <video controls autoplay muted playsinline style="width:100%;">
+              <source src="static/videos/partnoisy.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption>Partial + <span class="brand">noisy</span> observations → NRMF output</figcaption>
+        </figure>
+      </div>
+
+      <!-- Group 2: In-the-wild -->
+      <h3 class="subtitle is-5 app-header">Motion Estimation on In-the-wild Videos</h3>
+      <div class="video-grid">
+        <figure class="video-card" style="grid-column: 1 / -1;">
+          <div class="video-wrapper">
+            <video controls autoplay muted playsinline style="width:100%;">
+              <source src="static/videos/wild.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption>PROX / EgoBody / 3DPW / in-the-wild</figcaption>
+        </figure>
+      </div>
+
+      <!-- Group 3: In-betweening & Generation -->
+      <h3 class="subtitle is-5 app-header">Motion In-betweening &amp; Generation</h3>
+      <div class="video-grid">
+        <figure class="video-card">
+          <div class="video-wrapper">
+            <video controls autoplay muted playsinline style="width:100%;">
+              <source src="static/videos/between.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption>In-betweening from <span style="color:rgb(109,3,109);">partial</span> keyframes</figcaption>
+        </figure>
+
+        <figure class="video-card">
+          <div class="video-wrapper">
+            <video controls autoplay muted playsinline style="width:100%;">
+              <source src="static/videos/generation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption>Generation from an initial standing pose</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Poster -->
+  <section id="poster" class="section section-alt">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4 has-text-centered">Poster</h2>
+      <figure class="figure-wide">
+        <img src="static/images/nrmf.png" alt="NRMF poster">
+        <figcaption>Poster preview.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Misc (your paper card) -->
+  <section class="section" id="misc">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-4 has-text-centered">Miscellaneous</h2>
+      <hr>
+      <div class="box" style="background-color:#f4f4f4;">
+        <div class="columns is-vcentered is-multiline">
+          <div class="column is-one-third has-text-centered">
+            <figure class="image is-inline-block" style="max-width:200px; margin:0 auto;">
+              <a href="https://arxiv.org/pdf/2412.12861.pdf" target="_blank">
+                <img class="layered-paper-big" src="static/images/paper.png" alt="Paper cover" style="width:100%; border-radius:5px;"/>
+              </a>
+            </figure>
+          </div>
+          <div class="column is-two-thirds">
+            <p style="font-size:1rem; line-height:1.4;">
+              <b>Geometric Neural Distance Fields for Learning Human Motion Priors</b><br>
+              <span>Zhengdi Yu, Simone Foti, Linguang Zhang, Amy Zhao, Cem Keskin, Stefanos Zafeiriou, Tolga Birdal</span><br>
+              <span>arXiv 2025</span>
+            </p>
+            <a href="https://arxiv.org/pdf/2412.12861.pdf" class="button is-link" target="_blank">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>View PDF</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex" class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-4 has-text-centered">BibTeX</h2>
+<pre class="bibtex-block">
+@article{yu2025nrmf,
+  title   = {Geometric Neural Distance Fields for Learning Human Motion Priors},
+  author  = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
+  journal = {arXiv preprint arXiv:2412.12861},
+  year    = {2025}
+}
+</pre>
+    </div>
+  </section>
+
+  <footer class="footer slim-footer">
+    <div class="content has-text-centered">
+      <p>© 2025 NRMF Authors · <a href="https://github.com/ZhengdiYu/zhengdiyu.github.io">Website source</a></p>
+      <p style="margin-top:.5rem;">Inspired by the <a href="https://nerfies.github.io/" target="_blank">Nerfies website</a>.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
