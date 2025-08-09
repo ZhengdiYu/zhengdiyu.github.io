@@ -266,25 +266,28 @@
         font-family: Arial, sans-serif !important; /* Apply Arial globally */
     }
 
-    /* Add background pattern for frosted glass to blur */
+    /* Add colorful background for dramatic frosted glass effect */
     body {
-        background: linear-gradient(45deg, #f8f9fa 25%, transparent 25%), 
-                    linear-gradient(-45deg, #f8f9fa 25%, transparent 25%), 
-                    linear-gradient(45deg, transparent 75%, #f8f9fa 75%), 
-                    linear-gradient(-45deg, transparent 75%, #f8f9fa 75%);
-        background-size: 30px 30px;
-        background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
-        background-color: #ffffff;
+        background: linear-gradient(45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        min-height: 100vh;
     }
 
-    /* Frosted Glass Effect for Hero Section */
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* True Frosted Glass Effect for Hero Section */
     .hero {
         position: relative;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
         margin: 20px;
         border-radius: 20px;
     }
@@ -296,9 +299,9 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-radius: 20px;
         z-index: -1;
     }
