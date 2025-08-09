@@ -1699,3 +1699,62 @@ I want to add an icon for my email and address
 
 ---
 
+_**Assistant**_
+
+I can help you add icons for your email and address in the contact section. Looking at your homepage, I can see you already have some icons in the styles (like `icon-hand-right`, `icon-rss`, etc.), and you have email/address sections that could benefit from icons.
+
+Let me add appropriate icons for the email and address sections:
+
+---
+
+<details><summary>Edit file: index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 2, lines removed: 2
+
+```diff
+@@ -339,10 +339,10 @@
+  							<h3>Contact info</h3>
+  							<div class="textwidget">
+- 								<h6>Email</h6>
++ 								<h6><em class="icon-envelope"></em> Email</h6>
+  								<span class="email"><span class="firstname">z.yu23</span> [at] <span class="domain">imperial [dot] ac [dot] uk</span></span> (preferred)
+  								<br />
+  								<span class="email"><span class="firstname">ZhengdiYu</span> [at] <span class="domain">hotmail [dot] com</span></span>
+  								<br />
+- 								<h6>Address</h6>
++ 								<h6><em class="icon-home"></em> Address</h6>
+  								<p>
+  									Huxley building, Imperial College London, <br />
+```
+
+</details>
+
+---
+
+Perfect! I've added icons to your contact information:
+
+## **Changes Made**
+
+**Email Section:**
+- Added `<em class="icon-envelope"></em>` before "Email"
+- This gives you a nice envelope icon next to the Email heading
+
+**Address Section:**
+- Added `<em class="icon-home"></em>` before "Address" 
+- This gives you a home/building icon next to the Address heading
+
+## **Result**
+
+Now your contact information will have:
+- **📧 Email** - with an envelope icon
+- **🏠 Address** - with a home/building icon
+
+These icons use the same Glyphicons icon set that's already loaded in your site (I can see you're using `/glyphicons/css/glyphicons.css`), so they'll match the existing design style and be consistent with the other icons you're already using throughout your site (like `icon-rss`, `icon-group`, `icon-hand-right`, etc.).
+
+The icons will appear inline with the headings and provide a nice visual touch to make the contact section more visually appealing and easier to scan.
+
+---
+
