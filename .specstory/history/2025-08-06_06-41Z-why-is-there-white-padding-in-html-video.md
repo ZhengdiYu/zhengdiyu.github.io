@@ -1971,7 +1971,83 @@ I dont see a frosted glass for NRMF page, are they loading too slow?
 
 _**Assistant**_
 
+You're right to be concerned! The frosted glass effect might not be visible due to several possible reasons. Let me check the current implementation and fix any issues:
 
+---
+
+Read file: undefined
+
+---
+
+The CSS is there, but the issue is likely that the frosted glass effect needs something behind it to blur. Since your page has a white background, the effect might not be visible. Let me enhance it to make it more visible:
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 16, lines removed: 3
+
+```diff
+@@ -266,13 +266,26 @@
+          font-family: Arial, sans-serif !important; /* Apply Arial globally */
+      }
++ 
++     /* Add background pattern for frosted glass to blur */
++     body {
++         background: linear-gradient(45deg, #f8f9fa 25%, transparent 25%), 
++                     linear-gradient(-45deg, #f8f9fa 25%, transparent 25%), 
++                     linear-gradient(45deg, transparent 75%, #f8f9fa 75%), 
++                     linear-gradient(-45deg, transparent 75%, #f8f9fa 75%);
++         background-size: 30px 30px;
++         background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
++         background-color: #ffffff;
++     }
+  
+      /* Frosted Glass Effect for Hero Section */
+      .hero {
+          position: relative;
+-         background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
++         background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+-         border: 1px solid rgba(255, 255, 255, 0.18);
+-         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
++         border: 1px solid rgba(255, 255, 255, 0.3);
++         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
++         margin: 20px;
++         border-radius: 20px;
+      }
+  
+```
+
+**Chunk 2**
+Lines added: 4, lines removed: 3
+
+```diff
+@@ -284,7 +297,8 @@
+          right: 0;
+          bottom: 0;
+-         background: rgba(255, 255, 255, 0.05);
+-         backdrop-filter: blur(15px);
+-         -webkit-backdrop-filter: blur(15px);
++         background: rgba(255, 255, 255, 0.1);
++         backdrop-filter: blur(10px);
++         -webkit-backdrop-filter: blur(10px);
++         border-radius: 20px;
+          z-index: -1;
+      }
+```
+
+</details>
+
+---
+
+Perfect! I've enhanced the frosted glass effect to make it much more visible. Here's what I changed:
+
+## **
 
 ---
 
