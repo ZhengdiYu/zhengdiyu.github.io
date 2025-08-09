@@ -658,18 +658,20 @@
   </div>
 </section>
 
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@article{yu2025nrmf,
+<!-- ===== BibTeX with EXACT-style Copy button ===== -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title has-text-centered">BibTeX</h2>
+    <div class="bibtex-wrap">
+      <button id="copyBibtex" class="copy-btn">Copy</button>
+<pre id="bibtexEntry" class="bibtex-block">@article{yu2025nrmf,
   title = {Geometric Neural Distance Fields for Learning Human Motion Priors},
   author = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
-  journal = {arXiv preprint arXiv:xxxx.xxxxx},
-  month     = {August},
+  journal = {arXiv preprint arXiv:2412.12861},
   year = {2025}
-  }</code></pre>
+}</pre>
     </div>
+  </div>
 </section>
 <!--End BibTex citation -->
 
@@ -712,6 +714,29 @@
     </div>
   </div>
 </footer>
+
+<!-- Copy-to-clipboard (works without permissions) -->
+<script>
+  (function(){
+    const btn = document.getElementById('copyBibtex');
+    const pre = document.getElementById('bibtexEntry');
+    if (btn && pre) {
+      btn.addEventListener('click', async () => {
+        const text = pre.innerText.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch(e) {
+          const ta = document.createElement('textarea');
+          ta.value = text; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        }
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(()=> btn.textContent = old, 1400);
+      });
+    }
+  })();
+</script>
 
 <!-- Statcounter tracking code -->
   
