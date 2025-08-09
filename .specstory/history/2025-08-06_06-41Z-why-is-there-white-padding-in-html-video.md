@@ -1434,3 +1434,15 @@ The captions will now align better with the visual split in your videos, making 
 
 ---
 
+_**User**_
+
+how to make the videos without playing bar below like these?
+
+---
+
+_**Assistant**_
+
+
+
+---
+
