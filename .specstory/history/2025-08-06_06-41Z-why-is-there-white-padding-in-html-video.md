@@ -1693,3 +1693,9 @@ The buttons should now look more polished and professional, similar to modern we
 
 ---
 
+_**User**_
+
+I want to add an icon for my email and address
+
+---
+
