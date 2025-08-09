@@ -102,6 +102,18 @@
         margin-top: 20px; /* Space above the buttons */
     }
 
+    /* Pill buttons */
+    .pill-buttons{ display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; margin-top:1rem; }
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.65rem 1.1rem; border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#111; color:#fff; text-decoration:none; font-weight:600;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+    .pill:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.16); }
+    .pill:is(:hover,:focus-visible){ background:#fff; color:#111; }
     .panel-style {
             background-color: #fafafa;
             padding: 20px;
@@ -350,7 +362,7 @@
                     </div>
 
                     <!-- Buttons Section -->
-                    <div class="button-container">
+                    <div class="pill-buttons">
                         <!-- Paper Button -->
                         <a href="https://arxiv.org/pdf/xxxx.xxxx" target="_blank" class="custom-button">
                             <i class="fas fa-file-pdf"></i> Paper
