@@ -99,6 +99,27 @@
     .copy-btn:hover, .copy-btn:focus { background:rgba(255,255,255,0.25); color:#fff; }
   </style>
 
+  <style>
+    .pill-buttons {
+      display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; margin-top:1rem;
+    }
+    .pill {
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.65rem 1.1rem; border-radius:999px;
+      border:1px solid rgba(0,0,0,.12);
+      background:#111; color:#fff; text-decoration:none; font-weight:600;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+    .pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.16);
+    }
+    .pill:is(:hover,:focus-visible) {
+      background:#fff; color:#111;
+    }
+  </style>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
@@ -140,11 +161,11 @@
           </div>
 
           <!-- Buttons Section -->
-          <div class="button-container">
-            <a href="https://arxiv.org/pdf/xxxx.xxxx" target="_blank" class="custom-button"><i class="fas fa-file-pdf"></i> Paper</a>
-            <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" class="custom-button"><i class="ai ai-arxiv"></i> arXiv</a>
-            <a href="https://youtu.be/xxxx" target="_blank" class="custom-button"><i class="fas fa-video"></i> Video</a>
-            <a href="static/pdf/nrmf.pdf" target="_blank" class="custom-button"><i class="fas fa-image"></i> Poster</a>
+          <div class="pill-buttons">
+            <a href="https://arxiv.org/pdf/xxxx.xxxx" target="_blank" class="pill"><i class="fas fa-file-pdf"></i> Paper</a>
+            <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank" class="pill"><i class="ai ai-arxiv"></i> arXiv</a>
+            <a href="https://youtu.be/xxxx" target="_blank" class="pill"><i class="fas fa-video"></i> Video</a>
+            <a href="static/pdf/nrmf.pdf" target="_blank" class="pill"><i class="fas fa-image"></i> Poster</a>
           </div>
 
         </div>
