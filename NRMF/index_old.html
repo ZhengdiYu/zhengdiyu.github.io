@@ -251,6 +251,8 @@
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
@@ -261,9 +263,40 @@
   <link rel="stylesheet" href="static/css/index.css">
 
   <!-- Custom Style for Font Change -->
-  <style>
+  <!-- <style>
     body, h1, h2, h3, h4, h5, h6, p, span, a {
         font-family: Arial, sans-serif !important; /* Apply Arial globally */
+    }
+  </style> -->
+  <style>
+    /* Light blue page background */
+    body {
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+    }
+  
+    /* Use Inter only for the top hero: title, authors, and buttons */
+    .hero .publication-title,
+    .hero .publication-authors,
+    .hero .button-container .custom-button {
+      font-family: Inter, system-ui, Arial, sans-serif !important;
+    }
+  
+    /* Title weight/metrics to match the screenshot feel */
+    .hero .publication-title {
+      font-weight: 800;          /* Bold, crisp */
+      line-height: 1.15;
+      letter-spacing: .2px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.6); /* subtle lift */
+    }
+  
+    /* Slightly stronger authors line for readability */
+    .hero .publication-authors {
+      font-weight: 600;
+    }
+  
+    /* Buttons: keep your style, just ensure Inter weight shows nicely */
+    .hero .button-container .custom-button {
+      font-weight: 700;
     }
   </style>
 
