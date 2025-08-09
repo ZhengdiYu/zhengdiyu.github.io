@@ -1963,3 +1963,15 @@ This creates a balanced, professional footer design where both pieces of informa
 
 ---
 
+_**User**_
+
+I dont see a frosted glass for NRMF page, are they loading too slow?
+
+---
+
+_**Assistant**_
+
+
+
+---
+
