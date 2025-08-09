@@ -181,18 +181,24 @@
 </style>
 
 <style>
-  .bibtex-wrap {
-    position: relative; /* container for button positioning */
-  }
-
   .bibtex-block {
     background: #0f172a;
     color: #e2e8f0;
     padding: 1rem 1.25rem;
     border-radius: 12px;
     overflow-x: auto;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
-    font-size: .95rem;
+    margin: 0; /* Remove margin space */
+    line-height: 1.4;
+    white-space: pre-wrap; /* Wrap text if needed */
+  }
+
+  .bibtex-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  .bibtex-wrap pre {
+    padding-bottom: 0.75rem; /* slightly less padding to avoid large empty space */
   }
 
   .copy-btn {
@@ -701,14 +707,12 @@
     <h2 class="title has-text-centered">BibTeX</h2>
 
     <div class="bibtex-wrap">
-      <pre id="bibtexEntry" class="bibtex-block">
-@article{yu2025nrmf,
-  title = {Geometric Neural Distance Fields for Learning Human Motion Priors},
-  author = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
-  journal = {arXiv preprint arXiv:2412.12861},
-  year = {2025}
-}
-      </pre>
+      <pre id="bibtexEntry" class="bibtex-block">@article{yu2025nrmf,
+        title = {Geometric Neural Distance Fields for Learning Human Motion Priors},
+        author = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
+        journal = {arXiv preprint arXiv:2412.12861},
+        year = {2025}
+      }</pre>      
       <button id="copyBibtex" class="copy-btn">Copy</button>
     </div>
   </div>
