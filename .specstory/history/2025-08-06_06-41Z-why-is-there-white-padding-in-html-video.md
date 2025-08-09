@@ -1918,3 +1918,48 @@ The additional spacing makes the contact information more scannable and gives ea
 
 ---
 
+_**User**_
+
+the last updated on the bottom should align the right, so it will be symmetric to @ Zhengdi Yu
+
+---
+
+_**Assistant**_
+
+I'll change the alignment of the "Last updated" text to the right to make it symmetric with the copyright notice on the left.
+
+---
+
+<details><summary>Edit file: index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -424,5 +424,5 @@
+  					<p class="copy"><small>&copy; 2025 Zhengdi Yu</small></p>
+  				</td>
+- 				<td style="text-align:center">
++ 				<td style="text-align:right">
+  					<p class="copy"><small>Last updated: 8/2025</small></p>
+  				</td>
+```
+
+</details>
+
+---
+
+Perfect! I've changed the alignment from `text-align:center` to `text-align:right`. 
+
+## **Result**
+
+Now your footer has a symmetric layout:
+- **Left side**: "© 2025 Zhengdi Yu" (left-aligned)
+- **Right side**: "Last updated: 8/2025" (right-aligned)
+
+This creates a balanced, professional footer design where both pieces of information are properly positioned at opposite ends of the page, giving your homepage a polished and well-structured appearance.
+
+---
+
