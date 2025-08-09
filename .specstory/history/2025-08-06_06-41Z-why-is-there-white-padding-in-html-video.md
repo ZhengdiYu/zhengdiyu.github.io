@@ -1442,7 +1442,254 @@ how to make the videos without playing bar below like these?
 
 _**Assistant**_
 
+I can see you want to remove the video control bar (the play/pause buttons, timeline, etc.) to make the videos look cleaner like in the VQGan dataset demos image you showed.
 
+You can achieve this by removing the `controls` attribute from the video elements. This will hide the control bar and make the videos look like animated images.
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -486,5 +486,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%;">
++                        <video autoplay muted loop style="width: 100%;">
+                             <source src="static/videos/noisy_fixed.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -496,5 +496,5 @@
+                     </div>
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%;">
++                        <video autoplay muted loop style="width: 100%;">
+                             <source src="static/videos/part_fixed.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+Let me also update the other videos to maintain consistency:
+
+---
+
+
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -518,5 +518,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video autoplay muted loop style="width: 100%; aspect-ratio: 16 / 9;">
+                             <source src="static/videos/partnoisy.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+**Chunk 2**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -547,5 +547,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video autoplay muted loop style="width: 100%; aspect-ratio: 16 / 9;">
+                             <source src="static/videos/wild.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+**Chunk 3**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -589,5 +589,5 @@
+         ">
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video autoplay muted loop style="width: 100%; aspect-ratio: 16 / 9;">
+                             <source src="static/videos/between.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+**Chunk 4**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -598,5 +598,5 @@
+                     </div>
+                     <div class="video-container">
+-                        <video controls autoplay muted style="width: 100%; aspect-ratio: 16 / 9;">
++                        <video autoplay muted loop style="width: 100%; aspect-ratio: 16 / 9;">
+                             <source src="static/videos/generation.mp4" type="video/mp4">
+                             Your browser does not support the video tag.
+```
+
+</details>
+
+---
+
+Perfect! I've updated all the videos to remove the control bars. Here's what I changed:
+
+## **Changes Made**
+
+**Removed:**
+- `controls` attribute - This removes the play/pause buttons, timeline, and all video controls
+
+**Added:**
+- `loop` attribute - This makes the videos loop continuously (like animated GIFs)
+
+**Kept:**
+- `autoplay` - Videos start playing automatically
+- `muted` - Videos play without sound (required for autoplay in most browsers)
+
+## **Result**
+
+Now your videos will look like the VQGan dataset demos you showed:
+- **No control bar** at the bottom
+- **Automatic looping** - videos play continuously
+- **Clean appearance** - just the video content with captions below
+- **Consistent behavior** across all videos on your page
+
+The videos will now appear as seamless, looping demonstrations without any user interface elements, making them look more like polished research demos rather than traditional video players.
+
+---
+
+_**User**_
+
+can you make the button have a little bit shadow and leave more empty space between buttons, but not too much
+
+---
+
+_**Assistant**_
+
+I'll add subtle shadows to the buttons and increase the spacing between them. Let me find the button styles and update them:
+
+---
+
+Read file: undefined
+
+---
+
+Perfect! I can see the button styles. I'll enhance the shadow and increase the gap between buttons:
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -85,5 +85,5 @@
+          cursor: pointer;
+          text-decoration: none; /* Remove underline for links */
+-         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
++         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+          transition: all 0.3s ease; /* Smooth hover effect */
+      }
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -92,5 +92,5 @@
+  	    background-color: #eee;  /* White background */
+  	    color: #000;             /* Black text */
+- 	    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
++ 	    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  	    transform: scale(1.05);  /* “Expand and float” effect remains */
+      }
+```
+
+</details>
+
+---
+
+<details><summary>Edit file: NRMF/index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -99,5 +99,5 @@
+          display: flex;
+          justify-content: center; /* Center buttons horizontally */
+-         gap: 10px; /* Space between buttons */
++         gap: 18px; /* Increased space between buttons */
+          margin-top: 20px; /* Space above the buttons */
+      }
+```
+
+</details>
+
+---
+
+Perfect! I've updated the button styling with the following improvements:
+
+## **Changes Made**
+
+### **Enhanced Shadows:**
+- **Default shadow**: Changed from `2px 2px 5px rgba(0, 0, 0, 0.1)` to `0 4px 8px rgba(0, 0, 0, 0.15)`
+  - More modern drop shadow (vertical offset only)
+  - Slightly more pronounced but still subtle
+- **Hover shadow**: Changed from `3px 3px 8px rgba(0, 0, 0, 0.3)` to `0 6px 12px rgba(0, 0, 0, 0.25)`
+  - Deeper shadow on hover for better interaction feedback
+
+### **Increased Spacing:**
+- **Button gap**: Increased from `10px` to `18px`
+  - More breathing room between buttons
+  - Not too much to maintain visual cohesion
+
+## **Result**
+The buttons now have:
+- **Subtle, modern shadows** that give them depth and make them feel more interactive
+- **Better spacing** that improves visual clarity without spreading them too far apart
+- **Enhanced hover effects** with deeper shadows that provide clear feedback
+
+The buttons should now look more polished and professional, similar to modern web design standards while maintaining the clean aesthetic of your research page.
 
 ---
 
