@@ -5,7 +5,7 @@
   <title>NRMF</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Social (edit later if desired) -->
+  <!-- Social (optional placeholders you can edit later) -->
   <meta name="description" content="Geometric Neural Distance Fields for Learning Human Motion Priors">
   <meta property="og:title" content="NRMF"/>
   <meta property="og:description" content="Geometric Neural Distance Fields for Learning Human Motion Priors"/>
@@ -30,14 +30,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <!-- Global font -->
+  <!-- Global font override -->
   <style>
     body, h1, h2, h3, h4, h5, h6, p, span, a {
       font-family: Arial, sans-serif !important;
     }
   </style>
 
-  <!-- Your existing quick styles -->
+  <!-- Your existing inline styles -->
   <style type="text/css">
     .layered-paper-big {
       box-shadow:
@@ -77,12 +77,14 @@
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
       font-weight: bold;
       font-size: 3rem;
+      font-family: 'Arial', sans-serif;
       color: #333;
     }
     .custom-button {
       display: inline-block;
       background-color: #000;
       color: white;
+      font-family: 'Arial', sans-serif;
       font-size: 1rem;
       padding: 10px 20px;
       border: none;
@@ -125,64 +127,24 @@
     }
   </style>
 
-  <!-- ===== NEW: Glassmorphism panels ===== -->
   <style>
-    /* Add a very subtle hero bg so blur has something to sample */
-    section.hero .hero-body{
-      background:
-        radial-gradient(1200px 600px at 50% -10%, rgba(0,0,0,.05), transparent 60%);
+    .abstract-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      text-align: justify;
     }
-
-    /* Reusable gray glass panel */
-    .glass-panel{
-      background: linear-gradient(
-                  to bottom right,
-                  rgba(235, 238, 242, 0.38),
-                  rgba(200, 205, 210, 0.26)
-                );
-      border: 1px solid rgba(255,255,255,0.45);
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
-      border-radius: 18px;
-      box-shadow: 0 14px 40px rgba(0,0,0,0.16);
-    }
-
-    /* Title block container */
-    .glass-hero { display:flex; justify-content:center; margin-top: 6px; }
-    .glass-card { padding: 24px 28px; max-width: 980px; width:100%; }
-
-    /* Title + authors on glass */
-    .glass-card .publication-title{ color:#111 !important; text-shadow: 0 2px 3px rgba(0,0,0,0.08); margin-bottom: 14px; }
-    .glass-card .publication-authors{ margin-bottom:8px; }
-    .glass-card .publication-authors a{ color:#1e88e5; }
-    .glass-card .button-container{ margin-top:16px; gap:14px; }
-    /* Slightly glossy buttons when on glass */
-    .glass-card .custom-button{
-      background: rgba(17,17,17,0.9);
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 8px 20px rgba(0,0,0,0.25);
-      backdrop-filter: blur(6px) saturate(120%);
-      -webkit-backdrop-filter: blur(6px) saturate(120%);
-    }
-    .glass-card .custom-button:hover{
-      background: rgba(255,255,255,0.88);
-      color:#111;
-      border-color: rgba(255,255,255,0.6);
-    }
-
-    /* Abstract glass card */
-    .glass-abstract { padding: 22px 24px; max-width: 820px; margin: 0 auto; }
-    .glass-abstract h2{ text-align:center; font-weight:800; margin-bottom: 12px; }
-    .glass-abstract p{ text-align: justify; }
-
-    @media (max-width: 768px){
-      .glass-card{ padding: 18px 16px; }
-      .glass-card .publication-title{ font-size: 1.9rem; }
-      .glass-abstract{ padding: 18px 14px; }
+    .abstract-container h2 {
+      text-align: center;
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 15px;
     }
   </style>
 
-  <!-- Audio card styles kept -->
   <style>
     .audio-section {
       max-width: 600px;
@@ -194,11 +156,19 @@
       text-align: center;
     }
     .audio-section audio { width: 100%; border-radius: 5px; outline: none; }
-    .audio-caption { font-size: 1rem; color: #666; margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .audio-caption {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
     .audio-caption i { font-size: 1.2rem; color: #007bff; }
   </style>
 
-  <!-- BibTeX styles -->
+  <!-- BibTeX styles (with fixed top-right Copy button) -->
   <style>
     .bibtex-block {
       background: #0f172a;
@@ -210,7 +180,12 @@
       line-height: 1.4;
       white-space: pre-wrap;
     }
-    .bibtex-wrap { position: relative; display: inline-block; width:100%; max-width:100%; }
+    .bibtex-wrap {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 100%;
+    }
     .bibtex-wrap pre { padding-bottom: 0.75rem; }
     .copy-btn {
       position: absolute;
@@ -226,7 +201,61 @@
       line-height: 1.2;
       transition: all 0.15s ease;
     }
-    .copy-btn:hover, .copy-btn:focus { background: rgba(255,255,255,0.25); color:#fff; }
+    .copy-btn:hover, .copy-btn:focus {
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+    }
+  </style>
+
+  <!-- NEW: Frosted-glass container for the title block -->
+  <style>
+    /* Optional: give hero a faint background so the blur has something to sample */
+    section.hero .hero-body {
+      background:
+        radial-gradient(1200px 600px at 50% -10%, rgba(0,0,0,.04), transparent 60%);
+    }
+
+    .glass-hero {
+      display: flex;
+      justify-content: center;
+      margin-top: 6px;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-radius: 18px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      padding: 24px 28px;
+      max-width: 980px;
+      width: 100%;
+    }
+    .glass-card .publication-title,
+    .glass-card .title {
+      color: #111 !important;
+      text-shadow: 0 2px 3px rgba(0,0,0,0.08);
+      margin-bottom: 14px;
+    }
+    .glass-card .publication-authors { margin-bottom: 8px; }
+    .glass-card .publication-authors a { color: #1e88e5; }
+    .glass-card .button-container { margin-top: 16px; gap: 14px; }
+    .glass-card .custom-button {
+      background: rgba(17,17,17,0.9);
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 8px 20px rgba(0,0,0,0.25);
+      backdrop-filter: blur(6px) saturate(120%);
+      -webkit-backdrop-filter: blur(6px) saturate(120%);
+    }
+    .glass-card .custom-button:hover {
+      background: rgba(255,255,255,0.85);
+      color: #111;
+      border-color: rgba(255,255,255,0.6);
+    }
+    @media (max-width: 768px) {
+      .glass-card { padding: 18px 16px; }
+      .glass-card .title { font-size: 1.9rem; }
+    }
   </style>
 
   <!-- Scripts -->
@@ -248,9 +277,9 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
 
-          <!-- ===== Title (Gray Glass) ===== -->
+          <!-- ===== Title Section (FROSTED GLASS) ===== -->
           <div class="glass-hero">
-            <div class="glass-card glass-panel">
+            <div class="glass-card">
               <h1 class="title is-1 publication-title">
                 Geometric Neural Distance Fields for Learning Human Motion Priors
               </h1>
@@ -286,25 +315,24 @@
               </div>
             </div>
           </div>
-          <!-- ===== /Title (Gray Glass) ===== -->
+          <!-- ===== /Title Section (FROSTED GLASS) ===== -->
 
-          <!-- ===== Abstract (Gray Glass) ===== -->
-          <div class="glass-abstract glass-panel" style="margin-top: 26px;">
+          <!-- Abstract (unchanged) -->
+          <div class="abstract-container" style="margin-top: 30px;">
             <h2>Abstract</h2>
             <p>
               We introduce <strong><span style="color:#93b3e5;">Neural Riemannian Motion Fields (NRMF)</span></strong>, a novel 3D generative human motion prior that enables robust, temporally consistent, and physically plausible 3D motion recovery. Unlike existing VAE or diffusion-based methods, our higher-order motion prior explicitly models the human motion in the zero level set of a collection of neural distance fields (NDFs) corresponding to pose, transition (velocity), and acceleration dynamics. Our framework is rigorous in the sense that our NDFs are constructed on the product space of joint rotations, their angular velocities, and angular accelerations, respecting the geometry of the underlying articulations. We further introduce: (i) a novel adaptive-step hybrid algorithm for projecting onto the set of plausible motions, and (ii) a novel geometric integrator to "roll out" realistic motion trajectories during test-time-optimization and generation. Our experiments show significant and consistent gains: trained on the AMASS dataset, NRMF remarkably generalizes across multiple input modalities and to diverse tasks ranging from denoising to motion in-betweening and fitting to partial 2D / 3D observations.
             </p>
 
-            <audio controls style="width: 100%; border-radius: 6px; margin-top: 10px;">
+            <audio controls style="width: 100%; border-radius: 5px;">
               <source src="static/audio/ai_generated_intro.wav" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
-            <p style="font-size: 0.9rem; color: #444; font-weight: 600; text-align: center; margin-top: 10px;">
+            <p style="font-size: 0.9rem; color: #666; font-weight: bold; text-align: center; margin-top: 10px;">
               <i class="fas fa-microphone-alt" style="font-size: 1rem; color: #007bff; margin-right: 5px;"></i>
               AI-generated Podcast (Paper Introduction)
             </p>
           </div>
-          <!-- ===== /Abstract (Gray Glass) ===== -->
 
         </div>
       </div>
@@ -511,7 +539,7 @@
   </div>
 </section>
 
-<!-- BibTeX -->
+<!-- BibTeX with top-right copy button -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -558,14 +586,16 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>This page was inspired by the <a href="https://nerfies.github.io/" target="_blank">Nerfies website</a>.</p>
+          <p>
+            This page was inspired by the <a href="https://nerfies.github.io/" target="_blank">Nerfies website</a>.
+          </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Copy-to-clipboard -->
+<!-- Copy-to-clipboard (no permissions needed fallback) -->
 <script>
   (function(){
     const btn = document.getElementById('copyBibtex');
