@@ -180,6 +180,43 @@
     }
 </style>
 
+<style>
+  .bibtex-wrap {
+    position: relative; /* container for button positioning */
+  }
+
+  .bibtex-block {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+    font-size: .95rem;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.85);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    line-height: 1.2;
+    transition: all 0.15s ease;
+  }
+
+  .copy-btn:hover,
+  .copy-btn:focus {
+    background: rgba(255,255,255,0.25);
+    color: #fff;
+  }
+</style>
+
 <html>
 <head>
   <meta charset="utf-8">
@@ -662,17 +699,21 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title has-text-centered">BibTeX</h2>
+
     <div class="bibtex-wrap">
-      <button id="copyBibtex" class="copy-btn">Copy</button>
-<pre id="bibtexEntry" class="bibtex-block">@article{yu2025nrmf,
+      <pre id="bibtexEntry" class="bibtex-block">
+@article{yu2025nrmf,
   title = {Geometric Neural Distance Fields for Learning Human Motion Priors},
   author = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
   journal = {arXiv preprint arXiv:2412.12861},
   year = {2025}
-}</pre>
+}
+      </pre>
+      <button id="copyBibtex" class="copy-btn">Copy</button>
     </div>
   </div>
 </section>
+
 <!--End BibTex citation -->
 
 <!--BibTex citation -->
