@@ -2195,3 +2195,27 @@ This is what true frosted glass should look like - you'll definitely see the dif
 
 ---
 
+_**User**_
+
+I want to add a button linked to poster pdf file
+
+---
+
+_**Assistant**_
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
+
+
+---
+
