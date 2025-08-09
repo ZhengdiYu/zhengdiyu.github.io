@@ -1875,7 +1875,46 @@ I also want a white space between email and address. Split line maybe?
 
 _**Assistant**_
 
+I'll add some white space between the email and address sections to improve the visual separation. Let me add a line break or spacing element:
 
+---
+
+<details><summary>Edit file: index.html</summary>
+
+undefined
+
+**Chunk 1**
+Lines added: 1, lines removed: undefined
+
+```diff
+@@ -343,4 +343,5 @@
+  								<br />
+  								<span class="email"><span class="firstname">ZhengdiYu</span> [at] <span class="domain">hotmail [dot] com</span></span>
++ 								<br />
+  								<br />
+  								<h6><em class="icon-home"></em> Address</h6>
+```
+
+</details>
+
+---
+
+Perfect! I've added an extra line break (`<br />`) between the email and address sections. This creates clean white space separation that makes the contact information easier to read and visually more organized.
+
+## **Changes Made**
+
+**Added spacing:**
+- Extra `<br />` tag between the email section and address section
+- This creates visual separation while maintaining the clean layout
+
+## **Result**
+
+Now your contact information has:
+- **📧 Email section** with both email addresses
+- **Clean white space** separating the sections  
+- **🏠 Address section** with your Imperial College location
+
+The additional spacing makes the contact information more scannable and gives each section room to breathe, improving the overall user experience when visitors are looking for your contact details.
 
 ---
 
