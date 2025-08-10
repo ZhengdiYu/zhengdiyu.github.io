@@ -302,135 +302,95 @@
 
   <style>
     :root{
-      --bib-bg: #fff;
-      --bib-card: #ffffff;
-      --bib-shadow: 0 12px 30px rgba(0,0,0,.08);
-      --bib-shadow-hover: 0 16px 36px rgba(0,0,0,.12);
-      --ink: #111827;
-      --muted: #6b7280;
-      --ring: rgba(0,0,0,.06);
-      --brand: #93B3E5;       /* site accent */
-      --success: #22c55e;     /* green tick */
-      --radius: 14px;
+      --bibx-surface:#fff;
+      --bibx-ring:rgba(0,0,0,.07);
+      --bibx-shadow:0 12px 28px rgba(0,0,0,.08);
+      --bibx-shadow-hover:0 16px 36px rgba(0,0,0,.12);
+      --bibx-success:#22c55e;
+      --bibx-radius:18px;
     }
 
-    /* Card wrapper */
-    .bibtex-card{
-      position: relative;
-      background: var(--bib-card);
-      border: 1px solid var(--ring);
-      border-radius: var(--radius);
-      box-shadow: var(--bib-shadow);
-      padding: 18px 18px 8px 18px;
-      transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+    .bibx-card{
+      position:relative;
+      background:var(--bibx-surface);
+      border:1px solid var(--bibx-ring);
+      border-radius:var(--bibx-radius);
+      box-shadow:var(--bibx-shadow);
+      padding:20px 18px 10px 18px;
+      transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
     }
-    .bibtex-card:hover{
-      box-shadow: var(--bib-shadow-hover);
-      transform: translateY(-1px);
-      border-color: rgba(0,0,0,.1);
+    .bibx-card:hover{ box-shadow:var(--bibx-shadow-hover); transform:translateY(-1px); border-color:rgba(0,0,0,.12); }
+
+    .bibx-pre{
+      margin:0;
+      padding:18px 16px;
+      background:#f6f7f9;
+      border-radius:12px;
+      overflow:auto;
+      line-height:1.75;
+      font-size:15px;
+      color:#1f2937;
+      font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, Monaco, monospace;
     }
 
-    /* Code block */
-    .bibtex-pre{
-      margin: 0;
-      padding: 18px 16px;
-      background: #0f172a0a; /* very faint slate */
-      border-radius: 10px;
-      overflow: auto;
-      line-height: 1.7;
-      font-size: 15px;
-      color: #111827;
-      font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace;
+    .bibx-copy{
+      position:absolute; top:10px; right:12px;
+      width:36px; height:36px; display:grid; place-items:center;
+      border-radius:999px; border:1px solid rgba(0,0,0,.14);
+      background:#ffffff; cursor:pointer; z-index:1;
+      box-shadow:0 4px 10px rgba(0,0,0,.10);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
     }
+    .bibx-card:hover .bibx-copy{ box-shadow:0 6px 16px rgba(0,0,0,.14); }
+    .bibx-copy:focus-visible{ outline:2px solid #93B3E5; outline-offset:2px; }
 
-    /* Copy button */
-    .bibtex-copy{
-      position: absolute;
-      top: 10px; right: 12px;
-      display: inline-grid;
-      place-items: center;
-      width: 34px; height: 34px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,.12);
-      background: #f8fafc;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    .bibx-clip, .bibx-check{ fill:#0f172a; opacity:.95; }
+    .bibx-check{ display:none; }
+
+    @keyframes bibx-spin{ to{ transform:rotate(360deg); } }
+    .bibx-copy.spinning .bibx-clip{ animation:bibx-spin .6s linear; }
+    .bibx-copy.copied{
+      background:#ecfdf5; border-color:rgba(34,197,94,.45);
+      box-shadow:0 6px 16px rgba(34,197,94,.18);
     }
-    .bibtex-card:hover .bibtex-copy{
-      box-shadow: 0 4px 14px rgba(0,0,0,.12);
-      border-color: rgba(0,0,0,.2);
-      background: #ffffff;
-    }
-    .bibtex-copy:focus-visible{
-      outline: 2px solid var(--brand);
-      outline-offset: 2px;
-    }
-
-    /* Icons */
-    .icon{ fill:#0f172a; opacity:.9; transition: opacity .15s ease, transform .15s ease; }
-    .icon-check{ display:none; }
-
-    /* Spin animation */
-    @keyframes spin { to{ transform: rotate(360deg); } }
-
-    /* While copying: spin clipboard */
-    .bibtex-copy.spinning .icon-clipboard{ animation: spin .6s linear; }
-
-    /* After copy: show check + green accent */
-    .bibtex-copy.copied{
-      background: #ecfdf5;                 /* pale green */
-      border-color: rgba(34,197,94,.45);
-      box-shadow: 0 4px 14px rgba(34,197,94,.18);
-    }
-    .bibtex-copy.copied .icon-clipboard{ display:none; }
-    .bibtex-copy.copied .icon-check{ display:block; fill: var(--success); }
-
-    /* Dark-mode nicety (optional) */
-    @media (prefers-color-scheme: dark){
-      .bibtex-card{ background:#0b1220; border-color:rgba(255,255,255,.08); }
-      .bibtex-pre{ color:#e5e7eb; background:#0f172a; }
-      .bibtex-copy{ background:#0f172a; border-color:rgba(255,255,255,.14); }
-      .icon{ fill:#e5e7eb; }
-    }
+    .bibx-copy.copied .bibx-clip{ display:none; }
+    .bibx-copy.copied .bibx-check{ display:block; fill:var(--bibx-success); }
   </style>
 
   <script>
+    // Supports multiple BibTeX cards if you add more later
     (function(){
-      const btn = document.querySelector('.bibtex-copy');
-      const code = document.getElementById('bibtexEntry');
+      document.querySelectorAll('.bibx-card').forEach(card=>{
+        const btn  = card.querySelector('.bibx-copy');
+        const code = card.querySelector('code');
+        if(!btn || !code) return;
 
-      if(!btn || !code) return;
+        btn.addEventListener('click', async ()=>{
+          const text = code.innerText.trim();
+          btn.classList.add('spinning');
 
-      async function copyBibtex(){
-        const text = code.innerText.trim();
-        // spin state
-        btn.classList.add('spinning');
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch (e) {
+            // fallback
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+          }
 
-        try{
-          await navigator.clipboard.writeText(text);
-        }catch(e){
-          // Fallback
-          const ta = document.createElement('textarea');
-          ta.value = text; document.body.appendChild(ta);
-          ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-        }
+          setTimeout(()=>{
+            btn.classList.remove('spinning');
+            btn.classList.add('copied');
+          }, 250);
 
-        // show check
-        setTimeout(()=>{
-          btn.classList.remove('spinning');
-          btn.classList.add('copied');
-          btn.setAttribute('aria-label','Copied!');
-        }, 300);
-
-        // reset after a moment
-        setTimeout(()=>{
-          btn.classList.remove('copied');
-          btn.setAttribute('aria-label','Copy BibTeX');
-        }, 1600);
-      }
-
-      btn.addEventListener('click', copyBibtex);
+          setTimeout(()=>{
+            btn.classList.remove('copied');
+          }, 1600);
+        });
+      });
     })();
   </script>
 
@@ -877,8 +837,8 @@
 </section>
 
 <!-- ===== BibTeX with EXACT-style Copy button ===== -->
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
+<section class="section" id="BibTeX">
+  <!-- <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
 
     <div class="bibtex-wrap">
@@ -896,30 +856,29 @@
   <div class="container is-max-desktop">
     <h2 class="title">Bibtex</h2>
 
-    <div class="bibtex-card">
+    <div class="bibx-card" data-bib-id="main">
       <!-- Copy button -->
-      <button class="bibtex-copy" aria-label="Copy BibTeX" title="Copy BibTeX">
-        <!-- Clipboard icon -->
-        <svg class="icon icon-clipboard" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <button class="bibx-copy" aria-label="Copy BibTeX" title="Copy BibTeX">
+        <!-- clipboard -->
+        <svg class="bibx-clip" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
           <path d="M16 4h-1.18A3 3 0 0 0 12 2a3 3 0 0 0-2.82 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-4-1a1 1 0 0 1 1 1h-2a1 1 0 0 1 1-1Zm4 17H8V6h1.18A3 3 0 0 0 12 8a3 3 0 0 0 2.82-2H16v14Z"/>
         </svg>
-        <!-- Check icon -->
-        <svg class="icon icon-check" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <!-- check -->
+        <svg class="bibx-check" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
           <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/>
         </svg>
       </button>
 
-      <!-- Code block -->
-      <pre class="bibtex-pre"><code id="bibtexEntry">@article{yu2025nrmf,
-        title = {Geometric Neural Distance Fields for Learning Human Motion Priors},
-        author = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
-        journal = {arXiv preprint arXiv:2412.12861},
-        year = {2025}
-      }</code></pre>
+      <!-- The BibTeX -->
+      <pre class="bibx-pre"><code id="bibtex-main">@article{yu2025nrmf,
+  title   = {Geometric Neural Distance Fields for Learning Human Motion Priors},
+  author  = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
+  journal = {arXiv preprint arXiv:2412.12861},
+  year    = {2025}
+}</code></pre>
     </div>
   </div>
 </section>
-
 
 <!--End BibTex citation -->
 
