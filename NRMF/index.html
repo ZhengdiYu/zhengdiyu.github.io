@@ -352,16 +352,46 @@
     }
 
     .bibx-pre{
-      margin:0;
-      padding:18px 16px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.05);
-      border-radius:12px;
-      overflow:auto;
-      line-height:1.75;
-      font-size:15px;
-      color:#1f2937;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace;
+      margin: 0;
+      padding: 20px;                 /* keep some breathing room */
+      background: transparent !important;
+      border: 0 !important;
+      border-radius: 0;
+      overflow: auto;
+      line-height: 1.75;
+      font-size: 15px;
+      color: #1f2937;
+      font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace;
+    }
+
+    /* Tiny toast that says “Copied!” */
+    .bibx-toast{
+      position: absolute;
+      top: 12px;
+      right: 56px;                   /* sits left of the button */
+      background: #111;              /* dark chip */
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .bibx-toast.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .bibx-toast::after{
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -6px;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: #111;       /* little arrow toward button */
     }
 
     .bibx-copy{
@@ -900,10 +930,11 @@
         </svg>
       </button>
 
+      <span class="bibx-toast" aria-live="polite" aria-atomic="true">Copied!</span>
       <pre class="bibx-pre"><code>@article{yu2025nrmf,
   title   = {Geometric Neural Distance Fields for Learning Human Motion Priors},
   author  = {Yu, Zhengdi and Foti, Simone and Zhang, Linguang and Zhao, Amy and Keskin, Cem and Zafeiriou, Stefanos and Birdal, Tolga},
-  journal = {arXiv preprint arXiv:2412.12861},
+  journal = {arXiv preprint arXiv:xxxx.xxxx},
   year    = {2025}
 }</code></pre>
     </div>
@@ -921,7 +952,7 @@
     <p>
       <a href="https://github.com/hynann/NRDF" target="_blank">NRDF</a>: Neural Riemannian Distance Fields for Learning Articulated Pose Priors<br>
       <a href="https://github.com/davrempe/humor" target="_blank">HuMoR</a>: HuMoR:3D Human Motion Model for Robust Pose Estimation<br>
-      <a href="https://github.com/c-he/NeMF/" target="_blank">NeMF</a>: Neural Motion Fields for Kinematic Animation
+      <a href="https://github.com/c-he/NeMF/" target="_blank">NeMF</a>: Neural Motion Fields for Kinematic Animation<br>
       <a href="https://github.com/garvita-tiwari/PoseNDF/tree/version2" target="_blank">PoseNDF</a>: Modeling Human Pose Manifolds with Neural Distance Fields
     </p>
   </div>
@@ -991,34 +1022,41 @@
 <script>
   // Delegated click so it survives re-renders
   document.addEventListener('click', async (e) => {
-    const btn = e.target.closest('.bibx-copy');
-    if (!btn) return;
+  const btn = e.target.closest('.bibx-copy');
+  if (!btn) return;
 
-    const card = btn.closest('.bibx-card');
-    const code = card?.querySelector('code');
-    if (!code) return;
+  const card = btn.closest('.bibx-card');
+  const code = card?.querySelector('code');
+  if (!code) return;
 
-    const text = code.innerText.trim();
-    btn.classList.add('spinning');
+  const text = code.innerText.trim();
+  btn.classList.add('spinning');
 
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); ta.remove();
+  }
+
+  setTimeout(() => {
+    btn.classList.remove('spinning');
+    btn.classList.add('copied');
+
+    // Show the Copied! toast
+    const toast = card.querySelector('.bibx-toast');
+    if (toast){
+      toast.classList.add('show');
+      // optional: customize message
+      // toast.textContent = 'Copied!';
+      setTimeout(() => toast.classList.remove('show'), 1200);
     }
+  }, 250);
 
-    setTimeout(() => {
-      btn.classList.remove('spinning');
-      btn.classList.add('copied');
-    }, 250);
+  setTimeout(() => btn.classList.remove('copied'), 1600);
+});
 
-    setTimeout(() => btn.classList.remove('copied'), 1600);
-  });
 </script>
   </body>
   </html>
