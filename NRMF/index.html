@@ -300,6 +300,140 @@
     }
   </style>
 
+  <style>
+    :root{
+      --bib-bg: #fff;
+      --bib-card: #ffffff;
+      --bib-shadow: 0 12px 30px rgba(0,0,0,.08);
+      --bib-shadow-hover: 0 16px 36px rgba(0,0,0,.12);
+      --ink: #111827;
+      --muted: #6b7280;
+      --ring: rgba(0,0,0,.06);
+      --brand: #93B3E5;       /* site accent */
+      --success: #22c55e;     /* green tick */
+      --radius: 14px;
+    }
+
+    /* Card wrapper */
+    .bibtex-card{
+      position: relative;
+      background: var(--bib-card);
+      border: 1px solid var(--ring);
+      border-radius: var(--radius);
+      box-shadow: var(--bib-shadow);
+      padding: 18px 18px 8px 18px;
+      transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+    }
+    .bibtex-card:hover{
+      box-shadow: var(--bib-shadow-hover);
+      transform: translateY(-1px);
+      border-color: rgba(0,0,0,.1);
+    }
+
+    /* Code block */
+    .bibtex-pre{
+      margin: 0;
+      padding: 18px 16px;
+      background: #0f172a0a; /* very faint slate */
+      border-radius: 10px;
+      overflow: auto;
+      line-height: 1.7;
+      font-size: 15px;
+      color: #111827;
+      font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,Monaco,monospace;
+    }
+
+    /* Copy button */
+    .bibtex-copy{
+      position: absolute;
+      top: 10px; right: 12px;
+      display: inline-grid;
+      place-items: center;
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.12);
+      background: #f8fafc;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .bibtex-card:hover .bibtex-copy{
+      box-shadow: 0 4px 14px rgba(0,0,0,.12);
+      border-color: rgba(0,0,0,.2);
+      background: #ffffff;
+    }
+    .bibtex-copy:focus-visible{
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    /* Icons */
+    .icon{ fill:#0f172a; opacity:.9; transition: opacity .15s ease, transform .15s ease; }
+    .icon-check{ display:none; }
+
+    /* Spin animation */
+    @keyframes spin { to{ transform: rotate(360deg); } }
+
+    /* While copying: spin clipboard */
+    .bibtex-copy.spinning .icon-clipboard{ animation: spin .6s linear; }
+
+    /* After copy: show check + green accent */
+    .bibtex-copy.copied{
+      background: #ecfdf5;                 /* pale green */
+      border-color: rgba(34,197,94,.45);
+      box-shadow: 0 4px 14px rgba(34,197,94,.18);
+    }
+    .bibtex-copy.copied .icon-clipboard{ display:none; }
+    .bibtex-copy.copied .icon-check{ display:block; fill: var(--success); }
+
+    /* Dark-mode nicety (optional) */
+    @media (prefers-color-scheme: dark){
+      .bibtex-card{ background:#0b1220; border-color:rgba(255,255,255,.08); }
+      .bibtex-pre{ color:#e5e7eb; background:#0f172a; }
+      .bibtex-copy{ background:#0f172a; border-color:rgba(255,255,255,.14); }
+      .icon{ fill:#e5e7eb; }
+    }
+  </style>
+
+  <script>
+    (function(){
+      const btn = document.querySelector('.bibtex-copy');
+      const code = document.getElementById('bibtexEntry');
+
+      if(!btn || !code) return;
+
+      async function copyBibtex(){
+        const text = code.innerText.trim();
+        // spin state
+        btn.classList.add('spinning');
+
+        try{
+          await navigator.clipboard.writeText(text);
+        }catch(e){
+          // Fallback
+          const ta = document.createElement('textarea');
+          ta.value = text; document.body.appendChild(ta);
+          ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        }
+
+        // show check
+        setTimeout(()=>{
+          btn.classList.remove('spinning');
+          btn.classList.add('copied');
+          btn.setAttribute('aria-label','Copied!');
+        }, 300);
+
+        // reset after a moment
+        setTimeout(()=>{
+          btn.classList.remove('copied');
+          btn.setAttribute('aria-label','Copy BibTeX');
+        }, 1600);
+      }
+
+      btn.addEventListener('click', copyBibtex);
+    })();
+  </script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
@@ -743,7 +877,7 @@
 </section>
 
 <!-- ===== BibTeX with EXACT-style Copy button ===== -->
-<section class="section" id="BibTeX">
+<!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
 
@@ -757,7 +891,35 @@
       <button id="copyBibtex" class="copy-btn">Copy</button>
     </div>
   </div>
+</section> -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop">
+    <h2 class="title">Bibtex</h2>
+
+    <div class="bibtex-card">
+      <!-- Copy button -->
+      <button class="bibtex-copy" aria-label="Copy BibTeX" title="Copy BibTeX">
+        <!-- Clipboard icon -->
+        <svg class="icon icon-clipboard" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path d="M16 4h-1.18A3 3 0 0 0 12 2a3 3 0 0 0-2.82 2H8a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-4-1a1 1 0 0 1 1 1h-2a1 1 0 0 1 1-1Zm4 17H8V6h1.18A3 3 0 0 0 12 8a3 3 0 0 0 2.82-2H16v14Z"/>
+        </svg>
+        <!-- Check icon -->
+        <svg class="icon icon-check" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/>
+        </svg>
+      </button>
+
+      <!-- Code block -->
+      <pre class="bibtex-pre"><code id="bibtexEntry">@article{li2025scenesplat,
+  title   = {SceneSplat: Gaussian Splatting-based Scene Understanding with Vision-Language Pretraining},
+  author  = {Li, Yue and Ma, Qi and Yang, Runyi and Li, Huapeng and Ma, Mengjiao and Ren, Bin and Popovic, Nikola},
+  journal = {arXiv preprint arXiv:2503.18052},
+  year    = {2025}
+}</code></pre>
+    </div>
+  </div>
 </section>
+
 
 <!--End BibTex citation -->
 
