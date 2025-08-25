@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zhengdi Yu — 3D/4D Vision • Motion Priors</title>
+  <meta name="description" content="Zhengdi Yu — PhD student at Imperial College London. 3D/4D vision, hand–object interaction, motion priors." />
+
+  <!-- Fonts (headings: Orbitron | body: Space Grotesk | pixel accents: Press Start 2P) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/images/logo.png" />
+
+  <style>
+    :root{
+      --bg:#0b0b12;           /* deep night */
+      --bg-2:#0f0f1a;
+      --grid:#141427;
+      --text:#e7e8ec;
+      --muted:#9aa0b4;
+      --accent:#00fff7;       /* neon cyan */
+      --accent-2:#ff2bf4;     /* neon magenta */
+      --accent-3:#7cff4f;     /* lime pop */
+      --card:#141529;
+      --shadow: 0 0 12px rgba(0,255,247,.35), 0 0 28px rgba(255,43,244,.20);
+      --radius:18px;
+      --maxw:1100px;
+    }
+
+    /* ===== Base ===== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; color:var(--text); background: radial-gradient(1200px 700px at 10% -10%, #1a1242 0%, transparent 60%),
+                                     radial-gradient(900px 600px at 110% 20%, #10445a 0%, transparent 50%),
+                                     linear-gradient(180deg,var(--bg),var(--bg-2));
+      font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    /* Subtle neon grid */
+    body::before{
+      content:"";
+      position:fixed; inset:0; z-index:-1;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 29px, var(--grid) 29px 30px),
+        repeating-linear-gradient(90deg, transparent 0 29px, var(--grid) 29px 30px);
+      opacity:.35; pointer-events:none;
+    }
+
+    /* CRT scanlines (very subtle) */
+    .scanlines::after{
+      content:""; position:fixed; inset:0; pointer-events:none; mix-blend-mode:soft-light;
+      background: repeating-linear-gradient( to bottom, rgba(255,255,255,.02) 0 2px, transparent 2px 4px );
+      opacity:.25;
+    }
+
+    a{color:var(--accent); text-decoration:none}
+    a:hover{filter:brightness(1.15); text-shadow:0 0 8px var(--accent)}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+    /* ===== Header / Navbar ===== */
+    .site-header{
+      position:sticky; top:0; z-index:999; backdrop-filter:saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(10,10,18,.82), rgba(10,10,18,.55));
+      border-bottom:1px solid #1d2040;
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; height:64px;
+    }
+    .brand{
+      font-family:"Orbitron",sans-serif; font-weight:700; letter-spacing:.6px; font-size:20px; line-height:1;
+      position:relative; color:#fff; text-transform:uppercase;
+    }
+    /* Neon glitch shadow for brand */
+    .brand::before,.brand::after{
+      content:attr(data-text); position:absolute; left:0; top:0; opacity:.75; filter:blur(.4px);
+      pointer-events:none;
+    }
+    .brand::before{ transform:translate(1.2px,-1px); color:var(--accent) }
+    .brand::after{  transform:translate(-1px,1px); color:var(--accent-2) }
+
+    .nav-links{display:flex; gap:6px; align-items:center}
+    .nav-links a{
+      position:relative; padding:.55rem .85rem; border-radius:12px; color:#dfe6ff; font-weight:600;
+      transition:transform .15s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .nav-links a:hover{
+      background:linear-gradient(90deg, rgba(0,255,247,.12), rgba(255,43,244,.10));
+      box-shadow: var(--shadow); transform:translateY(-1px);
+    }
+    .nav-cta{
+      padding:.6rem .9rem; border:1px solid rgba(0,255,247,.5); border-radius:14px;
+      background:linear-gradient(90deg, rgba(0,255,247,.18), rgba(255,43,244,.18));
+      color:#fff; font-weight:700;
+    }
+
+    /* Mobile burger */
+    .burger{display:none; width:42px; height:42px; border-radius:12px; border:1px solid #2b2e52; background:#121429}
+    .burger span, .burger::before, .burger::after{
+      display:block; width:20px; height:2px; margin:0 auto; background:#c8ccff; content:""; transition:.2s;
+    }
+    .burger span{margin-top:20px}
+    .burger::before{transform:translateY(-7px)}
+    .burger::after{transform:translateY(7px)}
+    @media (max-width:860px){
+      .burger{display:block}
+      .nav-links{position:fixed; right:16px; top:72px; background:#0f1123; border:1px solid #22264f;
+                 box-shadow:0 10px 40px rgba(0,0,0,.5); border-radius:16px; padding:12px; gap:4px;
+                 display:none; flex-direction:column; width:220px}
+      .nav-links.show{display:flex}
+    }
+
+    /* ===== Hero ===== */
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding:56px 0 32px}
+    @media (max-width:860px){ .hero{grid-template-columns:1fr; padding:32px 0} }
+
+    .title{
+      font-family:"Orbitron",sans-serif; font-weight:700; font-size:48px; line-height:1.05; margin:6px 0 8px;
+      text-shadow:0 0 18px rgba(0,255,247,.35), 0 0 30px rgba(255,43,244,.25);
+    }
+    .subtitle{
+      color:var(--muted); margin:6px 0 20px; font-size:18px
+    }
+
+    .typewriter{
+      font-family:"Press Start 2P", monospace; font-size:12.5px; letter-spacing:.6px; color:#bfe;
+      white-space:nowrap; overflow:hidden; border-right:2px solid var(--accent);
+      width:0; animation: typing 3.6s steps(60,end) forwards, blink 1s step-end infinite;
+      max-width:100%;
+    }
+    @keyframes typing { to{ width:100% } }
+    @keyframes blink { 50%{ border-color:transparent } }
+
+    .buttons{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; padding:.75rem 1rem; border-radius:14px; font-weight:700;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(90deg, rgba(0,255,247,.15), rgba(255,43,244,.12));
+      color:#fff; text-shadow:0 0 6px rgba(0,0,0,.5);
+      box-shadow:0 6px 18px rgba(0,0,0,.35);
+      transition:transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 28px rgba(0,0,0,.45), var(--shadow)}
+    .btn.outline{background:transparent; border:1px solid rgba(0,255,247,.45)}
+
+    /* ===== Portrait Card ===== */
+    .card{
+      background:linear-gradient(180deg, rgba(13,14,32,.75), rgba(14,16,36,.65));
+      border:1px solid #23264d; border-radius:var(--radius); padding:16px;
+      box-shadow:0 12px 40px rgba(0,0,0,.45);
+      position:relative; overflow:hidden;
+    }
+    .card::before{
+      /* animated neon rim */
+      content:""; position:absolute; inset:-2px; border-radius:inherit; padding:2px;
+      background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent), var(--accent-2));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite:xor; mask-composite:exclude; animation: spin 6s linear infinite;
+      opacity:.65;
+    }
+    @keyframes spin { to{ transform:rotate(1turn) } }
+
+    .portrait{
+      width:100%; aspect-ratio:4/5; border-radius:12px; object-fit:cover;
+      filter: saturate(110%); display:block;
+    }
+    .meta{margin-top:14px; color:var(--muted); font-size:.95rem}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px; padding:.35rem .55rem; margin:.15rem .35rem .15rem 0;
+      border:1px solid #274; border-radius:999px; font-size:.8rem; color:#c9ffd9;
+      background:linear-gradient(90deg, rgba(124,255,79,.18), rgba(0,255,247,.14));
+    }
+
+    /* ===== Footer ===== */
+    footer{border-top:1px solid #1d2040; color:#9aa0b4; font-size:.9rem; padding:24px 0 46px}
+    .footgrid{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    @media (max-width:700px){ .footgrid{flex-direction:column; gap:6px} }
+
+    /* Accessibility: reduce animations */
+    @media (prefers-reduced-motion:reduce){
+      .brand::before,.brand::after,.card::before{animation:none}
+      .typewriter{animation:none; width:auto; border-right:none}
+    }
+  </style>
+</head>
+<body class="scanlines">
+  <!-- ===== Header / Navbar ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Main">
+        <a class="brand" data-text="Zhengdi Yu" href="/">Zhengdi Yu</a>
+
+        <button class="burger" id="burger" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+        </button>
+
+        <div class="nav-links" id="navlinks">
+          <a href="/" aria-current="page">Home</a>
+          <a href="/publications/">Publications</a>
+          <a href="/projects/">Projects</a>
+          <a class="nav-cta" href="mailto:z.yu23@imperial.ac.uk">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <main>
+    <section class="wrap hero" id="home">
+      <!-- Left -->
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;">
+          <span class="pill" title="Imperial College London">Imperial • CIRCLE</span>
+          <span class="pill" title="Research areas">3D/4D Vision</span>
+          <span class="pill" title="Hand–object / motion priors">Hand–Obj • Priors</span>
+        </div>
+
+        <h1 class="title">Recovering &amp; Understanding<br/> Human Motion in 4D</h1>
+
+        <p class="subtitle">
+          PhD student @ Imperial College London, advised by
+          <a href="https://tolgabirdal.github.io/">Tolga Birdal</a> (with
+          <a href="https://www.imperial.ac.uk/people/s.zafeiriou">Stefanos Zafeiriou</a>).
+          I build neural priors and reconstruction systems for hands, humans, and tools in motion.
+        </p>
+
+        <div class="typewriter" id="tw">
+          cvpr5: Dyn-HaMR • eccv24: SignAvatars • WACV24: U3DS³ • arXiv: RangeUDF
+        </div>
+
+        <div class="buttons" role="group" aria-label="Primary links">
+          <a class="btn" href="/publications/">
+            <!-- book svg -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 19a2 2 0 0 0 2 2h13v-2H6V5h13V3H6a2 2 0 0 0-2 2v14zM8 7h9v2H8V7zm0 4h9v2H8v-2zm0 4h9v2H8v-2z"/></svg>
+            Publications
+          </a>
+          <a class="btn" href="/projects/">
+            <!-- rocket svg -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3l7 7-4.5 1.5L15 16.5 13.5 15l3-1.5L15 10 14 3zM4 13l7-7 3 3-7 7H4v-3zM3 21l4-1-3-3-1 4z"/></svg>
+            Projects
+          </a>
+          <a class="btn outline" href="https://scholar.google.com/citations?user=yo6O6MMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn outline" href="https://github.com/ZhengdiYu" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- Right -->
+      <aside class="card" aria-label="Portrait and contact">
+        <img src="/images/me.png" alt="Portrait of Zhengdi Yu" class="portrait" />
+        <div class="meta">
+          <div><strong>Email:</strong> <a href="mailto:z.yu23@imperial.ac.uk">z.yu23@imperial.ac.uk</a></div>
+          <div><strong>Address:</strong> Huxley Building, Imperial College London, SW7 2AZ, UK</div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap footgrid">
+      <div>© <span id="year"></span> Zhengdi Yu</div>
+      <div>Last updated: 08/2025</div>
+    </div>
+  </footer>
+
+  <!-- ===== Scripts (tiny + no deps) ===== -->
+  <script>
+    // Mobile nav
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('navlinks');
+    burger.addEventListener('click', () => {
+      const show = nav.classList.toggle('show');
+      burger.setAttribute('aria-expanded', show ? 'true' : 'false');
+    });
+
+    // Typewriter starts after a small delay (if not reduced motion)
+    const tw = document.getElementById('tw');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      tw.style.width = 'auto'; tw.style.borderRight = 'none';
+    } else {
+      setTimeout(() => tw.style.visibility = 'visible', 200);
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Structured data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zhengdi Yu",
+    "jobTitle": "PhD Student",
+    "url": "https://zhengdiyu.github.io/",
+    "image": "https://zhengdiyu.github.io/images/me.png",
+    "worksFor": { "@type": "Organization", "name": "Imperial College London" },
+    "sameAs": [
+      "https://github.com/ZhengdiYu",
+      "https://scholar.google.com/citations?user=yo6O6MMAAAAJ&hl=en"
+    ],
+    "knowsAbout": ["3D Computer Vision","4D Motion","Hand-Object Interaction","Neural Priors"]
+  }
+  </script>
+</body>
+</html>
