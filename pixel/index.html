@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Zhengdi Yu — 3D/4D Vision • Motion Priors</title>
+<meta name="description" content="Zhengdi Yu — PhD student at Imperial College London (CIRCLE). 3D/4D vision, hand–object interaction, motion priors." />
+
+<!-- Pixel/modern fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Light + pixel palette */
+    --bg:#f7f8fb;
+    --paper:#ffffff;
+    --ink:#1b1f2a;
+    --muted:#5e667a;
+    --grid:#e7eaf3;
+    --accent:#1ea1ff;         /* sky blue */
+    --accent-2:#4ac94a;       /* grass green */
+    --accent-3:#ff7ad9;       /* candy pink */
+    --block:#d9e6ff;          /* pixel block edge */
+    --edge:#b9c7e6;
+    --maxw:1100px;
+    --radius:18px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--ink); background:var(--bg);
+    font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.55; overflow-x:hidden;
+  }
+
+  /* Light pixel grid background (DQ/Minecraft hint) */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.8)),
+      repeating-linear-gradient(0deg, transparent 0 31px, var(--grid) 31px 32px),
+      repeating-linear-gradient(90deg, transparent 0 31px, var(--grid) 31px 32px);
+  }
+
+  a{color:var(--accent); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+
+  /* ===== Header (kept layout) ===== */
+  .site-header{
+    position:sticky; top:0; z-index:30;
+    background:rgba(255,255,255,.9); backdrop-filter:saturate(140%) blur(6px);
+    border-bottom:1px solid #e7eaf3;
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; height:66px}
+  .brand{
+    font-family:"Press Start 2P", monospace; font-size:16px; letter-spacing:.5px; color:var(--ink);
+    text-shadow:1px 1px 0 #9bd3ff, -1px -1px 0 #a2f5a2;  /* tiny 8-bit glow */
+  }
+  .nav-links{display:flex; gap:8px; align-items:center}
+  .nav-links a{
+    padding:.55rem .85rem; border-radius:12px; font-weight:600; color:var(--ink);
+  }
+  .nav-links a[aria-current="page"]{ background:#eef6ff; border:1px solid #d2e7ff }
+  .nav-cta{
+    padding:.55rem .85rem; border:2px solid var(--accent); border-radius:12px; font-weight:700; color:var(--ink);
+    background:linear-gradient(180deg,#f4fbff,#fff);
+  }
+
+  /* Mobile burger */
+  .burger{display:none; width:42px; height:42px; border-radius:10px; border:2px solid #e1e6f2; background:#fff}
+  .burger span, .burger::before, .burger::after{
+    display:block; width:20px; height:2px; margin:0 auto; background:#606a7f; content:""; transition:.2s;
+  }
+  .burger span{margin-top:19px}
+  .burger::before{transform:translateY(-7px)}
+  .burger::after{transform:translateY(7px)}
+  @media (max-width:860px){
+    .burger{display:block}
+    .nav-links{position:fixed; right:16px; top:74px; background:#fff; border:1px solid #e7eaf3;
+               border-radius:14px; padding:10px; gap:4px; display:none; flex-direction:column; width:220px;
+               box-shadow:0 10px 40px rgba(0,0,0,.08)}
+    .nav-links.show{display:flex}
+  }
+
+  /* ===== Hero (kept two-column layout) ===== */
+  .hero{display:grid; grid-template-columns:1.15fr .85fr; gap:40px; align-items:start; padding:52px 0 36px}
+  @media (max-width:900px){ .hero{grid-template-columns:1fr; padding:28px 0} }
+
+  /* Pixel badges */
+  .pills{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:12px}
+  .pill{
+    display:inline-flex; align-items:center; gap:8px; padding:.35rem .6rem; border-radius:8px;
+    font-weight:700; font-size:.9rem; color:#103450;
+    background:linear-gradient(180deg,#e9f6ff,#ffffff);
+    border:2px solid var(--block); box-shadow: 0 2px 0 #c9d9ff;
+  }
+
+  .title{
+    font-weight:800; letter-spacing:.2px; font-size:44px; line-height:1.06; margin:6px 0 8px;
+  }
+  .subtitle{ color:var(--muted); margin:6px 0 18px; font-size:18px }
+
+  /* Pixel typewriter strip */
+  .type8{
+    font-family:"Press Start 2P", monospace; font-size:12px; letter-spacing:.2px; color:#214b23;
+    background:linear-gradient(180deg,#e8ffe8,#fff);
+    border:2px solid #b8e8b8; box-shadow:0 2px 0 #9dd19d; border-radius:10px;
+    width:max-content; max-width:100%; padding:.55rem .7rem;
+    white-space:nowrap; overflow:hidden; border-right:2px solid #4ac94a;
+    animation:typing 4.2s steps(60,end) forwards, blink 1s step-end infinite;
+  }
+  @keyframes typing { to{ max-width:100%; width:100% } }
+  @keyframes blink { 50%{ border-right-color:transparent } }
+
+  .buttons{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:.75rem 1rem; border-radius:12px; font-weight:700;
+    color:var(--ink); background:#ffffff; border:2px solid #dfe6f6; box-shadow:0 2px 0 #cbd7ef;
+    transition:transform .12s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn.secondary{background:#f4fbff; border-color:#cfe6ff}
+
+  /* ===== Contact card (light, pixel edges) ===== */
+  .contact-card{
+    justify-self:end; width:320px; background:var(--paper); border:2px solid var(--edge);
+    border-radius:16px; padding:14px; box-shadow: 0 3px 0 #c3cde6, 0 14px 28px rgba(24,45,80,.06);
+    display:grid; grid-template-rows:auto auto; gap:12px;
+  }
+  .contact-photo{
+    width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:10px; display:block;
+    border:2px solid #dfe6f6;
+  }
+  .contact-info{ list-style:none; margin:0; padding:10px 12px; background:#fcfdff; border:2px solid #e7eefc; border-radius:12px }
+  .contact-info li{ display:grid; grid-template-columns:18px 1fr; column-gap:10px; align-items:start; color:var(--muted); margin:8px 0 }
+  .contact-info a{ color:var(--accent) }
+
+  @media (max-width:900px){ .contact-card{ width:100%; justify-self:stretch } }
+
+  /* ===== Affiliations strip (logos kept) ===== */
+  .affil{
+    margin-top:18px; display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  .affil .label{font-family:"Press Start 2P", monospace; font-size:11px; color:#5b6a85}
+  .affil img{
+    height:28px; image-rendering:pixelated; /* little pixel crunch */
+    filter: saturate(110%); background:#fff; padding:4px 6px; border:2px solid #e5ecfa; border-radius:8px;
+    box-shadow:0 2px 0 #ccd9f4;
+  }
+
+  /* ===== Footer ===== */
+  footer{border-top:1px solid #e7eaf3; color:#6a7287; font-size:.95rem; padding:22px 0 40px}
+  .footgrid{display:flex; align-items:center; justify-content:space-between; gap:10px}
+  @media (max-width:700px){ .footgrid{flex-direction:column; gap:6px} }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion:reduce){
+    .type8{animation:none; border-right:none}
+  }
+</style>
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Main">
+        <a class="brand" href="/" aria-label="Home">Zhengdi Yu</a>
+
+        <button class="burger" id="burger" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+        </button>
+
+        <div class="nav-links" id="navlinks">
+          <a href="/" aria-current="page">Home</a>
+          <a href="/publications/">Publications</a>
+          <a href="/projects/">Projects</a>
+          <a class="nav-cta" href="mailto:z.yu23@imperial.ac.uk">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Home / Hero ===== -->
+  <main>
+    <section class="wrap hero" id="home">
+      <!-- Left column -->
+      <div>
+        <div class="pills">
+          <span class="pill">Imperial • CIRCLE</span>
+          <span class="pill">3D/4D Vision</span>
+          <span class="pill">Hand–Obj • Priors</span>
+        </div>
+
+        <h1 class="title">Recovering &amp; Understanding<br/>Human Motion in 4D</h1>
+
+        <!-- Original bio style (lightly condensed; edit freely) -->
+        <p class="subtitle">
+          I am a PhD student in the Department of Computing (CIRCLE Group), Imperial College London,
+          supervised by <a href="https://tolgabirdal.github.io/">Prof. Tolga Birdal</a>, with
+          <a href="https://www.imperial.ac.uk/people/s.zafeiriou">Prof. Stefanos Zafeiriou</a>.
+          Previously, I completed an MRes in Computer Science at Durham University under
+          <a href="https://www.durham.ac.uk/staff/w-p-breckon/">Prof. Toby Breckon</a>, and I was a research intern at
+          <a href="https://ai.tencent.com/ailab/en/index">Tencent AI Lab</a> working with
+          <a href="https://scholar.google.com/citations?user=0u6Wj4YAAAAJ&hl=en">Dr. Shao-Li Huang</a> and
+          <a href="https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en">Dr. Jue Wang</a>.
+          My research focuses on 3D/4D computer vision with an emphasis on hand–object interaction,
+          neural motion priors, and robust reconstruction systems for real-world applications.
+        </p>
+
+        <!-- Pixel type strip -->
+        <div class="type8">cvpr25: Dyn-HaMR • eccv24: SignAvatars • wacv24: U3DS³ • arXiv: RangeUDF</div>
+
+        <!-- Buttons -->
+        <div class="buttons" role="group" aria-label="Primary links">
+          <a class="btn" href="/publications/">
+            <!-- book -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 19a2 2 0 0 0 2 2h13v-2H6V5h13V3H6a2 2 0 0 0-2 2v14zM8 7h9v2H8V7zm0 4h9v2H8v-2zm0 4h9v2H8v-2z"/></svg>
+            Publications
+          </a>
+          <a class="btn secondary" href="/projects/">
+            <!-- pickaxe vibe (hammer) -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21l7-7 3 3-7 7H2v-3zM14 3l7 7-2 2-7-7 2-2z"/></svg>
+            Projects
+          </a>
+          <a class="btn secondary" href="https://scholar.google.com/citations?user=yo6O6MMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn secondary" href="https://github.com/ZhengdiYu" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <!-- Affiliations (logos kept) -->
+        <div class="affil" aria-label="Affiliations">
+          <span class="label">Affiliations:</span>
+          <!-- Replace src paths with your actual assets -->
+          <img src="/images/imperial.png" alt="Imperial College London" />
+          <img src="/images/tencent.png" alt="Tencent AI Lab" />
+          <img src="/images/durham.png" alt="Durham University" />
+        </div>
+      </div>
+
+      <!-- Right column: contact card -->
+      <aside class="contact-card" aria-label="Portrait and contact">
+        <img src="/images/me.png" alt="Portrait of Zhengdi Yu" class="contact-photo" />
+        <ul class="contact-info">
+          <li>
+            <!-- mail -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+            <a href="mailto:z.yu23@imperial.ac.uk">z.yu23@imperial.ac.uk</a>
+          </li>
+          <li>
+            <!-- pin -->
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg>
+            Huxley Building, Imperial College London, SW7 2AZ, UK
+          </li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap footgrid">
+      <div>© <span id="year"></span> Zhengdi Yu</div>
+      <div>Last updated: 08/2025</div>
+    </div>
+  </footer>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('navlinks');
+  burger?.addEventListener('click', () => {
+    const show = nav.classList.toggle('show');
+    burger.setAttribute('aria-expanded', show ? 'true' : 'false');
+  });
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Person",
+  "name":"Zhengdi Yu",
+  "jobTitle":"PhD Student",
+  "url":"https://zhengdiyu.github.io/",
+  "worksFor":{"@type":"Organization","name":"Imperial College London"},
+  "sameAs":["https://github.com/ZhengdiYu","https://scholar.google.com/citations?user=yo6O6MMAAAAJ&hl=en"],
+  "knowsAbout":["3D Computer Vision","4D Motion","Hand-Object Interaction","Neural Priors"]
+}
+</script>
+</body>
+</html>
