@@ -1,174 +1,533 @@
 <!doctype html>
-<html lang="en">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Zhengdi Yu</title>
+	<meta charset="utf-8">
+	<meta name="google-site-verification" content="L2t4WUlr-d1jKWcdTLvESXmytW2TiXxjTxztz1dfgkk" />
+	<title>Zhengdi Yu - Homepage | Imperial College London</title>
+	
+	<!-- SEO Meta Tags -->
+	<meta name="description" content="Zhengdi Yu - PhD Student at Imperial College London. Research in Computer Vision, 3D Human Motion, and Machine Learning. Publications in CVPR, ICCV, and other top conferences.">
+	<meta name="keywords" content="Zhengdi Yu, Imperial College London, Computer Vision, 3D Human Motion, Machine Learning, PhD Student, Research, CVPR, ICCV">
+	<meta name="author" content="Zhengdi Yu">
+	
+	<!-- Open Graph Meta Tags for Social Media -->
+	<meta property="og:title" content="Zhengdi Yu - Homepage">
+	<meta property="og:description" content="PhD Student at Imperial College London. Research in Computer Vision, 3D Human Motion, and Machine Learning.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://zhengdiyu.github.io/">
+	<meta property="og:image" content="https://zhengdiyu.github.io/images/me.png">
+	
+	<!-- Twitter Card Meta Tags -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Zhengdi Yu - Homepage">
+	<meta name="twitter:description" content="PhD Student at Imperial College London. Research in Computer Vision, 3D Human Motion, and Machine Learning.">
+	<meta name="twitter:image" content="https://zhengdiyu.github.io/images/me.png">
 
-<!-- Optional: Google Fonts (safe to remove if CSP blocks) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="/js/vendor/modernizr-2.5.3.min.js"></script>
 
-<style>
-  :root{
-    --bg:#f7f8fb; --paper:#ffffff; --ink:#1b2233; --muted:#5d667b; --grid:#e9edf6;
-    --edge:#cdd9f2; --chip:#e8f2ff; --accent:#1e90ff; --shadow:0 10px 22px rgba(30,48,80,.08);
-    --maxw:1100px;
-  }
-  *{box-sizing:border-box} html,body{height:100%}
-  body{margin:0;color:var(--ink);background:var(--bg);
-       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.6}
-  body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.9)),
-               repeating-linear-gradient(0deg,transparent 0 32px,var(--grid) 32px 33px),
-               repeating-linear-gradient(90deg,transparent 0 32px,var(--grid) 32px 33px);}
-  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
 
-  /* Header */
-  .site-header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--grid)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-family:"Press Start 2P",monospace;font-size:16px;letter-spacing:.4px}
-  .nav-links{display:flex;gap:8px;align-items:center}
-  .nav-links a{padding:.5rem .8rem;border-radius:10px;color:var(--ink);font-weight:600}
-  .nav-links a[aria-current="page"]{background:#eef5ff;border:1px solid #d7e6ff}
-  .nav-cta{border:2px solid var(--accent);border-radius:10px}
+	<script src="/js/vendor/spamspan.min.js"></script>
+	<script src="/js/vendor/prettify.js"></script>
 
-  .page-title{text-align:center;font-weight:700;margin:28px 0 18px;font-size:28px}
+	<link rel="stylesheet" href="/plugins/social-media-widget/social_widget.css?ver=3.9.1">
+	<link rel="stylesheet" href="/glyphicons/css/glyphicons.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="/css/app.css">
+	<script type='text/javascript' src='/js/plugins.js'></script>
+	<script type='text/javascript' src='/js/main.js'></script>
+	<link rel="canonical" href="/">
+	<link rel="shortcut icon" href="/images/logo.png">
+	<!-- <link rel="icon" type="image/jpg" href="./imgs/polyu_icon.png"> -->
 
-  /* Layout */
-  .main-grid{display:grid;grid-template-columns: 2fr 1.05fr;gap:28px;align-items:start}
-  @media (max-width:980px){.main-grid{grid-template-columns:1fr}}
+	<style type="text/css">
+		/* toggle text */
+		a.toggle_text_link {
+			cursor:pointer;
+		}
+		pre.invisible_text {
+			display: none;
+		}
 
-  .portrait{width:320px;max-width:100%;border-radius:10px;border:2px solid #dfe6f6;display:block;box-shadow:0 3px 0 #c9d6ef}
-  .bio{margin-top:12px}
-  .affils{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:10px 0 8px}
-  .affils img{height:32px;background:#fff;padding:4px 6px;border:2px solid #e5ecfa;border-radius:8px;box-shadow:0 2px 0 #ccd9f4;image-rendering:pixelated}
-  .section-title{margin:16px 0 8px;font-family:"Press Start 2P",monospace;font-size:12px;color:#586683}
+		/* photo, support hover */
+		#photo {
+				background-image: url('/images/me.png');
+				background-size: 100% 100%;
+				height: 240px;
+				width: 200px;
+				margin: 0 1.5em 1em 0; 
+				border: 1px solid #222;
+		}
+		/* #photo:hover {
+				background-image: url('/images/me2.png');
+				background-size: 100% 100%;
+				height: 240px;
+				width: 200px;
+				margin: 0 1.5em 1em 0; 
+				border: 1px solid #222;
+		} */
 
-  .news ul{list-style:none;padding:0;margin:0}
-  .news li{margin:6px 0}.bullet{display:inline-block;width:18px;transform:translateY(1px);color:#8ca0bf}
-  .hl{color:#d42e2e;font-weight:700}
+		/* Imperial Blue Banner Override - High specificity to override Bootstrap */
+		body .navbar-inner,
+		body .navbar .btn-navbar {
+			background-color: #002147 !important; /* Solid Imperial blue */
+			background-image: none !important; /* Remove all gradients */
+			background-repeat: repeat-x !important;
+		}
 
-  /* Right card */
-  .card{background:var(--paper);border:2px solid #cdd9f2;border-radius:12px;padding:14px;box-shadow:var(--shadow)}
-  .card img{width:100%;border-radius:10px;border:2px solid #e2e9f9;display:block;margin-bottom:10px}
-  .contact h3{margin:.2rem 0 .6rem 0;font-size:16px;color:#42506a}
-  .contact-list{list-style:none;margin:0;padding:0}
-  .contact-list li{display:grid;grid-template-columns:18px 1fr;column-gap:10px;align-items:start;margin:8px 0;color:var(--muted)}
-  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  .icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border:2px solid #cdd9f2;border-radius:8px;background:#fff}
+		/* White text for navbar */
+		body .navbar .brand,
+		body .navbar .nav > li > a {
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
 
-  .foot{display:flex;align-items:center;justify-content:space-between;margin:34px 0 40px;color:#6a7287;font-size:.95rem}
-  @media (max-width:600px){.foot{flex-direction:column;gap:6px}}
-</style>
+		/* Ensure proper brand positioning */
+		body .navbar .brand {
+			float: left !important;
+			margin-left: 0 !important;
+			padding: 10px 15px !important;
+			line-height: 20px !important;
+			text-decoration: none !important;
+		}
+
+		/* Active and hover states */
+		body .navbar .nav .current-page-ancestor > a,
+		body .navbar .nav .current-page-ancestor > a:hover,
+		body .navbar .nav .active > a,
+		body .navbar .nav .active > a:hover {
+			background-color: rgba(255, 255, 255, 0.2) !important; /* Light overlay for active state */
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
+
+		body .nav-collapse .nav > li > a:hover,
+		body .nav-collapse .dropdown-menu a:hover {
+			background-color: rgba(255, 255, 255, 0.15) !important; /* Light overlay for hover state */
+			color: #ffffff !important; /* White text for contrast */
+			font-weight: bold;
+		}
+
+    /* === Cyberpunk Pixel Header === */
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    /* Navbar container */
+    .cyberpunk-navbar {
+      border: none;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.3);
+      background: rgba(15, 15, 30, 0.7); /* Semi-transparent glass */
+      backdrop-filter: blur(6px);
+    }
+
+    /* Inner wrapper with pixel border bottom */
+    .cyberpunk-navbar-inner {
+      border-bottom: 3px solid #00eaff; /* Neon cyan line */
+    }
+
+    /* Cyberpunk-style brand title */
+    .cyberpunk-brand {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 15px;
+      letter-spacing: 1px;
+      color: #ff00cc !important; /* Magenta neon */
+      text-shadow: 0 0 6px #ff00cc, 0 0 12px #ff33ff;
+      transition: all 0.25s ease-in-out;
+    }
+
+    .cyberpunk-brand:hover {
+      color: #00eaff !important;
+      text-shadow: 0 0 6px #00eaff, 0 0 12px #00ffff;
+    }
+
+    /* Navigation links */
+    .cyberpunk-nav > li > a {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 11px;
+      padding: 14px 16px;
+      color: #e0eaff !important;
+      text-transform: uppercase;
+      text-shadow: 0 0 5px #00eaff, 0 0 10px rgba(0, 255, 255, 0.6);
+      transition: all 0.2s ease-in-out;
+    }
+
+    /* Hover and active effects */
+    .cyberpunk-nav > li > a:hover,
+    .cyberpunk-nav > li.active > a {
+      color: #ff00cc !important;
+      text-shadow: 0 0 5px #ff00cc, 0 0 12px #ff33ff;
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      border-radius: 4px;
+    }
+
+    /* Glow animation for active menu item */
+    .cyberpunk-nav > li.active > a {
+      animation: neon-glow 1.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes neon-glow {
+      from {
+        text-shadow: 0 0 5px #00eaff, 0 0 12px #00ffff, 0 0 24px #00ffff;
+      }
+      to {
+        text-shadow: 0 0 7px #ff00cc, 0 0 16px #ff33ff, 0 0 32px #ff33ff;
+      }
+    }
+	</style>
+
+	<script language="javascript" type="text/javascript">
+		function toggle(element) {
+			if(element.style.display=="block") {
+				element.style.display="none";
+			} else {
+				element.style.display="block";
+			}
+		}
+	</script>
+	
+	<!-- Structured Data for SEO -->
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Zhengdi Yu",
+		"url": "https://zhengdiyu.github.io/",
+		"image": "https://zhengdiyu.github.io/images/me.png",
+		"jobTitle": "PhD Student",
+		"worksFor": {
+			"@type": "Organization",
+			"name": "Imperial College London",
+			"url": "https://www.imperial.ac.uk/"
+		},
+		"alumniOf": {
+			"@type": "Organization",
+			"name": "Durham University",
+			"url": "https://www.dur.ac.uk/"
+		},
+		"description": "PhD Student at Imperial College London. Research in Computer Vision, 3D Human Motion, and Machine Learning.",
+		"knowsAbout": ["Computer Vision", "3D Human Motion", "Machine Learning", "4D Motion Representations", "Articulated Bodies"],
+		"sameAs": [
+			"https://github.com/ZhengdiYu",
+			"https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID"
+		]
+	}
+	</script>
 </head>
-<body>
-<header class="site-header">
-  <div class="wrap">
-    <nav class="nav" aria-label="Main">
-      <a class="brand" href="./">Zhengdi Yu</a>
-      <div class="nav-links">
-        <a href="./" aria-current="page">Home</a>
-        <a href="publications/">Publications</a>
-        <a href="projects/">Projects</a>
-        <a class="nav-cta" href="mailto:z.yu23@imperial.ac.uk">Contact</a>
-      </div>
-    </nav>
-  </div>
-</header>
 
-<main class="wrap">
-  <h1 class="page-title">Zhengdi Yu</h1>
+<body class="home page page-id-4 page-template-default top-navbar">
+  <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
 
-  <div class="main-grid">
-    <!-- Left -->
-    <div>
-      <!-- Use your original portrait path -->
-      <img class="portrait" src="images/me.png" alt="Portrait of Zhengdi Yu">
-
-      <div class="bio">
-        <!-- Keep your original links/text -->
-        <p>
-          I am a PhD student at the Department of Computing,
-          <a href="https://circle-icml.github.io/">CIRCLE Group</a>,
-          <a href="https://www.imperial.ac.uk/">Imperial College London</a>,
-          supervised by <a href="https://tolgabirdal.github.io/">Prof. Tolga Birdal</a> and working with
-          <a href="https://www.imperial.ac.uk/people/s.zafeiriou">Prof. Stefanos Zafeiriou</a>.
-          Before that, I finished my <a href="https://www.durham.ac.uk/">MRes degree</a> in Computer Science at
-          Durham University under the supervision of <a href="https://www.durham.ac.uk/staff/w-p-breckon/">Prof. Toby Breckon</a>.
-          During my MRes, I was also a research intern at
-          <a href="https://ai.tencent.com/ailab/en/index">Tencent AI Lab</a>, Visual Computing Centre, working with
-          <a href="https://scholar.google.com/citations?user=0u6Wj4YAAAAJ&hl=en">Dr. ShaoLi Huang</a> and
-          <a href="https://scholar.google.com/citations?user=TwMib_QAAAAJ&hl=en">Dr. Jue Wang</a>.
-        </p>
-        <p>
-          My research interests primarily focus on 3D computer vision, with a particular emphasis on 4D motion
-          representations of articulated bodies, such as hands and human bodies, as well as parametric models.
-          I am also interested in 3D shape reconstruction and scene understanding towards applications for real-world problems.
-        </p>
-
-        <!-- Affiliations — keep your original logo files -->
-        <div class="affils">
-          <img src="images/imperial.png" alt="Imperial College London">
-          <img src="images/tencent.png" alt="Tencent AI Lab">
-          <img src="images/durham.png" alt="Durham University">
-        </div>
-
-        <!-- News -->
-        <div class="news">
-          <div class="section-title">News</div>
-          <ul>
-            <li><span class="bullet">•</span> <strong>03/2025:</strong> One paper accepted by CVPR 2025 as <span class="hl">Highlight</span>.</li>
-            <li><span class="bullet">•</span> <strong>05/2024:</strong> One paper accepted by ECCV 2024.</li>
-            <li><span class="bullet">•</span> <strong>12/2023:</strong> Joined <a href="https://circle-icml.github.io/">CIRCLE Group</a> at Imperial College London as a PhD student.</li>
-            <li><span class="bullet">•</span> <strong>10/2023:</strong> One paper accepted by WACV 2024.</li>
-            <li><span class="bullet">•</span> <strong>04/2023:</strong> Obtained my MRes degree in Computer Science from <a href="https://www.durham.ac.uk/">Durham University</a>.</li>
-            <li><span class="bullet">•</span> <strong>02/2023:</strong> One paper accepted by CVPR 2023.</li>
-            <li><span class="bullet">•</span> <strong>04/2022:</strong> <a href="https://arxiv.org/abs/2204.XXXXX">RangeUDF</a> is on arXiv now.</li>
-            <li><span class="bullet">•</span> <strong>02/2022:</strong> Joined <a href="https://ai.tencent.com/ailab/en/index">Tencent AI Lab</a>, Visual Computing Centre, as a research intern.</li>
-            <li><span class="bullet">•</span> <strong>07/2021:</strong> One paper accepted by ICCV 2021.</li>
-            <li><a href="more.html">More…</a></li>
+    <!-- <header id="banner" class="navbar navbar-fixed-top" role="banner">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">
+					Zhengdi Yu
+				</a>
+				<nav id="nav-main" class="nav-collapse" role="navigation">
+					<ul class="nav">
+						<li class="menu-home active active"><a href="/">Home</a></li>
+						<li class="menu-publications"><a href="/publications/">Publications</a></li>
+						<li class="menu-projects"><a href="/projects/">Projects</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header> -->
+  <header id="banner" class="navbar navbar-fixed-top cyberpunk-navbar" role="banner">
+    <div class="navbar-inner cyberpunk-navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand cyberpunk-brand" href="/">
+          Zhengdi Yu
+        </a>
+        <nav id="nav-main" class="nav-collapse" role="navigation">
+          <ul class="nav cyberpunk-nav">
+            <li class="menu-home active"><a href="/">Home</a></li>
+            <li class="menu-publications"><a href="/publications/">Publications</a></li>
+            <li class="menu-projects"><a href="/projects/">Projects</a></li>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
+  </header>
 
-    <!-- Right -->
-    <aside class="card contact">
-      <img src="images/room.jpg" alt="Lab/teaching room">
-      <h3>Contact info</h3>
-      <ul class="contact-list">
-        <li>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
-          <div>
-            <a href="mailto:z.yu23@imperial.ac.uk">z.yu23@imperial.ac.uk</a> (preferred)<br>
-            <a href="mailto:ZhengdiYu@hotmail.com">ZhengdiYu@hotmail.com</a>
-          </div>
-        </li>
-        <li>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/></svg>
-          Huxley building, Imperial College London,<br>Exhibition Rd, South Kensington,<br>London SW7 2AZ, United Kingdom
-        </li>
-      </ul>
+	<div id="wrap" class="container" role="document">
+	<div id="content" class="row">
+			<div id="main" class="span8" role="main">
+				<div class="page-header">
+					<h1>Zhengdi Yu</h1>
+				</div>
+				<p align="justify">
+					<div id="photo" class="wp-image-697 alignleft dropshadow">
+						<!--
+						<img class=" wp-image-697 alignleft dropshadow" style="margin: 0 1.5em 1em 0; border: 1px solid #222;" src="/images/me.png" alt="Portrait photo of Zhengdi Yu" width="180" height="240" />
+						-->
+					</div>
 
-      <div class="section-title" style="margin-top:14px">More links</div>
-      <div class="links">
-        <a class="icon" href="https://github.com/ZhengdiYu" aria-label="GitHub"><img src="images/icons/github.svg" alt="" width="18" height="18"></a>
-        <a class="icon" href="https://scholar.google.com/citations?user=yo6O6MMAAAAJ&hl=en" aria-label="Google Scholar"><img src="images/icons/scholar.svg" alt="" width="18" height="18"></a>
-        <a class="icon" href="https://www.linkedin.com/in/zhengdiyu/" aria-label="LinkedIn"><img src="images/icons/linkedin.svg" alt="" width="18" height="18"></a>
-      </div>
-    </aside>
-  </div>
+					I am a PhD student at the Department of Computing, <a href="https://circle-group.github.io/">CIRCLE Group</a>, <a href="https://www.imperial.ac.uk/">Imperial College London</a>, supervised by <a href="https://tolgabirdal.github.io/">Prof. Tolga Birdal</a> and working with <a href="https://www.imperial.ac.uk/people/s.zafeiriou">Prof. Stefanos Zafeiriou</a>. Before that, I finished my MRes degree in Computer Science at <a href="https://www.dur.ac.uk/">Durham University</a> under the supervision of <a href="https://breckon.org/toby/">Prof. Toby Breckon</a>. During my MRes, I was also a research intern at <a href="https://ailab.tencent.com/ailab/en/index/">Tencent AI Lab</a>, Visual Computing Centre, working with <a href="https://shaoli-huang.github.io/">Dr. Shaoli Huang</a> and <a href="https://juewang725.github.io/">Dr. Jue Wang</a>.
 
-  <div class="foot">
-    <div>© <span id="year"></span> Zhengdi Yu</div>
-    <div>Last updated: 08/2025</div>
-  </div>
-</main>
+					<br />
+					<br />
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+					My research interests primarily focus on 3D computer vision, with a particular emphasis on 4D motion representations of articulated bodies, such as hands and human bodies, as well as parametric models. I am also interested in 3D shape reconstruction and scene understanding towards applications for real-world problems. 
+
+				</p>
+
+				<div class="alignbottom  visible-desktop">
+					<!-- <p align="center"> -->
+					<p>
+						<a href="https://www.imperial.ac.uk/">
+							<img class="size-medium wp-image-712" style="margin-bottom: 10px;" src="/images/imperial.png" alt="Imperial College London" width="145" />
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://ailab.tencent.com/ailab/en/index/">
+							<img class="size-medium wp-image-712" style="margin-bottom: 10px;" src="/images/tencent.png" alt="Tencent" width="120" />
+						</a>
+						&nbsp;&nbsp;
+						<a href="https://www.dur.ac.uk/">
+							<img class="size-medium wp-image-712" style="margin-bottom: 10px;" src="/images/durham.png" alt="Durham University" width="120" />
+						</a>
+					</p>
+				</div>
+
+				<!--Jobs info-->
+				<!-- <p>&nbsp;</p>
+				<div class="alert alert-block alert-success">
+					<h3 class="alert-heading">Job / Internship opening! &nbsp;<em class="icon-fire"></em></h3>
+					<p>
+						We are recruiting self-motivated interns and full-time researchers / engineers to work at X-Lab in <b>computer vision, sensor fusion, optical and interaction techniques, etc., to enhance XR</b>. If interested, please drop me an email with your CV.
+					</p>
+				</div> -->
+
+				<!--News-->
+				<hr style="clear: both;" />
+				<h3>News</h3>
+				<ul>
+					<!-- <li>
+						<p>
+							<em class="icon-rss"></em> <strong>03/2025</strong>: Our paper <a href="https://dyn-hamr.github.io/">Dyn-HaMR: Recovering 4D Interacting Hand Motion from a Dynamic Camera</a> is accepted by CVPR 2025 as <span style="color: red;">Highlight</span>.
+						</p>
+					</li>			
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>05/2024</strong>: Our paper <a href="https://signavatars.github.io/">SignAvatars: A Large-scale 3D Sign Language Holistic Motion Dataset and Benchmark</a> is accepted by ECCV 2024.
+						</p>
+					</li>		
+					<li>
+						<p>
+							<strong>12/2023</strong>: Join <a href="https://circle-group.github.io/">CIRCLE Group</a> at Imperial College London as a PhD student.
+						</p>
+					</li>		
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>10/2023</strong>: Our paper <a href="https://arxiv.org/abs/2311.06018">U3DS³: Unsupervised 3D Semantic Scene Segmentation</a> is accepted by WACV 2024.
+						</p>
+					</li>		
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>02/2023</strong>: Our paper <a href="https://github.com/ZhengdiYu/Arbitrary-Hands-3D-Reconstruction">ACR: Attention Collaboration-based Regressor for Arbitrary Two-Hand Reconstruction</a> is accepted by CVPR 2023.
+						</p>
+					</li>
+					<li>
+						<p>
+							<em class="icon-group"></em> <strong>02/2022</strong>: Join <a href="https://ailab.tencent.com/ailab/en/index/">Tencent AI Lab</a>, Visual Computing Centre, as a research intern.
+						</p>
+					</li>
+					<li>
+						<a href="/news/">More...</a>
+					</li> -->
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>03/2025</strong>: One paper accepted by CVPR 2025 as <span style="color: red;">Highlight</span>.
+						</p>
+					</li>			
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>05/2024</strong>: One paper accepted by ECCV 2024.
+						</p>
+					</li>		
+					<li>
+						<p>
+							<em class="icon-group"></em> <strong>12/2023</strong>: Joined <a href="https://circle-group.github.io/">CIRCLE Group</a> at <a href="https://www.imperial.ac.uk/">Imperial College London</a> as a PhD student.
+						</p>
+					</li>		
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>10/2023</strong>: One paper accepted by WACV 2024.
+						</p>
+					</li>		
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>04/2023</strong>: Obtained my MRes degree in Computer Science from <a href="https://www.dur.ac.uk/">Durham University</a>.
+						</p>
+					</li>	
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>02/2023</strong>: One paper accepted by CVPR 2023.
+						</p>
+					</li>
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>04/2022</strong>: <a href="https://arxiv.org/abs/2204.09138">RangeUDF</a> is on arXiv now.
+						</p>
+					</li>
+					<li>
+						<p>
+							<em class="icon-group"></em> <strong>02/2022</strong>: Joined <a href="https://ailab.tencent.com/ailab/en/index/">Tencent AI Lab</a>, Visual Computing Centre, as a research intern.
+						</p>
+					</li>
+					<li>
+						<p>
+							<em class="icon-rss"></em> <strong>07/2021</strong>: One paper accepted by ICCV 2021.
+						</p>
+					</li>
+					<li>
+						<a href="/publications/">More...</a>
+					</li>
+				</ul>
+			</div><!-- /#main -->
+
+			<aside id="sidebar" class="span4" role="complementary">
+				<div class="well">
+					<section id="text-2" class="widget-1 widget-first widget widget_text">
+						<div class="widget-inner">
+							<div class="textwidget" style="text-align: center;">
+								<img src="/images/2.png" alt="Skill Image" style="max-width:100%; height:auto;" />
+							</div>
+						</div>
+					</section>
+					<!-- <section id="text-2" class="widget-1 widget-first widget widget_text">
+						<div class="widget-inner">
+							<div class="textwidget">
+								<i>
+									How we spend our days is, of course, how we spend our lives.
+									<p align="right">- Annie Dillard</p>
+								</i>
+							</div>
+						</div>
+					</section> -->
+					<section id="text-2" class="widget-1 widget-first widget widget_text">
+						<div class="widget-inner">
+							<h3>Contact info</h3>
+							<div class="textwidget">
+								<h6><em class="icon-envelope"></em> Email</h6>
+								<span class="email"><span class="firstname">z.yu23</span> [at] <span class="domain">imperial [dot] ac [dot] uk</span></span> (preferred)
+								<br />
+								<span class="email"><span class="firstname">ZhengdiYu</span> [at] <span class="domain">hotmail [dot] com</span></span>
+								<br />
+								<br />
+								<h6><em class="icon-home"></em> Address</h6>
+								<p>
+									Huxley building, Imperial College London, <br />
+									Exhibition Rd, South Kensington, <br />
+									London SW7 2AZ, United Kingdom
+								</p>
+							</div>
+						</div>
+					</section>
+					<br />
+					<!-- Combined CV, More Links, and Globe Section -->
+					<div style="display: flex; align-items: flex-start; gap: 20px;">
+						<!-- Left Side - CV and More Links -->
+						<div style="flex: 1;">
+							<!-- Curriculum Vitae -->
+							<!-- <section id="text-2" class="widget-1 widget-first widget widget_text">
+								<div>
+									<em class="icon-old-man"></em>
+									<b><i><a href="https://drive.google.com/file/d/1a6yAtWhMup-s8OyaRhu6jU19ANR7XZ_d/view?usp=sharing">Curriculum Vitae</a></i></b>		
+								</div>	
+							</section>
+							<br /> -->
+							
+							<!-- More Links -->
+							<section id="social-widget-2" class="widget-3 widget Social_Widget">
+								<div class="widget-inner">
+									<h3>More links</h3>
+									<div class="socialmedia-buttons smw_left">
+										<!-- First Row - 3 icons -->
+										<div style="margin-bottom: 10px;">
+											<a href="https://scholar.google.com/citations?user=yo6O6MMAAAAJ&hl=en&oi=ao" rel="nofollow" target="_blank">
+												<img width="32" height="32" src="/images/scholar.svg" alt="Follow My Google Scholar" title="Follow My Google Scholar" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade" />
+											</a>
+											<a href="https://github.com/ZhengdiYu" rel="nofollow" target="_blank">
+												<img width="32" height="32" src="/images/github.png" alt="Follow me on GitHub" title="Follow me on GitHub" style="opacity: 0.8; -moz-opacity: 0.8;" class="fade" />
+											</a>
+											<a href="https://www.linkedin.com/in/zhengdi-yu/" rel="nofollow" target="_blank">
+												<img width="32" height="32" src="/images/linkedin.png" alt="Follow me on LinkedIn" title="Follow me on LinkedIn " style="opacity: 0.8; -moz-opacity: 0.8;" class="fade" />
+											</a>
+										</div>
+										<!-- Second Row - 3 icons -->
+										<div style="margin-bottom: 10px;">
+											<a href="https://x.com/Zhengdi_Yu" rel="nofollow" target="_blank">
+												<img width="32" height="32" src="/images/x.png" alt="Follow me on X" title="Follow me on X " style="opacity: 0.8; -moz-opacity: 0.8;" class="fade" />
+											</a>
+											<a href="https://bsky.app/profile/zhengdiyu.bsky.social" rel="nofollow" target="_blank">
+												<img width="32" height="32" src="/images/bs.svg" alt="Follow me on bluesky" title="Follow me on bluesky " style="opacity: 0.8; -moz-opacity: 0.8;" class="fade" />
+											</a>
+											<a href="https://www.researchgate.net/profile/Zhengdi-Yu" rel="nofollow" target="_blank">
+												<img width="32" height="32" src="/images/RG.jpg" alt="Follow me on ResearchGate" title="Follow me on ResearchGate " style="opacity: 0.8; -moz-opacity: 0.8;" class="fade" />
+											</a>
+										</div>
+
+										<!-- site credits -->
+										<br />
+										<em class="icon-hand-right"></em> <a class="toggle_text_link" onclick="javascript:toggle(site_credits);">Site Credits</a>
+										<pre id="site_credits" class="invisible_text">
+This site was built using <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>, a front-end framework for web development. <br /><br />The style of this site is inspired by <a href="http://richardt.name/">Dr. Christian Richardt</a>'s personal website.</pre> <!-- put </pre> on this line to avoid new unwanted line breaks after bibtex -->
+									</div>
+								</div>
+							</section>
+						</div>
+
+						<!-- Right Side - Visitor Globe -->
+						<div style="flex: 1; text-align: center; display: flex; align-items: flex-end; justify-content: center; padding-left: 20px; padding-right: 20px; margin-bottom: 10px;">
+							<script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=6ynszbKujIV1IrI5z0mH_1B2PjhdppWaW_9Noyn3tPY"></script>
+						</div>
+					</div>
+				</div>
+			</aside><!-- /#sidebar -->
+		</div><!-- /#content -->
+	</div><!-- /#wrap -->
+
+	<footer id="content-info" class="container" role="contentinfo">
+		<table width="100%">
+			<tr>
+				<td>
+					<p class="copy"><small>&copy; 2025 Zhengdi Yu</small></p>
+				</td>
+				<td style="text-align:right">
+					<p class="copy"><small>Last updated: 8/2025</small></p>
+				</td>
+				<!-- <td style="text-align:right">
+					<a href="https://SiteStates.com" title="Site access statistics">
+						<img src="https://SiteStates.com/show/image/29517.jpg" border="0" />
+					</a>
+				</td> -->
+			</tr>
+		</table>
+	</footer>
+
+	<!-- From http://stackoverflow.com/a/11668413/72470 -->
+	<script>
+	  !function ($) {
+		$(function(){
+		  window.prettyPrint && prettyPrint()
+		})
+	  }(window.jQuery)
+	</script>
 </body>
 </html>
