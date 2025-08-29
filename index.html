@@ -113,6 +113,22 @@
 			color: #ffffff !important; /* White text for contrast */
 			font-weight: bold;
 		}
+		/* --- Global Link Styling --- */
+		body a,
+		body a:visited,
+		body .dropdown-menu a {
+		color: #0068d9;              /* Nice modern blue */
+		text-decoration: none;       /* Remove underline */
+		transition: opacity 0.2s ease;
+		}
+
+		body a:hover,
+		body a:focus,
+		body .dropdown-menu a:hover {
+		color: #0053b3;              /* Slightly darker blue on hover */
+		text-decoration: none;       /* Keep underline disabled */
+		opacity: 0.85;               /* Subtle fade effect */
+		}
 	</style>
 
 	<script language="javascript" type="text/javascript">
